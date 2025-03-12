@@ -1,8 +1,0 @@
-<h1>Travar arquivo como imutável</h1>
-<p>chattr +i <path/arquivo></p>
-
-<h1>Destravar arquivo como imutável</h1>
-<p></p>chattr -i <path/arquivo></p>
-
-<h1>Verificar se arquivo está travado como imutável</h1>
-<p>lsattr <path/arquivo></p>
