@@ -1,3 +1,2 @@
-<h1>Ajustes Gráficos</h1>
 <h3>AJUSTAR ESCALA DO GNOME-DESKTOP</h3>
 <p>gsettings set org.gnome.desktop.interface scaling-factor 2</p>
