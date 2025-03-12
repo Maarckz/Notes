@@ -1,8 +1,0 @@
-<h3>TRAVAR ARQUIVO COMO IMUTÁVEL</h3>
-<p>chattr +i <path/arquivo></p>
-
-<h3>DESTRAVAR ARQUIVO COMO IMUTÁVEL</h3>
-<p>chattr -i <path/arquivo></p>
-
-<h3>VERIFICAR ESTADO ATUAL DO ARQUIVO</h3>
-<p>lsattr <path/arquivo></p>
