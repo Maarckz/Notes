@@ -1,0 +1,593 @@
+
+  /* Estilo geral do modal */
+  .modal {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    animation: fadeIn 0.4s ease-in-out;
+}
+/* Conteúdo do modal */
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    max-width: 1400px; /* Largura máxima */
+    width: 90%; /* Adapta ao tamanho da tela */
+    top: -5%; /* Desloca para cima */
+    max-height: 85vh; /* Altura máxima para caber na tela */
+    overflow-y: auto; /* Adiciona barra de rolagem vertical */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.4s ease-in-out;
+}
+
+
+
+/* Título do modal */
+.modal-content h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+.modal-content h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 16px;
+            background-color: #ddf4ff;
+            padding: 6px;
+            border-radius: 6px;
+            border: 1px solid #b6e3ff;
+            color: #da7f09;
+            animation: fadeInUp 1s ease-in-out;
+            display: block;
+        }
+
+
+/* Botão de fechar */
+.modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e2e2e2;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.modal-content .close:hover {
+    color: red;
+}
+
+/* Animação de saída do conteúdo ao fechar */
+.modal-content.closing {
+    animation: fadeOut 0.4s ease-in-out;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+  .playbook-card {
+    background-color: #3d3d3d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    margin: 0.7rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.playbook-card {
+    width: calc(26%);
+}
+
+@media (max-width: 768px) {
+    .playbook-card {
+        width: calc(90% - 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .playbook-card {
+        width: 100%;
+    }
+}
+
+.playbook-card:hover {
+    transform: translateY(-10px);
+}
+
+.playbook-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    color: #e7e7e7;
+}
+
+.playbook-card p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+button {
+    background-color: #da7f09;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d6d6d6;
+}
+
+button:focus {
+    outline: none;
+}
+
+.playbook-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #1f1f1f;
+    color: white;
+    padding-top: 2rem;
+    width: 250px;
+    height: 100%;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    padding: 1rem;
+    text-align: center;
+}
+
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #da7f09;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+
+
+
+
+.menu-hamburguer .bar {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #e2e2e2;
+    margin: 6px 0;
+    transition: 0.3s;
+}
+.menu-hamburguer:hover .bar {
+    background-color: #555;
+}
+@media only screen and (max-width: 768px) {
+      .menu-hamburguer .bar {
+        display: block; 
+        width: 9px; 
+        height: 25px; 
+        background-color: #333; 
+        writing-mode: vertical-rl; 
+        transform: rotate(180deg); 
+        margin-left: -15.45px; 
+        margin-top: 5.5px;
+    }
+
+    .menu-hamburguer:hover .bar {
+        background-color: #555;
+    }
+}
+.menu-hamburguer {
+display: none;
+position: absolute;
+top: 20px;
+left: 20px;
+z-index: 1000;
+cursor: pointer;
+}
+
+.menu-hamburguer div {
+width: 35px;
+height: 5px;
+background-color: #333;
+margin: 6px 0;
+}
+
+.menu-hamburguer {
+    display: block;
+}
+
+.sidebar {
+    left: -250px;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #2e2e2e;
+    animation: fadeIn 1s ease-in-out;
+}
+h1 {
+    color: #24292f;
+    font-size: 24px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #4b4b4b;
+    border: 1px solid #000000;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(27, 31, 35, 0.1);
+    padding: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.container h2{
+    background-color: #242424; color: #fff; padding: 1rem; border-radius: 0.5rem; width: 96%;
+
+}
+
+.container p {
+    color: azure;
+}
+.section {
+    margin-top: 20px;
+    border: 1px solid #d8dee4;
+    border-radius: 6px;
+    padding: 15px;
+    background-color: #f6f8fa;
+    animation: fadeInUp 1s ease-in-out;
+}
+.section h2 {
+    margin-top: 0;
+    font-size: 20px;
+    background-color: #ddf4ff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #b6e3ff;
+    color: #da7f09;
+    animation: fadeInUp 1s ease-in-out;
+}
+.card {
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease-in-out;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #24292f;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+.card p {
+    margin: 0;
+    font-size: 14px;
+    color: #e9e9e9;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+
+
+p {
+    animation: fadeInUp 1s ease-in-out;
+    width: 96.7%;
+    margin-left: 10px;
+}
+
+
+   /* CSS */
+#iframe {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px auto;
+    line-height: 1.6;
+    background-color: #ffffff;
+    animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#iframe h1, #iframe h2, #iframe h3, #iframe h4, #iframe p, #iframe ul, #iframe table {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#iframe h1 {
+    animation: fadeInUp 1s ease-in-out;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    font-size: 24px;
+}
+
+#iframe h2 {
+    animation: fadeInUp 1s ease-in-out;
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    font-size: 18px;
+}
+
+#iframe h3 {
+    margin-top: 1rem;
+    margin-top: 0;
+    font-size: 18px;
+    background-color: #ddf4ff;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #b6e3ff;
+    color: #0969da;
+    animation: fadeInUp 1s ease-in-out;
+    width: 90%;
+}
+
+#iframe h4 {
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 90%;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#iframe p {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    width: 90%;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#iframe table {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 18px;
+    background-color: #fff;
+    border-radius: 6px;
+    animation: fadeInUp 1s ease-in-out;
+    margin-bottom: 50px;
+}
+
+#iframe th, #iframe td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #b6e3ff;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+#iframe th {
+    font-weight: bold;
+    background-color: #333;
+    color: #ffffff;
+}
+
+#iframe tr {
+    background-color: #fff;
+}
+
+#iframe tr:hover {
+    background-color: #bbddff;
+}
+
+
+
+/* CONFIGURACAO DOS MODAIS*/
+
+
+#iframe .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+#iframe .card {
+    margin: 5px;
+    padding: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 520px;
+    border-radius: 8px;
+    background-color: #f1f8ff;
+    transition: transform 0.2s;
+    border: 1px solid #b6e3ff;
+}
+
+#iframe .card:hover {
+    transform: translateY(-5px);
+}
+
+#iframe .card h3 {
+    margin-top: 0;
+    font-size: 16px;
+    color: #da7f09;
+}
+
+#iframe .card p, #iframe .card ul {
+    margin-top: 0;
+    color: #e6e6e6;
+}
+
+#iframe .card ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+#iframe li {
+    background-color: #d5e5fc;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ebecff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#iframe li:hover {
+    background-color: #ddf4ff;
+}
+
+#iframe li:active {
+    background-color: #bbddff;
+}
+
+#iframe ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+}
+
+
+
+
+/* Animação de entrada do conteúdo */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Animação de entrada */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animação de saída */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {    
+        opacity: 1;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        left: -250px;
+        opacity: 0;
+    }
+    to {
+        left: 0;
+        opacity: 1;
+    }
+}
