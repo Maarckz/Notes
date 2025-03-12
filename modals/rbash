@@ -1,3 +1,5 @@
+<div class="modal-content">
+
 <h3>Criação de usuário RBASH</h3>
 
 <p>sudo useradd --badname -m -s /bin/rbash</p>

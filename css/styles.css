@@ -273,7 +273,7 @@ h1 {
 
 
 
-p {
+p,h3,h2 {
     animation: fadeInUp 1s ease-in-out;
     width: 96.7%;
     margin-left: 10px;
