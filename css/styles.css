@@ -27,6 +27,30 @@
     animation: fadeInUp 0.4s ease-in-out;
 }
 
+.social-icons {
+    margin-left: 10px;
+    display: flex;
+    margin-top: 1rem;
+}
+
+.social-icons .social-icon:last-child {
+    margin-right: 0
+}
+
+.social-icons .social-icon {
+    display: inline-flex;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    color: #272727;
+    border-radius: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons .social-icon:hover {
+    color: #da7f09;
+    transform: scale(1.1);
+}
 
 
 /* Título do modal */
