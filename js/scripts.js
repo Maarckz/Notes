@@ -25,6 +25,7 @@ document.querySelectorAll('.sidebar a').forEach(link => {
         }
     });
 });
+
 // Mostrar e fechar modal
 function showModal(playbook) {
     const modal = document.getElementById("modal");
