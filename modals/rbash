@@ -1,45 +1,29 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exemplo de Anotação Formatada</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #output {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-top: 20px;
-            background: #f9f9f9;
-            white-space: pre-wrap; /* Preserva quebras de linha e espaços */
-            font-family: monospace;
-            font-size: 14px;
-        }
-        h2 {
-            color: #333;
-        }
-    </style>
-</head>
-<body>
+<div id="output"></div>
 
-    <h2>Exemplo de Anotação Formatada</h2>
-    
-    <!-- Div onde o texto formatado será exibido -->
-    <div id="output">
+    <script>
+        // Texto da anotação
+        const texto = `
 # Criação de usuário RBASH #
-sudo useradd --badname -m -s /bin/rbash &lt;nomedousuario&gt;
-sudo passwd &lt;nomedousuario&gt;
+sudo useradd --badname -m -s /bin/rbash <nomedousuario>
+sudo passwd <nomedousuario>
 sudo chown root.  /home/logs/.profile
 sudo chown root.  /home/logs/.bashrc
 sudo chmod 755 /home/logs/.profile
 sudo chmod 755 /home/logs/.profile
 
-### Alterar a shell padrão do usuário ###
-sudo usermod --shell /bin/bash &lt;nomedousuario&gt;
-    </div>
+# Alterar a shell padrão do usuário #
+sudo usermod --shell /bin/bash <nomedousuario>
+        `;
 
-</body>
-</html>
+        // Função para processar o texto
+        function processarTexto(texto) {
+            // Substitui títulos (linhas que começam com #) por <h1>
+            texto = texto.replace(/^# (.+?) #$/gm, '<h2>$1</h2>');
+            // Substitui comandos (texto entre <>) por <code>
+            texto = texto.replace(/&lt;(.+?)&gt;/g, '<code>&lt;$1&gt;</code>');
+            return texto;
+        }
+
+        // Exibe o texto processado na div #output
+        document.getElementById('output').innerHTML = processarTexto(texto);
+    </script>

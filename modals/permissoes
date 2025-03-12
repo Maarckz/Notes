@@ -1,66 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown no HTML</title>
-    <!-- Carrega a biblioteca Marked.js localmente -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        #output {
-            border: 1px solid #ddd;
-            padding: 20px;
-            min-height: 200px;
-            background: #f9f9f9;
-        }
-        pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            overflow-x: auto;
-        }
-    </style>
-</head>
-<body>
-
-    <h2>Exemplo de Markdown no HTML</h2>
-    
-    <!-- Div contendo o markdown bruto -->
-    <div id="markdown-content" style="display: none;">
-        # Título Principal  
-        **Texto em negrito**, *itálico* e `código inline`  
-        - Lista 1  
-        - Lista 2  
-        - Lista 3  
-
-        ```python
-        def ola():
-            print("Olá, Mundo!")
-        ola()
-        ```
-    </div>
-
-    <!-- Div onde o Markdown será renderizado -->
-    <div id="output"></div>
+<div id="output"></div>
 
     <script>
-        // Verifica se a biblioteca Marked.js está carregada
-        if (typeof marked !== 'undefined') {
-            // Captura o conteúdo da div oculta
-            let markdownText = document.getElementById('markdown-content').textContent;
+        // Texto da anotação
+        const texto = `
+# Travar arquivo como imutável #
+chattr +i <path/arquivo>
+# Destravar arquivo como imutável #
+chattr -i <path/arquivo>
+# Verificar se arquivo está travado como imutável #
+lsattr <path/arquivo>
 
-            // Converte Markdown para HTML e exibe na página
-            document.getElementById('output').innerHTML = marked.parse(markdownText);
-        } else {
-            // Se a biblioteca não estiver carregada, exibe uma mensagem de erro
-            console.error("Erro: A biblioteca Marked.js não foi carregada.");
-            document.getElementById('output').innerHTML = "<p style='color: red;'>Erro: A biblioteca Marked.js não foi carregada. Verifique se o arquivo 'marked.min.js' está na pasta correta.</p>";
+        `;
+
+        // Função para processar o texto
+        function processarTexto(texto) {
+            // Substitui títulos (linhas que começam com #) por <h1>
+            texto = texto.replace(/^# (.+?) #$/gm, '<h2>$1</h2>');
+            // Substitui comandos (texto entre <>) por <code>
+            texto = texto.replace(/&lt;(.+?)&gt;/g, '<code>&lt;$1&gt;</code>');
+            return texto;
         }
-    </script>
 
-</body>
-</html>
+        // Exibe o texto processado na div #output
+        document.getElementById('output').innerHTML = processarTexto(texto);
+    </script>
