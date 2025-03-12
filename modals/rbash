@@ -1,17 +1,17 @@
-##Criação de usuário RBASH
+<h3>Criação de usuário RBASH</h3>
 
-sudo useradd --badname -m -s /bin/rbash
+<p>sudo useradd --badname -m -s /bin/rbash</p>
 
-sudo passwd
+<p>sudo passwd</p>
 
-sudo chown root. /home/logs/.profile
+<p>sudo chown root. /home/logs/.profile</p>
 
-sudo chown root. /home/logs/.bashrc
+<p>sudo chown root. /home/logs/.bashrc</p>
 
-sudo chmod 755 /home/logs/.profile
+<p>sudo chmod 755 /home/logs/.profile</p>
 
-sudo chmod 755 /home/logs/.profile
+<p>sudo chmod 755 /home/logs/.profile</p>
 
-##Alterar a shell padrão do usuário
+<h3>Alterar a shell padrão do usuário</h3>
 
-sudo usermod --shell /bin/bash
+<p>sudo usermod --shell /bin/bash</p>
