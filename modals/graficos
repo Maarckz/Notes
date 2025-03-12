@@ -1,4 +1,2 @@
-###################################
-# AJUSTAR ESCALA DO GNOME-DESKTOP #
-###################################
+### AJUSTAR ESCALA DO GNOME-DESKTOP ###
 gsettings set org.gnome.desktop.interface scaling-factor 2
