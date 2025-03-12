@@ -25,8 +25,6 @@ document.querySelectorAll('.sidebar a').forEach(link => {
         }
     });
 });
-
-// Mostrar e fechar modal
 function showModal(playbook) {
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
@@ -35,13 +33,17 @@ function showModal(playbook) {
     modalTitle.style.textAlign = "center";
     modalDetails.innerHTML = '<p>Carregando conteúdo...</p>';
 
-    const filePath = `./modals/${playbook}`;
+    const filePath = `./modals/${playbook}.md`; // Assumindo que os arquivos .md estão na pasta "modals"
     fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error(`Erro ao carregar: ${response.statusText}`);
             return response.text();
         })
-        .then(data => modalDetails.innerHTML = data)
+        .then(data => {
+            // Converte o Markdown para HTML usando marked.js
+            const htmlContent = marked.parse(data);
+            modalDetails.innerHTML = htmlContent;
+        })
         .catch(error => modalDetails.innerHTML = `<p>Erro ao carregar: ${error.message}</p>`);
 
     modal.style.display = "block";
