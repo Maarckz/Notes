@@ -25,7 +25,6 @@ document.querySelectorAll('.sidebar a').forEach(link => {
         }
     });
 });
-
 // Mostrar e fechar modal
 function showModal(playbook) {
     const modal = document.getElementById("modal");
@@ -41,8 +40,16 @@ function showModal(playbook) {
             if (!response.ok) throw new Error(`Erro ao carregar: ${response.statusText}`);
             return response.text();
         })
-        .then(data => modalDetails.innerHTML = data)
-        .catch(error => modalDetails.innerHTML = `<p>Erro ao carregar: ${error.message}</p>`);
+        .then(data => {
+            // Insere o conteúdo no modal
+            modalDetails.innerHTML = data;
+
+            // Processa o texto após o conteúdo ser carregado
+            processarTextoNoModal();
+        })
+        .catch(error => {
+            modalDetails.innerHTML = `<p>Erro ao carregar: ${error.message}</p>`;
+        });
 
     modal.style.display = "block";
 }
@@ -62,7 +69,6 @@ window.addEventListener('keydown', event => {
     if (event.key === "Escape") closeModal();
 });
 
-
 function toggleMenu() {
     let sidebar = document.querySelector(".sidebar");
     sidebar.classList.toggle("active");
@@ -72,13 +78,35 @@ function toggleMenu() {
         sidebar.style.left = "-250px";
     }
 }
-    // Fechar sidebar ao clicar fora
-    document.addEventListener("click", event => {
-        if (!event.target.closest(".menu-hamburguer")) {
-            document.querySelector(".sidebar").classList.remove("active");
-            document.querySelector(".sidebar").style.left = "-250px";
-        }
-    });
+
+// Fechar sidebar ao clicar fora
+document.addEventListener("click", event => {
+    if (!event.target.closest(".menu-hamburguer")) {
+        document.querySelector(".sidebar").classList.remove("active");
+        document.querySelector(".sidebar").style.left = "-250px";
+    }
+});
+
+// Função para processar o texto dentro do modal
+function processarTextoNoModal() {
+    const output = document.getElementById("output");
+    if (!output) return; // Se não encontrar a div #output, sai da função
+
+    // Texto da anotação
+    const texto = output.textContent;
+
+    // Função para processar o texto
+    function processarTexto(texto) {
+        // Substitui títulos (linhas que começam com #) por <h2>
+        texto = texto.replace(/^# (.+?) #$/gm, '<h2>$1</h2>');
+        // Substitui comandos (texto entre <>) por <code>
+        texto = texto.replace(/&lt;(.+?)&gt;/g, '<code>&lt;$1&gt;</code>');
+        return texto;
+    }
+
+    // Exibe o texto processado na div #output
+    output.innerHTML = processarTexto(texto);
+}
 
 // Evitar cliques e seleções indesejadas
 document.addEventListener("contextmenu", event => event.preventDefault());
