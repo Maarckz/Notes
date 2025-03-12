@@ -1,26 +1,8 @@
-<div id="output"></div>
+<h1>Travar arquivo como imutável</h1>
+<p>chattr +i <path/arquivo></p>
 
-    <script>
-        // Texto da anotação
-        const texto = `
-# Travar arquivo como imutável #
-chattr +i <path/arquivo>
-# Destravar arquivo como imutável #
-chattr -i <path/arquivo>
-# Verificar se arquivo está travado como imutável #
-lsattr <path/arquivo>
+<h1>Destravar arquivo como imutável</h1>
+<p></p>chattr -i <path/arquivo></p>
 
-        `;
-
-        // Função para processar o texto
-        function processarTexto(texto) {
-            // Substitui títulos (linhas que começam com #) por <h1>
-            texto = texto.replace(/^# (.+?) #$/gm, '<h2>$1</h2>');
-            // Substitui comandos (texto entre <>) por <code>
-            texto = texto.replace(/&lt;(.+?)&gt;/g, '<code>&lt;$1&gt;</code>');
-            return texto;
-        }
-
-        // Exibe o texto processado na div #output
-        document.getElementById('output').innerHTML = processarTexto(texto);
-    </script>
+<h1>Verificar se arquivo está travado como imutável</h1>
+<p>lsattr <path/arquivo></p>

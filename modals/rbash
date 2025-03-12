@@ -1,41 +1,10 @@
-<div id="output">
-    # Criação de usuário RBASH #
-    sudo useradd --badname -m -s /bin/rbash &lt;nomedousuario&gt;
-    sudo passwd &lt;nomedousuario&gt;
-    sudo chown root.  /home/logs/.profile
-    sudo chown root.  /home/logs/.bashrc
-    sudo chmod 755 /home/logs/.profile
-    sudo chmod 755 /home/logs/.profile
-    
-    # Alterar a shell padrão do usuário #
-    sudo usermod --shell /bin/bash &lt;nomedousuario&gt;
-    </div>
-<div id="output"></div>
+<h1>Criação de usuário RBASH</h1>
+<p>sudo useradd --badname -m -s /bin/rbash <nomedousuario></p>
+<p>sudo passwd <nomedousuario></p>
+<p>sudo chown root.  /home/logs/.profile</p>
+<p>sudo chown root.  /home/logs/.bashrc</p>
+<p>sudo chmod 755 /home/logs/.profile</p>
+<p>sudo chmod 755 /home/logs/.profile</p>
 
-    <script>
-        // Texto da anotação
-        const texto = `
-# Criação de usuário RBASH #
-sudo useradd --badname -m -s /bin/rbash <nomedousuario>
-sudo passwd <nomedousuario>
-sudo chown root.  /home/logs/.profile
-sudo chown root.  /home/logs/.bashrc
-sudo chmod 755 /home/logs/.profile
-sudo chmod 755 /home/logs/.profile
-
-# Alterar a shell padrão do usuário #
-sudo usermod --shell /bin/bash <nomedousuario>
-        `;
-
-        // Função para processar o texto
-        function processarTexto(texto) {
-            // Substitui títulos (linhas que começam com #) por <h1>
-            texto = texto.replace(/^# (.+?) #$/gm, '<h2>$1</h2>');
-            // Substitui comandos (texto entre <>) por <code>
-            texto = texto.replace(/&lt;(.+?)&gt;/g, '<code>&lt;$1&gt;</code>');
-            return texto;
-        }
-
-        // Exibe o texto processado na div #output
-        document.getElementById('output').innerHTML = processarTexto(texto);
-    </script>
+<h1>Alterar a shell padrão do usuário</h1>
+<p>sudo usermod --shell /bin/bash <nomedousuario></p>
