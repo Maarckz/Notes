@@ -1,5 +1,43 @@
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #2e2e2e;
+    animation: fadeIn 1s ease-in-out;
+}
+h1 {
+    color: #cccccc;
+    font-size: 24px;
+    animation: fadeInUp 1s ease-in-out;
+}
 
+
+p,h3,h2 {
+    animation: fadeInUp 1s ease-in-out;
+    width: 96.7%;
+    margin-left: 10px;
+}
+
+
+
+button {
+    background-color: #da7f09;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d6d6d6;
+}
+
+button:focus {
+    outline: none;
+}
 .social-icons {
     margin-left: 10px;
     display: flex;
@@ -40,17 +78,7 @@
     transition: transform 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .note-card {
-        width: calc(90% - 1rem);
-    }
-}
 
-@media (max-width: 480px) {
-    .note-card {
-        width: 100%;
-    }
-}
 
 .note-card:hover {
     transform: translateY(-10px);
@@ -68,23 +96,6 @@
     color: #666;
 }
 
-button {
-    background-color: #da7f09;
-    color: rgb(0, 0, 0);
-    border: 1px solid #000000;
-    border-radius: 10px;
-    cursor: pointer;
-    padding: 0.6rem 1rem;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #d6d6d6;
-}
-
-button:focus {
-    outline: none;
-}
 
 .note-list {
     display: flex;
@@ -131,6 +142,13 @@ button:focus {
 }
 
 
+.sidebar {
+    left: -250px;
+}
+
+.sidebar.open {
+    left: 0;
+}
 
 
 
@@ -145,22 +163,7 @@ button:focus {
 .menu-hamburguer:hover .bar {
     background-color: #555;
 }
-@media only screen and (max-width: 768px) {
-      .menu-hamburguer .bar {
-        display: block; 
-        width: 9px; 
-        height: 25px; 
-        background-color: #333; 
-        writing-mode: vertical-rl; 
-        transform: rotate(180deg); 
-        margin-left: -15.45px; 
-        margin-top: 5.5px;
-    }
 
-    .menu-hamburguer:hover .bar {
-        background-color: #555;
-    }
-}
 .menu-hamburguer {
 display: none;
 position: absolute;
@@ -181,27 +184,7 @@ margin: 6px 0;
     display: block;
 }
 
-.sidebar {
-    left: -250px;
-}
 
-.sidebar.open {
-    left: 0;
-}
-
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 20px;
-    line-height: 1.6;
-    background-color: #2e2e2e;
-    animation: fadeIn 1s ease-in-out;
-}
-h1 {
-    color: #cccccc;
-    font-size: 24px;
-    animation: fadeInUp 1s ease-in-out;
-}
 
 
 .container {
@@ -273,112 +256,6 @@ h1 {
 
 
 
-p,h3,h2 {
-    animation: fadeInUp 1s ease-in-out;
-    width: 96.7%;
-    margin-left: 10px;
-}
-
-
-   /* CSS */
-#iframe {
-    font-family: 'Montserrat', sans-serif;
-    margin: 20px auto;
-    line-height: 1.6;
-    background-color: #ffffff;
-    animation: fadeIn 1s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-#iframe h1, #iframe h2, #iframe h3, #iframe h4, #iframe p, #iframe ul, #iframe table {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-#iframe h1 {
-    animation: fadeInUp 1s ease-in-out;
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    width: 90%;
-    font-size: 24px;
-}
-
-#iframe h2 {
-    animation: fadeInUp 1s ease-in-out;
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    width: 90%;
-    font-size: 18px;
-}
-
-#iframe h3 {
-    margin-top: 1rem;
-    margin-top: 0;
-    font-size: 18px;
-    background-color: #ddf4ff;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #b6e3ff;
-    color: #0969da;
-    animation: fadeInUp 1s ease-in-out;
-    width: 90%;
-}
-
-#iframe h4 {
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    width: 90%;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-#iframe p {
-    margin-top: 0.5rem;
-    font-size: 1rem;
-    width: 90%;
-    animation: fadeInUp 1s ease-in-out;
-}
-
-#iframe table {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    margin: 18px;
-    background-color: #fff;
-    border-radius: 6px;
-    animation: fadeInUp 1s ease-in-out;
-    margin-bottom: 50px;
-}
-
-#iframe th, #iframe td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #b6e3ff;
-    border-radius: 6px;
-    font-size: 18px;
-}
-
-#iframe th {
-    font-weight: bold;
-    background-color: #333;
-    color: #ffffff;
-}
-
-#iframe tr {
-    background-color: #fff;
-}
-
-#iframe tr:hover {
-    background-color: #bbddff;
-}
-
-
 
 /* CONFIGURACAO DOS MODAIS*/
 
@@ -444,6 +321,47 @@ p,h3,h2 {
     gap: 5px;
     justify-content: center;
 }
+
+
+
+
+
+
+/* Mobile */
+
+@media only screen and (max-width: 768px) {
+    .menu-hamburguer .bar {
+      display: block; 
+      width: 9px; 
+      height: 25px; 
+      background-color: #333; 
+      writing-mode: vertical-rl; 
+      transform: rotate(180deg); 
+      margin-left: -15.45px; 
+      margin-top: 5.5px;
+  }
+
+  .menu-hamburguer:hover .bar {
+      background-color: #555;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .note-card {
+      width: calc(90% - 1rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .note-card {
+      width: 100%;
+  }
+}
+
+
+
+
 
 
 
