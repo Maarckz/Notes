@@ -3,40 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Markdown Viewer</title>
+    <title>Markdown no HTML</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        textarea {
-            width: 100%;
-            height: 200px;
-            font-size: 16px;
-            padding: 10px;
-        }
         #output {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 20px;
             min-height: 200px;
             background: #f9f9f9;
+        }
+        pre {
+            background: #222;
+            color: #fff;
+            padding: 10px;
+            overflow-x: auto;
         }
     </style>
 </head>
 <body>
 
-    <h2>Editor Markdown</h2>
-    <textarea id="markdown" placeholder="Digite Markdown aqui..."></textarea>
+    <h2>Exemplo de Markdown no HTML</h2>
     
-    <h2>Pré-visualização</h2>
+    <!-- Div contendo o markdown bruto -->
+    <div id="markdown-content" style="display: none;">
+        # Título Principal  
+        **Texto em negrito**, *itálico* e `código inline`  
+        - Lista 1  
+        - Lista 2  
+        - Lista 3  
+
+        ```python
+        def ola():
+            print("Olá, Mundo!")
+        ola()
+        ```
+    </div>
+
+    <!-- Div onde o Markdown será renderizado -->
     <div id="output"></div>
 
     <script>
-        document.getElementById('markdown').addEventListener('input', function () {
-            let markdownText = this.value;
-            document.getElementById('output').innerHTML = marked.parse(markdownText);
-        });
+        // Captura o conteúdo da div oculta
+        let markdownText = document.getElementById('markdown-content').innerText;
+        
+        // Converte Markdown para HTML e exibe na página
+        document.getElementById('output').innerHTML = marked.parse(markdownText);
     </script>
 
 </body>
