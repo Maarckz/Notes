@@ -1,10 +1,45 @@
-#Criação de usuário RBASH#
-sudo useradd --badname -m -s /bin/rbash <nomedousuario>
-sudo passwd <nomedousuario>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo de Anotação Formatada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            background: #f9f9f9;
+            white-space: pre-wrap; /* Preserva quebras de linha e espaços */
+            font-family: monospace;
+            font-size: 14px;
+        }
+        h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Exemplo de Anotação Formatada</h2>
+    
+    <!-- Div onde o texto formatado será exibido -->
+    <div id="output">
+# Criação de usuário RBASH #
+sudo useradd --badname -m -s /bin/rbash &lt;nomedousuario&gt;
+sudo passwd &lt;nomedousuario&gt;
 sudo chown root.  /home/logs/.profile
 sudo chown root.  /home/logs/.bashrc
 sudo chmod 755 /home/logs/.profile
 sudo chmod 755 /home/logs/.profile
 
-###Alterar a shell padrão do usuário###
-sudo usermod --shell /bin/bash <nomedousuario>
+### Alterar a shell padrão do usuário ###
+sudo usermod --shell /bin/bash &lt;nomedousuario&gt;
+    </div>
+
+</body>
+</html>

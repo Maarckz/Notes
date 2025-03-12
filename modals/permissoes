@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Markdown no HTML</title>
+    <!-- Carrega a biblioteca Marked.js localmente -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
@@ -47,11 +48,18 @@
     <div id="output"></div>
 
     <script>
-        // Captura o conteúdo da div oculta
-        let markdownText = document.getElementById('markdown-content').innerText;
-        
-        // Converte Markdown para HTML e exibe na página
-        document.getElementById('output').innerHTML = marked.parse(markdownText);
+        // Verifica se a biblioteca Marked.js está carregada
+        if (typeof marked !== 'undefined') {
+            // Captura o conteúdo da div oculta
+            let markdownText = document.getElementById('markdown-content').textContent;
+
+            // Converte Markdown para HTML e exibe na página
+            document.getElementById('output').innerHTML = marked.parse(markdownText);
+        } else {
+            // Se a biblioteca não estiver carregada, exibe uma mensagem de erro
+            console.error("Erro: A biblioteca Marked.js não foi carregada.");
+            document.getElementById('output').innerHTML = "<p style='color: red;'>Erro: A biblioteca Marked.js não foi carregada. Verifique se o arquivo 'marked.min.js' está na pasta correta.</p>";
+        }
     </script>
 
 </body>
