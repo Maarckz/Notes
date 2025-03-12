@@ -1,6 +1,10 @@
-# Usuário RBASH
+Criação de usuário RBASH
+sudo useradd --badname -m -s /bin/rbash <nomedousuario>
+sudo passwd <nomedousuario>
+sudo chown root.  /home/logs/.profile
+sudo chown root.  /home/logs/.bashrc
+sudo chmod 755 /home/logs/.profile
+sudo chmod 755 /home/logs/.profile
 
-Aqui estão algumas dicas para configurar um usuário com RBASH:
-
-- **Comando 1:** `chsh -s /bin/rbash usuario`
-- **Comando 2:** `echo "export PATH=/usr/local/bin:/usr/bin:/bin" >> ~/.bashrc`
+Alterar a shell padrão do usuário
+sudo usermod --shell /bin/bash <nomedousuario>
