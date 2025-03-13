@@ -268,6 +268,26 @@
             }
         }
 
+        /* Botão de fechar */
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(204, 204, 204);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-content .close:hover {
+            color: red;
+        }
+
+        /* Animação de saída do conteúdo ao fechar */
+        .modal-content.closing {
+            animation: fadeOut 0.4s ease-in-out;
+        }
     </style>
 
 
