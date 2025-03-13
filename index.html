@@ -28,8 +28,8 @@
                 <ul>
                     <li><a href="#about" class="js-scroll-trigger">Sobre</a></li>
                     <li><a href="#notes-title" class="js-scroll-trigger">Notes</a></li>
-                    <li><a href="https://maarckz.github.io/Playbooks">Playbooks</a></li>
                     <li><a href="https://maarckz.github.io" target="_blank">Maarckz</a></li>
+                    <li><a href="https://maarckz.github.io/Playbooks">Playbooks</a></li>
                     <li><a href="https://maarckz.github.io/CyberDefense/" target="_blank">CyberDefense</a></li>
                     <li><a href="https://github.com/Maarckz" target="_blank">GitHub</a></li>
                 </ul>
@@ -39,7 +39,7 @@
       <!-- Sobre -->
         <section id="about" class="container">
             <h2>Linux & CyberSecurity Notes</h2>
-            <p>Este site foi criado para facilitar a busca por comandos e dicas essenciais de Linux, especialmente voltados para profissionais de segurança cibernética e administradores de servidores. Aqui você encontrará uma coleção de comandos úteis, scripts e boas práticas para otimizar seu fluxo de trabalho e garantir a segurança dos seus sistemas.</p>
+            <p style="text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);">Este site foi criado para facilitar a busca por comandos e dicas essenciais de Linux, especialmente voltados para profissionais de segurança cibernética e administradores de servidores. Aqui você encontrará uma coleção de comandos úteis, scripts e boas práticas para otimizar seu fluxo de trabalho e garantir a segurança dos seus sistemas.</p>
             
             <h2>Quer sugerir algum comando? Pode chamar!</h2>
             <div class="social-icons slide-up">
@@ -111,22 +111,48 @@
             <div class="note-list2" id="notes-title">
                 <!-- note 1 -->
                 <div class="note-card2">
-                    <h3>Ajustes Gráficos</h3>
-                    <p>Comandos para ajustes de Interface</p>
+                    <h1><strong>Comandos Úteis</strong></h1>
+                    <p><strong>Ajustar Escala Gnome</strong> - gsettings set org.gnome.desktop.interface scaling-factor 2</p>
+                    <p><strong>Desativar IPv6</strong> - sysctl -w net.ipv6.conf.all.disable_ipv6=1</p>
+                    <p><strong>Observar conexões ativas</strong> - ss -tulnp</p>
+                    <p><strong>Uso de disco</strong> - df -h</p>
+                    <p><strong>Uso de memória</strong> - free -m</p>
+                    <p><strong>Uso de CPU</strong> - top</p>
+                    <p><strong>Verificar processos</strong> - ps axjf</p>
+                    <p><strong>Verificar versão do Kernel</strong> - uname -a</p>
+                    <p><strong>Verificar versão do SO</strong> - cat /etc/*-release</p>
+                    <p><strong>Listar comandos disponiveis</strong> - apropos ''</p>
+                    <p><strong>Listar "arquivos" abertos</strong> - lsof</p>
+                    <p><strong>Rastrear Chamadas do Sistema</strong> - strace</p>
+                    <p><strong>Rastrear Chamadas de Bibliotecas</strong> - ltrace</p>
                 </div>
 
-
-                <!-- note 2 -->
+                <!-- note 1 -->
                 <div class="note-card2">
-                    <h3>Comando de Permissões</h3>
-                    <p>Ajuste as permissões de diretórios e arquivos.</p>
+                    <h1><strong>Enumeração</strong></h1>
+                    <p><strong>LinPeas</strong> - curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
                 </div>
 
-                <!-- note 3 -->
+                <!-- note 1 -->
                 <div class="note-card2">
-                    <h3>Usuário RBASH</h3>
-                    <p>Um Bash restrito para usuários curiósos.</p>
+                    <h1><strong>Wifi Hacking</strong></h1>
+                    <p>hcxdumptool -o dump.pcapng -i wlan0 --enable_status=1</p>
+                    <p>hcxpcaptool -z test.16800 test.pcapng</p>
+                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule -a 0</p>
+                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule -a 0 -w 3</p>
+
                 </div>
+
+                <!-- note 1 -->
+                <div class="note-card2">
+                    <h1><strong>Geração de Wordlists:</strong></h1>
+                    <p>cewl -d 2 -m 5 -w passwords.txt http://10.10.145.228 --with-numbers</p>
+                    <p>cewl -d 0 -m 5 -w usernames.txt http://MACHINE_IP/team.php --lowercase</p>
+                    <p>crunch 3 3 0123456789ABCDEF -o 3digits.txt</p>
+                    <p>crunch 3 3 -f /usr/share/crunch/charset.lst mixalpha-numeric-all-space -o 3digits.txt</p>
+
+                </div>
+
                 
         </section>
 
