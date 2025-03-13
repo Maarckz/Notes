@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<!-- Cabeçalho -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="notes de Segurança Cibernética - Resposta a Incidentes, Pentesting e Defesa de Sistemas">
-    <title>Linux Notes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-</head>
+    <!-- Cabeçalho -->
+    <head>
+        <title>Linux Notes</title>
 
-<body>
-    <div class="main-container">
-        <div class="menu-hamburguer" onclick="toggleMenu()" style="position: fixed; cursor: pointer;">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="Notes de Segurança Cibernética - Resposta a Incidentes, Pentesting e Defesa de Sistemas">
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <!-- Scripts -->
+        <script src="js/scripts.js"></script>
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+        <div class="main-container">
+            <div class="menu-hamburguer" onclick="toggleMenu()" style="position: fixed; cursor: pointer;">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
-    </div>
- 
+
         <!-- Barra Lateral -->
         <aside class="sidebar" style="left: -250px; overflow-y: auto;">
             <br><br>
@@ -36,11 +42,14 @@
             </nav>
         </aside>
 
-      <!-- Sobre -->
+        <!-- Sobre -->
         <section id="about" class="container">
             <h2>Linux & CyberSecurity Notes</h2>
-            <p style="text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);">Este site foi criado para facilitar a busca por comandos e dicas essenciais de Linux, especialmente voltados para profissionais de segurança cibernética e administradores de servidores. Aqui você encontrará uma coleção de comandos úteis, scripts e boas práticas para otimizar seu fluxo de trabalho e garantir a segurança dos seus sistemas.</p>
-            
+            <p style="text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);">Este site foi criado para facilitar a busca por comandos
+                e dicas essenciais de Linux, especialmente voltados para profissionais de segurança cibernética e
+                administradores de servidores. Aqui você encontrará uma coleção de comandos úteis, scripts e boas práticas
+                para otimizar seu fluxo de trabalho e garantir a segurança dos seus sistemas.</p>
+
             <h2>Quer sugerir algum comando? Pode chamar!</h2>
             <div class="social-icons slide-up">
                 <a href="https://www.linkedin.com/in/marcus-dealmeida" target="_blank" class="social-icon">
@@ -61,11 +70,15 @@
             </div>
             <br>
 
-            
-            <div class="alert-box" style="background-color: #353535;border: 1px solid red;border-radius: 15px;padding: 0.5rem;">
+
+            <div class="alert-box"
+                style="background-color: #353535;border: 1px solid red;border-radius: 15px;padding: 0.5rem;">
                 <div class="alert">
-                    <span class="material-symbols-outlined" style="margin-left: 1rem;font-size: 1.5rem; color: red; vertical-align: middle;">Atenção!</span>
-                    <p style="display: inline-block; margin-left: 1rem;margin-top: 0px">Os comandos e scripts fornecidos aqui são exemplos gerais. Sempre adapte-os ao ambiente específico da sua organização e teste-os antes de usar em produção.</p>
+                    <span class="material-symbols-outlined"
+                        style="margin-left: 1rem;font-size: 1.5rem; color: red; vertical-align: middle;">Atenção!</span>
+                    <p style="display: inline-block; margin-left: 1rem;margin-top: 0px">Os comandos e scripts fornecidos
+                        aqui são exemplos gerais. Sempre adapte-os ao ambiente específico da sua organização e teste-os
+                        antes de usar em produção.</p>
                 </div>
             </div>
         </section>
@@ -100,7 +113,7 @@
                     <h3>Firewall</h3>
                     <button onclick="showModal('firewall')">Ver Detalhes</button>
                 </div>
-                
+
         </section>
         <br>
 
@@ -111,8 +124,7 @@
             <div class="note-list2" id="notes-title">
                 <!-- note 1 -->
                 <div class="note-card2">
-                    <h1><strong>Comandos Úteis</strong></h1>
-                    <p><strong>Ajustar Escala Gnome</strong> - gsettings set org.gnome.desktop.interface scaling-factor 2</p>
+                    <h1>Comandos Úteis</h1>
                     <p><strong>Desativar IPv6</strong> - sysctl -w net.ipv6.conf.all.disable_ipv6=1</p>
                     <p><strong>Observar conexões ativas</strong> - ss -tulnp</p>
                     <p><strong>Uso de disco</strong> - df -h</p>
@@ -129,23 +141,26 @@
 
                 <!-- note 1 -->
                 <div class="note-card2">
-                    <h1><strong>Enumeração</strong></h1>
-                    <p><strong>LinPeas</strong> - curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
+                    <h1>Enumeração</h1>
+                    <p><strong>LinPeas</strong> - curl -L
+                        https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
                 </div>
 
                 <!-- note 1 -->
                 <div class="note-card2">
-                    <h1><strong>Wifi Hacking</strong></h1>
+                    <h1>Wifi Hacking</h1>
                     <p>hcxdumptool -o dump.pcapng -i wlan0 --enable_status=1</p>
                     <p>hcxpcaptool -z test.16800 test.pcapng</p>
-                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule -a 0</p>
-                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule -a 0 -w 3</p>
+                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule
+                        -a 0</p>
+                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule
+                        -a 0 -w 3</p>
 
                 </div>
 
                 <!-- note 1 -->
                 <div class="note-card2">
-                    <h1><strong>Geração de Wordlists:</strong></h1>
+                    <h1>Geração de Wordlists:</h1>
                     <p>cewl -d 2 -m 5 -w passwords.txt http://10.10.145.228 --with-numbers</p>
                     <p>cewl -d 0 -m 5 -w usernames.txt http://MACHINE_IP/team.php --lowercase</p>
                     <p>crunch 3 3 0123456789ABCDEF -o 3digits.txt</p>
@@ -153,7 +168,18 @@
 
                 </div>
 
-                
+                <!-- note 1 -->
+                <div class="note-card2">
+                    <h1>Python Env 2.7 e 3.x</h1>
+                    <p>mkdir novo_projeto && cd novo_projeto</p>
+                    <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
+                    <p><strong>Python3.x - </strong>python3 -m venv venv</p>
+                    <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
+                    <p><strong>Desabilitar o Env - </strong>deactivate</p>
+                    <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
+                    <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
+                </div>
+
         </section>
 
         <!-- Modal -->
@@ -166,115 +192,123 @@
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 
-<style>
-/* Estilo geral do modal */
-.modal {
-    display: none; /* Escondido por padrão */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-    animation: fadeIn 0.4s ease-in-out;
-}
+        <style>
+            /* Estilo geral do modal */
+            .modal {
+                display: none;
+                /* Escondido por padrão */
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                /* Fundo semitransparente */
+                animation: fadeIn 0.4s ease-in-out;
+            }
 
-/* Animação de entrada */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+            /* Animação de entrada */
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
 
-/* Animação de saída */
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
+                to {
+                    opacity: 1;
+                }
+            }
 
-/* Conteúdo do modal */
-.modal-content {
-    position: relative;
-    margin: 5% auto;
-    padding: 20px;
-    background: #2e2e2e;
-    color: azure;
-    border-radius: 10px;
-    max-width: 1400px; /* Largura máxima */
-    width: 90%; /* Adapta ao tamanho da tela */
-    top: -5%; /* Desloca para cima */
-    max-height: 85vh; /* Altura máxima para caber na tela */
-    overflow-y: auto; /* Adiciona barra de rolagem vertical */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    animation: fadeInUp 0.4s ease-in-out;
-}
+            /* Animação de saída */
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                }
 
-/* Animação de entrada do conteúdo */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+                to {
+                    opacity: 0;
+                }
+            }
 
-/* Título do modal */
-.modal-content h1 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-.modal-content h3 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-.modal-content p {
-    margin-top: 0;
-    font-size: 1.5rem;
-    text-align: center;
-}
-/* Botão de fechar */
-.modal-content .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: rgb(204, 204, 204);
-    cursor: pointer;
-    transition: color 0.3s;
-}
+            /* Conteúdo do modal */
+            .modal-content {
+                position: relative;
+                margin: 5% auto;
+                padding: 20px;
+                background: #2e2e2e;
+                color: azure;
+                border-radius: 10px;
+                max-width: 1400px;
+                /* Largura máxima */
+                width: 90%;
+                /* Adapta ao tamanho da tela */
+                top: -5%;
+                /* Desloca para cima */
+                max-height: 85vh;
+                /* Altura máxima para caber na tela */
+                overflow-y: auto;
+                /* Adiciona barra de rolagem vertical */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                animation: fadeInUp 0.4s ease-in-out;
+            }
 
-.modal-content .close:hover {
-    color: red;
-}
+            /* Animação de entrada do conteúdo */
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
 
-/* Animação de saída do conteúdo ao fechar */
-.modal-content.closing {
-    animation: fadeOut 0.4s ease-in-out;
-}
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 
-</style>
+            /* Título do modal */
+            .modal-content h1 {
+                margin-top: 0;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .modal-content h3 {
+                margin-top: 0;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .modal-content p {
+                margin-top: 0;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            /* Botão de fechar */
+            .modal-content .close {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: rgb(204, 204, 204);
+                cursor: pointer;
+                transition: color 0.3s;
+            }
+
+            .modal-content .close:hover {
+                color: red;
+            }
+
+            /* Animação de saída do conteúdo ao fechar */
+            .modal-content.closing {
+                animation: fadeOut 0.4s ease-in-out;
+            }
+        </style>
 
 
-<!-- Scripts -->
-<script src="js/scripts.js"></script>
-        
-    
-</body>
+    </body>
 
 </html>
