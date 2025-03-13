@@ -1,0 +1,414 @@
+<style>/*
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }*/
+</style>
+
+<div class="hardening-modal">
+
+    passwd --lock root
+
+
+    Bloqueie o acesso ao shell do root:
+
+    Altere o shell do root para /usr/sbin/nologin:
+    bash
+    Copy
+
+    sudo usermod -s /usr/sbin/nologin root
+
+
+    2. Proteção do GRUB com Senha
+
+    Crie uma senha para o GRUB:
+
+        Gere um hash de senha para o GRUB:
+        bash
+        Copy
+
+        grub-mkpasswd-pbkdf2
+
+        Edite o arquivo de configuração do GRUB:
+        bash
+        Copy
+
+        sudo nano /etc/grub.d/40_custom
+
+        Adicione as seguintes linhas:
+        bash
+        Copy
+
+        set superusers="root"
+        password_pbkdf2 root <hash-da-senha-gerada>
+
+        Atualize o GRUB:
+        bash
+        Copy
+
+        sudo update-grub
+
+
+        7. Proteção de Arquivos e Diretórios
+
+    Use chattr para proteger arquivos críticos:
+
+        Torne arquivos imutáveis:
+        bash
+        Copy
+
+        sudo chattr +i /etc/passwd
+        sudo chattr +i /etc/shadow
+        sudo chattr +i /etc/group
+
+
+
+        Habilite o TCP Wrapper:
+
+    Use /etc/hosts.allow e /etc/hosts.deny para controlar o acesso a serviços.
+    bash
+    Copy
+
+    sudo nano /etc/hosts.deny
+    ALL: ALL
+    sudo nano /etc/hosts.allow
+    sshd: 192.168.1.0/24
+
+
+    9. Proteção contra Ataques de DDoS
+
+    Use iptables para limitar conexões:
+
+        Limite o número de conexões simultâneas:
+        bash
+        Copy
+
+        sudo iptables -A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 -j DROP
+
+
+
+        11. Monitoramento e Auditoria
+
+    Use auditd para auditoria de sistema:
+
+        Configure regras para monitorar acesso a arquivos críticos:
+        bash
+        Copy
+
+        sudo nano /etc/audit/audit.rules
+        -w /etc/passwd -p wa -k passwd_changes
+        -w /etc/shadow -p wa -k shadow_changes
+
+        Inicie o serviço:
+        bash
+        Copy
+
+        sudo systemctl enable auditd
+        sudo systemctl start auditd
+
+
+        15. Testes de Penetração e Auditoria
+
+    Use Lynis para auditoria:
+    bash
+    Copy
+
+    sudo apt-get install lynis
+    sudo lynis audit system
+
+
+    Desative dispositivos não utilizados:
+
+    Desative dispositivos como USB ou CD-ROM se não forem necessários:
+    bash
+    Copy
+
+    echo "blacklist usb-storage" | sudo tee /etc/modprobe.d/disable-usb.conf
+    echo "blacklist cdrom" | sudo tee /etc/modprobe.d/disable-cdrom.conf
+    sudo update-initramfs -u
+
+
+
+    🚀 Como usar o AIDE?
+    1️⃣ Instalar e inicializar
+    
+    sudo apt-get install aide -y
+    sudo aideinit
+    
+    Isso cria um banco de dados inicial (/var/lib/aide/aide.db.new).
+    2️⃣ Atualizar a base de referência
+    
+    sudo mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+    
+    3️⃣ Verificar integridade
+    
+    sudo aide --check
+    
+    Isso compara o sistema atual com a base de referência.
+    4️⃣ Configuração personalizada
+    
+        O arquivo de configuração principal fica em /etc/aide/aide.conf.
+        Você pode adicionar diretórios específicos para monitoramento, como:
+    
+    /etc/    p+sha256
+    /bin/    p+sha256
+    
+
+
+    📌 Onde encontrar os logs do AIDE?
+
+    1️⃣ Verificar o log padrão
+    
+    cat /var/log/aide/aide.log
+    
+    2️⃣ Se não encontrar o log, rodar o check novamente:
+    
+    sudo aide --check | tee /var/log/aide-check.log
+    
+
+
+
+
+    a) Impedir Senhas Vazias:
+
+    Comandos:
+    bash
+    Copy
+
+    # sed -i s'/nullok*//g' /etc/pam.d/system-auth
+    # sed -i s'/nullok*//g' /etc/pam.d/password-auth
+
+b) Configurar Requisitos Mínimos de Senha:
+
+    Acessar o arquivo /etc/security/pwquality.conf:
+    bash
+    Copy
+
+    # nano /etc/security/pwquality.conf
+
+    Descomentar e configurar as seguintes linhas:
+    bash
+    Copy
+
+    minlen = 15       # Comprimento mínimo da senha
+    dcredit = -1      # Exige 1 caractere numérico
+    ucredit = -1      # Exige 1 caractere em caixa alta
+    lcredit = -1      # Exige 1 caractere em caixa baixa
+    maxrepeat = 3     # Evita caracteres repetidos consecutivos
+    gecoscheck = 1    # Impede senhas baseadas no nome do usuário
+    dictcheck = 1     # Impede senhas fracas como "password123"
+
+c) Configurar Módulo pam_pwquality.so:
+
+    Editar os arquivos /etc/pam.d/system-auth e /etc/pam.d/password-auth:
+    bash
+    Copy
+
+    # nano /etc/pam.d/system-auth
+    # nano /etc/pam.d/password-auth
+
+    Inserir os parâmetros após retry=3:
+    bash
+    Copy
+
+    minlen=15 difok=3 reject_username enforce_for_root
+
+2. Configurando o AUDIT para Auditoria Básica
+
+    Justificativa: O Audit registra eventos de segurança para monitoramento e conformidade, conforme DCTIMARINST-30-12B.
+
+a) Verificar e Iniciar o Audit:
+
+    Comandos:
+    bash
+    Copy
+
+    # systemctl status auditd
+    # systemctl start auditd
+
+b) Criar Regras para Auditoria:
+
+    Editar o arquivo /etc/audit/rules.d/passwd.rules:
+    bash
+    Copy
+
+    # nano /etc/audit/rules.d/passwd.rules
+
+    Adicionar as seguintes linhas:
+    bash
+    Copy
+
+    # Monitorar o comando passwd
+    -a always,exit -F path=/usr/bin/passwd -F perm=x -F auid>=1000 -F auid!=unset -F key=passwd_access
+    # Monitorar o comando gpasswd
+    -a always,exit -F path=/usr/bin/gpasswd -F perm=x -F auid>=1000 -F auid!=unset -F key=gpasswd_access
+    # Monitorar a execução de /usr/bin/newgrp
+    -a always,exit -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=unset -F key=newgrp_access
+
+c) Aplicar as Regras:
+
+    Comandos:
+    bash
+    Copy
+
+    # auditctl -R /etc/audit/rules.d/passwd.rules
+    # augenrules --load
+    # auditctl -l
+
+d) Tornar o Audit Obrigatório no Boot:
+
+    Comando:
+    bash
+    Copy
+
+    # grubby --update-kernel=ALL --args="audit=1"
+
+3. Configurando o FirewallD
+
+    Justificativa: O Firewalld gerencia regras de firewall de forma eficiente, bloqueando serviços e portas desnecessárias, conforme DGMM-0540 rev.3.
+
+a) Verificar e Iniciar o Firewalld:
+
+    Comandos:
+    bash
+    Copy
+
+    # systemctl status firewalld
+    # systemctl start firewalld
+
+b) Verificar Zona Padrão:
+
+    Comando:
+    bash
+    Copy
+
+    # firewall-cmd --get-default-zone
+
+c) Liberar Serviços e Portas:
+
+    Comandos:
+    bash
+    Copy
+
+    # firewall-cmd --zone=public --permanent --add-service=https
+    # firewall-cmd --permanent --zone=public --add-port=443/tcp
+    # firewall-cmd --reload
+
+4. Configurando o AUDIT para Auditoria Profunda
+
+    Justificativa: Auditoria mais detalhada para servidores sensíveis, conforme DCTIMARINST-30-12B.
+
+a) Adicionar Regras para Auditoria de Arquivos Sensíveis:
+
+    Editar o arquivo /etc/audit/rules.d/passwd.rules:
+    bash
+    Copy
+
+    # nano /etc/audit/rules.d/passwd.rules
+
+    Adicionar as seguintes linhas:
+    bash
+    Copy
+
+    # Monitorar acessos ao arquivo /etc/passwd e /etc/shadow
+    -a always,exit -F arch=b64 -F path=/etc/passwd -F perm=wa -F auid>=1000 -F key=passwd_access
+    -a always,exit -F arch=b64 -F path=/etc/shadow -F perm=wa -F auid>=1000 -F key=shadow_access
+
+b) Criar Regras para Auditoria de Comandos com Privilégios Elevados:
+
+    Editar o arquivo /etc/audit/rules.d/root.rules:
+    bash
+    Copy
+
+    # nano /etc/audit/rules.d/root.rules
+
+    Adicionar as seguintes linhas:
+    bash
+    Copy
+
+    # Monitorar execução de comandos como root, sudo, su, sudo e sudoedit
+    -a always,exit -F path=/usr/bin/su -F perm=x -F auid>=1000 -F auid!=unset -F key=audit-wazuh-c
+    -a always,exit -F path=/usr/bin/sudo -F perm=x -F auid>=1000 -F auid!=unset -F key=audit-wazuh-c
+    -a always,exit -F path=/usr/bin/sudoedit -F perm=x -F auid>=1000 -F auid!=unset -F key=audit-wazuh-c
+
+c) Criar Regras para Auditoria de Mudanças de Permissões:
+
+    Editar o arquivo /etc/audit/rules.d/perm.rules:
+    bash
+    Copy
+
+    # nano /etc/audit/rules.d/perm.rules
+
+    Adicionar as seguintes linhas:
+    bash
+    Copy
+
+    # Monitorar mudança de direito de acesso
+    -a always,exit -F arch=b64 -S chmod -F auid>=1000 -F auid!=unset -F key=perm_mod
+    -a always,exit -F arch=b32 -S chmod -F auid>=1000 -F auid!=unset -F key=perm_mod
+    -a always,exit -F arch=b64 -S fchmod -F auid>=1000 -F auid!=unset -F key=perm_mod
+    -a always,exit -F arch=b32 -S fchmod -F auid>=1000 -F auid!=unset -F key=perm_mod
+    -a always,exit -F arch=b64 -S fchmodat -F auid>=1000 -F auid!=unset -F key=perm_mod
+    -a always,exit -F arch=b32 -S fchmodat -F auid>=1000 -F auid!=unset -F key=perm_mod
+    # Monitorar mudança de proprietário
+    -a always,exit -F arch=b64 -S chown -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b32 -S chown -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b64 -S fchown -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b32 -S fchown -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b64 -S fchownat -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b32 -S fchownat -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b64 -S lchown -F auid>=1000 -F auid!=unset -F key=change_mod
+    -a always,exit -F arch=b32 -S lchown -F auid>=1000 -F auid!=unset -F key=change_mod
+    # Monitorar mudança de atributos estendidos
+    -a always,exit -F arch=b64 -S setxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S setxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b64 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S lsetxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b64 -S fsetxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S fsetxattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b64 -S removexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S removexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b64 -S lremovexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S lremovexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b64 -S fremovexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    -a always,exit -F arch=b32 -S fremovexattr -F auid>=1000 -F auid!=unset -F key=change_attr
+    # Monitorar tentativas mal-sucedidas de acesso a arquivos
+    -a always,exit -F arch=b64 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=try_access
+    -a always,exit -F arch=b32 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EACCES -F auid>=1000 -F auid!=unset -F key=try_access
+    -a always,exit -F arch=b64 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=try_access
+    -a always,exit -F arch=b32 -S creat,open,openat,open_by_handle_at,truncate,ftruncate -F exit=-EPERM -F auid>=1000 -F auid!=unset -F key=try_access
+
+d) Apagar Regras Antigas e Carregar Novas:
+
+    Comandos:
+    bash
+    Copy
+
+    # auditctl -D
+    # augenrules --load
+    # auditctl -l
+
+
+
+
+
+
+
+</div>

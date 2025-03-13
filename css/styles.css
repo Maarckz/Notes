@@ -169,6 +169,11 @@ button:focus {
 
 }
 
+.note-card2 a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .note-list2 {
     flex-wrap: wrap;
     justify-content: space-around;
