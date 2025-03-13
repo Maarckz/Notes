@@ -270,13 +270,13 @@
             <h1>CRON</h1>
             <p><strong>O arquivo crontab tem cinco campos de tempo seguidos pelo comando a ser executado:</strong></p>
             <pre style="color: white;">
-    ┌───────────── min (0 - 59)
-    │ ┌────────────── hora (0 - 23)
-    │ │ ┌─────────────── dia do mês (1 - 31)
-    │ │ │ ┌──────────────── mês (1 - 12)
-    │ │ │ │ ┌───────────────── dia da semana (0 - 6) (0 a 6 representa
-    │ │ │ │ │                                   de domingo a sábado, ou use nomes;
-    │ │ │ │ │                                    7 também representa domingo)
+    ┌──────── min (0 - 59)
+    │ ┌───────── hora (0 - 23)
+    │ │ ┌────────── dia do mês (1 - 31)
+    │ │ │ ┌─────────── mês (1 - 12)
+    │ │ │ │ ┌──────────── dia da semana (0 - 6)
+    │ │ │ │ │                                  
+    │ │ │ │ │                                  
     │ │ │ │ │
     * * * * * comando a ser executado
             </pre>
@@ -317,13 +317,13 @@
             <h1>Limpeza de Logs</h1>
             <p><strong>Script para limpar logs:</strong></p>
             <pre style="color: white;">
-                #! /bin/sh
-                cd /var/log
-                for l in `ls -p|grep '/'`; do
-                echo -n >$l &>/dev/null
-                echo Zerando arquivo $l...
-                done
-                echo Limpeza dos arquivos de log concluída!
+    #! /bin/sh
+    cd /var/log
+    for l in `ls -p|grep '/'`; do
+    echo -n >$l &>/dev/null
+    echo Zerando arquivo $l...
+    done
+    echo Limpeza de log concluída!
             </pre>
         </div>
 
