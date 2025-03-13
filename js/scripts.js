@@ -1,6 +1,6 @@
 // Efeito smooth em links da sidebar
 document.querySelectorAll('.sidebar a').forEach(link => {
-    link.addEventListener('click', function(event) {
+    link.addEventListener('click', function (event) {
         const href = this.getAttribute('href');
         if (href && href.startsWith('#')) {
             event.preventDefault();
@@ -35,7 +35,7 @@ function showModal(playbook) {
     modalTitle.style.textAlign = "center";
     modalDetails.innerHTML = '<p>Carregando conteúdo...</p>';
 
-    const filePath = `./modals/${playbook}`;
+    const filePath = `./hardening/${playbook}.html`;
     fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error(`Erro ao carregar: ${response.statusText}`);
@@ -72,13 +72,13 @@ function toggleMenu() {
         sidebar.style.left = "-250px";
     }
 }
-    // Fechar sidebar ao clicar fora
-    document.addEventListener("click", event => {
-        if (!event.target.closest(".menu-hamburguer")) {
-            document.querySelector(".sidebar").classList.remove("active");
-            document.querySelector(".sidebar").style.left = "-250px";
-        }
-    });
+// Fechar sidebar ao clicar fora
+document.addEventListener("click", event => {
+    if (!event.target.closest(".menu-hamburguer")) {
+        document.querySelector(".sidebar").classList.remove("active");
+        document.querySelector(".sidebar").style.left = "-250px";
+    }
+});
 
 // Evitar cliques e seleções indesejadas
 document.addEventListener("contextmenu", event => event.preventDefault());
