@@ -107,7 +107,7 @@
             <!-- note 4 -->
             <div class="note-card">
                 <h3>Firewall</h3>
-                <button onclick="showModal('firewalld')">Ver Detalhes</button>
+                <button onclick="showModal('firewall')">Ver Detalhes</button>
             </div>
 
     </section>
@@ -132,9 +132,14 @@
                 <p><strong>Verificar versão do Kernel - </strong>uname -a</p>
                 <p><strong>Verificar versão do SO - </strong>cat /etc/*-release</p>
                 <p><strong>Listar comandos disponiveis - </strong>apropos ''</p>
+                <p><strong>Listar todos os comandos disponíveis - </strong>compgen -c</p>
+                <p><strong>Listar todos os aliases disponíveis - </strong>compgen -a</p>
                 <p><strong>Listar "arquivos" abertos - </strong>lsof</p>
                 <p><strong>Rastrear Chamadas do Sistema - </strong>strace</p>
                 <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
+                <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
+                <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
+                <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda | grep SERIAL</p>
             </div>
 
             <!-- note 1 -->
@@ -146,6 +151,29 @@
                 <br>
                 <p><strong>Para alterar o SHELL:</strong></p>
                 <p>sudo usermod --shell /bin/bash usuario</p>
+                <br>
+                <h3>Criar usuário sem Home</h3>
+                <p>sudo adduser --system --no-create-home --group nome_do_usuario</p>
+            </div>
+
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Python3</h1>
+                <p><strong>Remover restrição do PIP INSTALL - </strong>sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+                </p>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Python Env 2.7 e 3.x</h1>
+                <p>mkdir novo_projeto && cd novo_projeto</p>
+                <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
+                <p><strong>Python3.x - </strong>python3 -m venv venv</p>
+                <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
+                <p><strong>Desabilitar o Env - </strong>deactivate</p>
+                <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
+                <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
             </div>
 
             <!-- note 1 -->
@@ -186,6 +214,20 @@
 
             </div>
 
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Recriar GRUB</h1>
+                <p><strong>GRUB:</strong></p>
+                <p>grub> set root=(hd0,1) &lt;&lt;- sintaxe da versão Grub2</p>
+                <p>grub> linux /boot/vmlinuz-xxxx root=/dev/sda1 ro quiet</p>
+                <p>grub> initrd /boot/initrd.img</p>
+                <p>grub> boot</p>
+                <p><strong>CFG:</strong></p>
+                <p>sudo nano /etc/default/grub</p>
+                <p><strong>Manual em:</strong> <a href="https://www.gnu.org/software/grub"
+                        target="_blank">www.gnu.org/software/grub</a></p>
+            </div>
+
 
             <!-- note 1 -->
             <div class="note-card2">
@@ -200,6 +242,48 @@
                 <p><strong>Recarregar Serviços - </strong>sudo systemctl daemon-reload</p>
                 <p><strong>Diretórios comuns dos Serviços - </strong>/lib, /etc e /run : /systemd/system/</p>
             </div>
+
+
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Firewall Commands</h1>
+                <p><strong>Redirecionar saída para destino específico:</strong></p>
+                <p>sudo iptables -t nat -A OUTPUT -o tun0 -j DNAT --to-destination 10.13.5.224</p>
+                <p><strong>Alterar a interface de uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --change-interface={seleciona_interface} --permanent</p>
+                <p><strong>Adicionar interfaces a uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --permanent --add-interface={seleciona_interface}</p>
+                <p><strong>Remover interfaces de uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --permanent --remove-interface={interface_to_remove}</p>
+                <p><strong>Adicionar serviços a uma zona:</strong></p>
+                <p>firewall-cmd --add-service={service_choice} --permanent --zone={selected_zone}</p>
+                <p><strong>Remover serviços de uma zona:</strong></p>
+                <p>firewall-cmd --remove-service={service_choice} --permanent --zone={selected_zone}</p>
+                <p><strong>Adicionar portas a uma zona:</strong></p>
+                <p>firewall-cmd --add-port={port}/tcp --permanent --zone={selected_zone}</p>
+                <p>firewall-cmd --add-port={port}/udp --permanent --zone={selected_zone}</p>
+                <p><strong>Remover portas de uma zona:</strong></p>
+                <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
+                <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
+                <p><strong>Bloquear IP:</strong></p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source address={blocked_ip} drop'</p>
+                <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source address={ip_mask} drop'</p>
+                <p><strong>Alterar o target:</strong></p>
+                <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
+                <p><strong>Aplicar configurações:</strong></p>
+                <p>firewall-cmd --reload</p>
+                <br>
+                <h1>Redirecionar Portas com Firewalld</h1>
+                <p><strong>Adicionar redirecionamento de porta:</strong></p>
+                <p>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=3000</p>
+                <p>firewall-cmd --runtime-to-permanent</p>
+                <p><strong>Remover redirecionamento de porta:</strong></p>
+                <p>firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=3000:toaddr=</p>
+                <p>firewall-cmd --runtime-to-permanent</p>
+            </div>
+
 
             <!-- note 1 -->
             <div class="note-card2">
@@ -298,7 +382,8 @@
             <h1>AWK</h1>
             <p><strong>Imprimir número da linha e conteúdo - </strong> awk '{print NR,$0}' file.txt</p>
             <p><strong>Imprimir primeira e terceira coluna - </strong> awk '{print $1, $3}' file.txt</p>
-            <p><strong>Usar cat e awk para imprimir primeira e terceira coluna - </strong> cat logfile | awk '{print $1, $3}'</p>
+            <p><strong>Usar cat e awk para imprimir primeira e terceira coluna - </strong> cat logfile | awk '{print $1,
+                $3}'</p>
             <p><strong>Substituir 'espaço' por ':' - </strong> awk 'BEGIN{FS=" "; OFS=":"} {print $1,$4}' awk.txt</p>
             <p><strong>Coluna em linhas separado por vírgula - </strong> awk 'BEGIN{ORS=", "}{print $1}' awk.txt</p>
         </div>
@@ -392,17 +477,7 @@
 
         </div>
 
-        <!-- note 1 -->
-        <div class="note-card2">
-            <h1>Python Env 2.7 e 3.x</h1>
-            <p>mkdir novo_projeto && cd novo_projeto</p>
-            <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
-            <p><strong>Python3.x - </strong>python3 -m venv venv</p>
-            <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
-            <p><strong>Desabilitar o Env - </strong>deactivate</p>
-            <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
-            <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
-        </div>
+
 
 
     </section>
