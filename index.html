@@ -139,6 +139,17 @@
 
             <!-- note 1 -->
             <div class="note-card2">
+                <h1>Criação de usuário</h1>
+                <p><strong>Adicionar usuário com restrições:</strong></p>
+                <p>sudo useradd --badname -m -s /bin/rbash usuario</p>
+                <p>sudo passwd usuario</p>
+                <br>
+                <p><strong>Para alterar o SHELL:</strong></p>
+                <p>sudo usermod --shell /bin/bash usuario</p>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
                 <h1>Criar e Restaurar Backups</h1>
                 <p><strong>BKP de diretório - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C /home</p>
                 <p><strong>Restaurar BKP - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C
