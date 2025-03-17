@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Notes de Linux">
+        content="Notes de Segurança Cibernética - Resposta a Incidentes, Pentesting e Defesa de Sistemas">
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet" />
@@ -139,7 +139,8 @@
                 <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
                 <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
                 <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
-                <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda | grep SERIAL</p>
+                <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda | grep
+                    SERIAL</p>
             </div>
 
             <!-- note 1 -->
@@ -267,9 +268,11 @@
                 <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
                 <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
                 <p><strong>Bloquear IP:</strong></p>
-                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source address={blocked_ip} drop'</p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                    address={blocked_ip} drop'</p>
                 <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
-                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source address={ip_mask} drop'</p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                    address={ip_mask} drop'</p>
                 <p><strong>Alterar o target:</strong></p>
                 <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
                 <p><strong>Aplicar configurações:</strong></p>
@@ -478,9 +481,49 @@
         </div>
 
 
+        <div class="note-card2">
+            <h1>Alterar o MACADDRESS durante a inicialização</h1>
+            <p><strong>Crie o arquivo de serviço:</strong></p>
+            <pre style="color: white;">
+    sudo nano /etc/systemd/system/macchanger.service
 
+    [Unit]
+    Description=Change MAC address
+    After=network.target
+
+    [Service]
+    Type=oneshot
+    ExecStart=/usr/sbin/ip link set [interface] down
+    ExecStart=/usr/bin/macchanger -r [interface]
+    ExecStart=/usr/sbin/ip link set [interface] up
+    RemainAfterExit=yes
+
+    [Install]
+    WantedBy=multi-user.target</pre>
+            <p><strong>Recarregue os daemons do systemd:</strong></p>
+            <p>sudo systemctl daemon-reload</p>
+            <p><strong>Habilite e inicie o serviço:</strong></p>
+            <p>sudo systemctl enable macchanger.service</p>
+            <p>sudo systemctl start macchanger.service</p>
+            <p><strong>Verifique o status do serviço:</strong></p>
+            <p>sudo systemctl status macchanger.service</p>
+            <p><strong>Verifique o endereço MAC:</strong></p>
+            <p>macchanger -s [interface]</p>
+        </div>
+
+
+
+        <div class="note-card2">
+            <h1>Configuração de Data e Hora</h1>
+            <p><strong>Listar fusos horários disponíveis:</strong></p>
+            <p>timedatectl list-timezones | grep America/[Regiao]</p>
+            <p><strong>Definir fuso horário:</strong></p>
+            <p>sudo timedatectl set-timezone America/Sao_Paulo</p>
+        </div>
 
     </section>
+
+
 
     <!-- Modal -->
     <div id="modal" class="modal">
