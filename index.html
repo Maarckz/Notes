@@ -453,6 +453,31 @@
 
         <!-- note 1 -->
         <div class="note-card2">
+            <h1>Terminal com ProxyChains e Tor</h1>
+            <p><strong>Instalar Proxychains:</strong></p>
+            <p>sudo apt install proxychains</p>
+            <p><strong>Instalar Tor:</strong></p>
+            <p>sudo apt install tor</p>
+            <p><strong>Iniciar serviço Tor:</strong></p>
+            <p>sudo service tor start</p>
+            <p><strong>Editar configuração do Proxychains:</strong></p>
+            <p>sudo nano /etc/proxychains.conf</p>
+            <p><strong>Adicionar as seguintes linhas:</strong></p>
+            <pre style="color: white;">
+        dynamic_chain
+        proxy_dns
+        tcp_read_time_out 15000
+        tcp_connect_time_out 8000
+        [ProxyList]
+        # Usando o Tor como proxy
+        socks4  127.0.0.1 9050  
+            </pre>
+            <p><strong>Testar conexão com Tor:</strong></p>
+            <p>curl --socks5 127.0.0.1:9050 https://check.torproject.org</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
             <h1>Wifi Hacking</h1>
             <p>hcxdumptool -o dump.pcapng -i wlan0 --enable_status=1</p>
             <p>hcxpcaptool -z test.16800 test.pcapng</p>
