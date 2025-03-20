@@ -1,0 +1,49 @@
+<style>
+    
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+   
+    <h1>Instalação e Uso do Ollama</h1>
+    <h3>Passo 1: Instalar o Ollama</h3>
+    <p>Execute o seguinte comando para instalar:</p>
+    <pre><code>curl -fsSL https://ollama.com/install.sh | sh</code></pre>
+    <br>
+    <h3>Passo 2: Iniciar o Servidor Ollama</h3>
+    <p>Execute o comando abaixo para iniciar o servidor:</p>
+    <pre><code>ollama serve</code></pre>
+    <br>
+    <h3>Passo 3: Executar o Modelo</h3>
+    <p>Use o comando a seguir para executar o modelo:</p>
+    <pre><code>ollama run ALIENTELLIGENCE/cybersecuritythreatanalysisv2</code></pre>
+    <br>
+    <h3>Passo 4: Fazer uma Requisição POST</h3>
+    <p>Envie uma requisição POST para gerar uma resposta:</p>
+    <pre><code>curl -X POST http://localhost:11434/api/generate -d '{
+        "model": "ALIENTELLIGENCE/cybersecuritythreatanalysisv2",
+        "prompt": "Responda diretamente, sem introdução ou explicação, em português, sobre a resposta a incidente para: Feb 09 23:01:53 legion sudo[31123]: pam_unix(sudo:auth): authentication failure; logname=maarckz uid=1000 euid=0 tty=/dev/pts/1 ruser=maarckz rhost=  user=maarckz.",
+        "stream": true
+    }'</code></pre>
+
+</div>
