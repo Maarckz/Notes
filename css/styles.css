@@ -23,6 +23,7 @@ button {
 
 button:hover {
     background-color: #d6d6d6;
+    
 }
 
 button:focus {
@@ -93,39 +94,51 @@ button:focus {
 
 /*======================================================================*/
 /* Hardening */
-
 .note-card {
-    width: calc(20%);
     background-color: #3d3d3d;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #000000;
-    margin: 0.7rem;
+    color: #ffffff;
+    padding: 20px;
+    width: 300px;
     text-align: center;
-    transition: transform 0.3s ease;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-
-}
-
-.note-card:hover {
-    transform: translateY(-10px);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .note-card h3 {
-    margin-bottom: 1rem;
     font-size: 1.5rem;
-    color: #e7e7e7;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.9);
-
+    margin-bottom: 15px;
 }
 
+.note-card button {
+    background-color: #da7f09;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.note-card button:hover {
+    background-color: #d6d6d6;
+    transform: scale(1.05);
+}
+
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
 .note-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
 }
-
 
 
 /*======================================================================*/
@@ -192,49 +205,53 @@ button:focus {
 
 
 
-
-/*======================================================================*/
-/* Implementacao */
-.note-list3 {
+  /* Estilo para a lista de notas (note-list3) */
+  .note-list3 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
+/* Estilo para os cartões de notas (note-card3) */
 .note-card3 {
-    width: calc(50% - 1rem); /* Two cards per row with spacing */
     background-color: #3d3d3d;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #000000;
-    margin: 0.5rem;
-    text-align: left;
-    transition: transform 0.3s ease;
+    color: #ffffff;
+    padding: 20px;
+    width: 300px;
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
 
 .note-card3 h3 {
-    margin-left: 1rem;
-    font-size: 1.25rem;
-    color: #e7e7e7;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
 }
 
-.note-card3 strong {
-    font-size: 15px;
-    color: #797979;
+.note-card3 button {
+    background-color: #da7f09;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 0.6rem 1rem;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
 }
 
-.note-card3 p {
-    font-size: 15px;
-    color: #e7e7e7;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    margin: 0;
-    margin-left: 1.9rem;
+.note-card3 button:hover {
+    background-color: #d6d6d6;
+    transform: scale(1.05);
 }
 
-
-
+.note-card3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
 
 
 /*======================================================================*/
