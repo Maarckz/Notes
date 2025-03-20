@@ -193,6 +193,53 @@ button:focus {
 
 
 
+/*======================================================================*/
+/* Implementacao */
+.note-list3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.note-card3 {
+    width: calc(50% - 1rem); /* Two cards per row with spacing */
+    background-color: #3d3d3d;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000000;
+    margin: 0.5rem;
+    text-align: left;
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+
+.note-card3 h3 {
+    margin-left: 1rem;
+    font-size: 1.25rem;
+    color: #e7e7e7;
+}
+
+.note-card3 strong {
+    font-size: 15px;
+    color: #797979;
+}
+
+.note-card3 p {
+    font-size: 15px;
+    color: #e7e7e7;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    margin-left: 1.9rem;
+}
+
+
+
+
+
+/*======================================================================*/
+
+
 
 
 .sidebar {

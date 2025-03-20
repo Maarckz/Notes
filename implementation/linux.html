@@ -1,0 +1,186 @@
+<style>
+    
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Segurança de Contas e Acesso</h1>
+    <h3>Travar o Root</h3>
+    <p>sudo passwd --lock root</p>
+    <br>
+    <h3>Bloquear acesso ao shell do root:</h3>
+    <p>sudo usermod -s /usr/sbin/nologin root</p>
+    <br>
+    <h3>Restaurar o acesso:</h3>
+    <p>sudo usermod -s /usr/bin/ root</p>
+    <br>
+
+
+
+    <h1>Política de Senhas</h1>
+    <h3>Impedir senhas vazias:</h3>
+    <p>sed -i s'/nullok*//g' /etc/pam.d/system-auth</p>
+    <p>sed -i s'/nullok*//g' /etc/pam.d/password-auth</p>
+    <br>
+    <h3>Configurar requisitos mínimos de senha:</h3>
+    <p>Edite /etc/security/pwquality.conf:</p>
+    <em>
+        <p>minlen = 15</p>
+        <p>dcredit = -1</p>
+        <p>ucredit = -1</p>
+        <p>lcredit = -1</p>
+        <p>maxrepeat = 3</p>
+        <p>gecoscheck = 1</p>
+        <p>dictcheck = 1</p>
+    </em>
+    <br>
+    <h3>Configurar módulo pam_pwquality.so:</h3>
+    <p>Edite /etc/pam.d/system-auth e /etc/pam.d/password-auth:</p>
+    <p>minlen=15 difok=3 reject_username enforce_for_root</p>
+    <br>
+
+
+    <h1>Proteção do Sistema de Boot</h1>
+    <h3>Gerar hash de senha para o GRUB:</h3>
+    <p>grub-mkpasswd-pbkdf2</p>
+    <br>
+    <h3>Editar o arquivo de configuração do GRUB:</h3>
+    <p>sudo nano /etc/grub.d/40_custom</p>
+    <br>
+    <h3>Adicione as seguintes linhas:</h3>
+    <p>set superusers="root"</p>
+    <p>password_pbkdf2 root &lt;hash-da-senha-gerada&gt;</p>
+    <br>
+    <h3>Edite o arquivo "/etc/default/grub":</h3>
+    <p>GRUB_CMDLINE_LINUX="quiet splash"</p>
+    <p>GRUB_PASSWORD=M1nh@S3nh@</p>
+    <br>
+    <h3>Atualizar o GRUB:</h3>
+    <p>sudo update-grub</p>
+    <br>
+
+
+
+    <h1>Proteção de Arquivos e Diretórios</h1>
+    <h3>Tornar Arquivos Imutáveis se necessário</h3>
+    <p>sudo chattr +i /etc/passwd</p>
+    <p>sudo chattr +i /etc/shadow</p>
+    <p>sudo chattr +i /etc/group</p>
+    <br>
+    <h3>Uso do AIDE (Advanced Intrusion Detection Environment)</h3>
+    <p>sudo apt-get install aide -y</p>
+    <p>sudo aideinit</p>
+    <br>
+    <h3>Atualizar a base de referência:</h3>
+    <p>sudo mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db</p>
+    <br>
+    <h3>Verificar integridade:</h3>
+    <p>sudo aide --check</p>
+    <br>
+    <h3>Configuração personalizada:</h3>
+    <p>Edite /etc/aide/aide.conf para adicionar diretórios específicos para monitoramento.</p>
+    <br>
+    <h3>Verificar logs:</h3>
+    <p>cat /var/log/aide/aide.log</p>
+    <br>
+
+
+
+    <h1>TCP Wrapper</h1>
+    <h3>Bloquear Tudo</h3>
+    <p>sudo nano /etc/hosts.deny</p>
+    <h3>Adicione</h3>
+    <em>
+        <p>ALL: ALL</p>
+    </em>
+    <br>
+    <h3>Permitir o necessário</h3>
+    <p>sudo nano /etc/hosts.allow</p>
+    <h3>Adicione</h3>
+    <em>
+        <p>#Serviço: IPs ou Rede</p>
+        <p>sshd: 192.168.1.0/24</p>
+    </em>
+    <br>
+    <h1>Configuração do FirewallD</h1>
+    <h3>Verificar e iniciar o firewalld</h3>
+    <p>systemctl status firewalld</p>
+    <p>systemctl start firewalld</p>
+    <br>
+    <h3>Verificar zona padrão</h3>
+    <p>firewall-cmd --get-default-zone</p>
+    <br>
+    <h3>Liberar serviços e portas</h3>
+    <p>firewall-cmd --zone=public --permanent --add-service=https</p>
+    <p>firewall-cmd --permanent --zone=public --add-port=443/tcp</p>
+    <p>firewall-cmd --reload</p>
+
+
+    <br>
+
+
+    <h1>Proteção contra Ataques</h1>
+    <h3>Proteção contra Ataques de DDoS</h3>
+    <p>• Limitar o número de conexões simultâneas com iptables:</p>
+    <p>sudo iptables -A INPUT -p tcp --dport 80 -m connlimit --connlimit-above 20 -j DROP</p>
+
+
+    <br>
+
+
+    <h1>Configuração do AUDIT para Auditoria Básica</h1>
+    <h3>Verificar e iniciar o auditd</h3>
+    <p>systemctl status auditd</p>
+    <p>systemctl start auditd</p>
+    <br>
+    <h3>Criar regras para auditoria</h3>
+    <p>Edite /etc/audit/rules.d/passwd.rules:</p>
+    <em>
+        <p>-a always,exit -F path=/usr/bin/passwd -F perm=x -F auid>=1000 -F auid!=unset -F key=passwd_access</p>
+        <p>-a always,exit -F path=/usr/bin/gpasswd -F perm=x -F auid>=1000 -F auid!=unset -F key=gpasswd_access</p>
+        <p>-a always,exit -F path=/usr/bin/newgrp -F perm=x -F auid>=1000 -F auid!=unset -F key=newgrp_access</p>
+    </em>
+    <br>
+    <h3>Aplicar as regras</h3>
+    <p>auditctl -R /etc/audit/rules.d/passwd.rules</p>
+    <p>augenrules --load</p>
+    <p>auditctl -l</p>
+    <br>
+    <h3>Tornar o audit obrigatório no boot</h3>
+    <p>grubby --update-kernel=ALL --args="audit=1"</p>
+    <br>
+
+
+    <h1>Auditoria</h1>
+    <h3>Instalar e usar Lynis</h3>
+    <p>sudo apt-get install lynis</p>
+    <p>sudo lynis audit system</p>
+
+    <br>
+    <h1>Desativar Dispositivos Não Utilizados</h1>
+    <p>echo "blacklist usb-storage" | sudo tee /etc/modprobe.d/disable-usb.conf</p>
+    <p>echo "blacklist cdrom" | sudo tee /etc/modprobe.d/disable-cdrom.conf</p>
+    <p>sudo update-initramfs -u</p>
+
+
+</div>

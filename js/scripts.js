@@ -27,7 +27,7 @@ document.querySelectorAll('.sidebar a').forEach(link => {
 });
 
 // Mostrar e fechar modal
-function showModal(playbook) {
+function showModalPlaybook(playbook) {
     const modal = document.getElementById("modal");
     const modalTitle = document.getElementById("modal-title");
     const modalDetails = document.getElementById("modal-details");
@@ -36,6 +36,29 @@ function showModal(playbook) {
     modalDetails.innerHTML = '<p>Carregando conteúdo...</p>';
 
     const filePath = `./hardening/${playbook}.html`;
+    fetch(filePath)
+        .then(response => {
+            if (!response.ok) throw new Error(`Erro ao carregar: ${response.statusText}`);
+            return response.text();
+        })
+        .then(data => modalDetails.innerHTML = data)
+        .catch(error => modalDetails.innerHTML = `<p>Erro ao carregar: ${error.message}</p>`);
+
+    modal.style.display = "block";
+}
+
+
+
+// Mostrar e fechar modal
+function showModalIncluse(incluse) {
+    const modal = document.getElementById("modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDetails = document.getElementById("modal-details");
+
+    modalTitle.style.textAlign = "center";
+    modalDetails.innerHTML = '<p>Carregando conteúdo...</p>';
+
+    const filePath = `./implementation/${incluse}.html`;
     fetch(filePath)
         .then(response => {
             if (!response.ok) throw new Error(`Erro ao carregar: ${response.statusText}`);
