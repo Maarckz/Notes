@@ -23,131 +23,65 @@
 </style>
 
 <div class="hardening-modal">
-    <h1>Gerar Chave SSH</h1>
-    <p>ssh-keygen -t ed25519 -f diretorio/ssh_$(echo $USER)_ed25519</p>
-    <p><em>OBS: Deverá pedir o passphase após o comando</em></p>
-    <br>
-    <h1>Configurar Permissão da Chave</h1>
-    <p>chmod 600 diretorio/ssh_$(echo $USER)_ed25519</p>
+    <h1>Instalação do Wazuh com Assistente</h1>
 
-    <p>ssh-copy-id -i diretorio/ssh_$(echo $USER)_ed25519.pub usuario@ipservidor</p>
-    <br>
+    <h3>Pré-requisitos</h3>
+    <ul>
+        <li>Sistema Operacional: 64-bit (x86_64/AMD64).</li>
+        <li>Recursos Mínimos:
+            <ul>
+                <li>CPU: 2 núcleos.</li>
+                <li>RAM: 4 GB.</li>
+                <li>Disco: 10 GB (recomendado 20 GB para produção).</li>
+            </ul>
+        </li>
+        <li>Acesso Root: Permissões de superusuário (sudo).</li>
+        <li>Portas Liberadas:
+            <ul>
+                <li>9200 (Wazuh Indexer).</li>
+                <li>55000 (Wazuh Manager).</li>
+                <li>443 (Wazuh Dashboard).</li>
+            </ul>
+        </li>
+        <li>Dependências Instaladas:</li>
+    </ul>
+    <pre><code>sudo apt-get install curl tar -y  # Ubuntu/Debian
+    # ou
+    sudo yum install curl tar -y      # CentOS/RHEL
+    </code></pre>
 
-    <h1>Testar Chave</h1>
-    <p>ssh -i diretorio/ssh_$(echo $USER)_ed25519 usuario@ipservidor</p>
+    <h3>Passo 1: Executar o Script de Instalação</h3>
+    <p>O comando abaixo baixa o script e inicia a instalação automática (-a = all-in-one):</p>
+    <pre><code>curl -sO https://packages.wazuh.com/4.7/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+    </code></pre>
+    <p><strong>O que o script faz:</strong></p>
+    <ul>
+        <li>Configura o Wazuh Indexer (armazenamento de dados).</li>
+        <li>Instala o Wazuh Manager (servidor central).</li>
+        <li>Instala o Wazuh Dashboard (interface web).</li>
+        <li>Gera certificados SSL automáticos para comunicação segura.</li>
+        <li>Define credenciais padrão:
+            <ul>
+                <li>Usuário do Dashboard: admin.</li>
+                <li>Senha do Dashboard: admin.</li>
+            </ul>
+        </li>
+    </ul>
 
-    <br>
+    <h3>Passo 2: Verificar a Instalação</h3>
+    <h4>A. Verificar Serviços em Execução</h4>
+    <pre><code>sudo systemctl status wazuh-indexer wazuh-manager wazuh-dashboard
+    </code></pre>
+    <p>Todos devem estar <em>active (running)</em>.</p>
 
-    <h1>Configuração do SSH do servidor</h1>
-    <br>
-    <h3>Faça Backup do arquivo de configuração</h3>
-    <p>sudo mv /etc/ssh/sshd_config /etc/ssh/sshd_config.bkp</p>
-    <br>
-    <h3>Edite o arquivo de configuração</h3>
-    <p>sudo nano /etc/ssh/sshd_config</p>
-    <br>
-    <em>
-        <p>###################################</p>
-        <p>## ARQUIVO DE CONFIGURACÃO SSH ##</p>
-        <p>###################################</p>
-        <p>Include /etc/ssh/sshd_config.d/*.conf</p>
-        <p>HostKey diretorio/ssh_$(echo $USER)_ed25519</p>
-        <br>
-        <p>PasswordAuthentication no</p>
-        <p>ClientAliveCountMax 0</p>
-        <p>ClientAliveInterval 360</p>
-        <p>MaxAuthTries 3</p>
-        <p>PermitRootLogin no</p>
-        <p>PermitEmptyPasswords no</p>
-        <p>PermitUserEnvironment no</p>
-        <p>PrintMotd no</p>
-        <p>PrintLastLog no</p>
-        <p>Banner /etc/issue.net</p>
-        <p>X11Forwarding no</p>
-        <p>UsePAM yes</p>
-        <br>
-        <p>ChallengeResponseAuthentication yes</p>
-        <p>KbdInteractiveAuthentication yes</p>
-        <p>AuthenticationMethods publickey,keyboard-interactive</p>
-        <p>Ciphers aes256-ctr,aes192-ctr,aes128-ctr</p>
-        <p>MACs hmac-sha2-512,hmac-sha2-256</p>
-        <p>KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256</p>
-        <br>
-        <p>#Defina o usuário que poderá ser acessado</p>
-        <p>AllowUsers usuario</p>
-        <p>LogLevel VERBOSE</p>
-        <br>
-        <p>AllowTcpForwarding no</p>
-        <p>AcceptEnv LANG LC_*</p>
-        <br>
-        <p>Subsystem sftp /usr/lib/openssh/sftp-server</p>
-    </em>
-
-    <br>
-    <h1>Remover Banner de Autenticação:</h1>
-    <br>
-    <h3>Editar o arquivo pam.d/sshd</h3>
-    <p>sudo nano /etc/pam.d/sshd</p>
-    <br>
-    <h3>Comentar a linha</h3>
-    <p>#session optional pam_motd.so motd=/run/motd.dynamic</p>
-    <br>
-    <h3>Remover Permissão do motd.d</h3>
-    <p>sudo chmod -x /etc/update-motd.d/*</p>
-    <p>sudo systemctl restart sshd</p>
-    <br>
-
-
-
-
-    <h1>Recompilar o Binário do SSHD</h1>
-
-    <h3>Verificar a verão instalada</h3>
-    <p>nc -vv 127.0.0.1 22</p>
-    <br>
-    <p>Deve retornar algo como: SSH-2.0-OpenSSH_9.6p1 Ubuntu-3ubuntu13.8</p>
-    <p>OpenSSH_9.6p1 = 13 caracteres</p>
-    <p>NoHaveNothing = 13 caracteres</p>
-    <br>
-    <h3>ATENÇÂO a quantidade de caracteres deve ser igual!</h3>
-
-    <p>sudo perl -pi -e 's/OpenSSH_9.6p1/NoHaveNothing/g' /sbin/sshd</p>
-    <br>
-    <h3>Reiniciar o serviço SSHD</h3>
-    <p>sudo systemctl restart sshd</p>
-    <br>
-    <h3>Testar a Autenticação</h3>
-
-    <br>
-
-    <h1>Configuração do Google Authenticator</h1>
-    <h3>Instalar biblioteca</h3>
-    <p>sudo apt update && sudo apt install libpam-google-authenticator</p>
-    <br>
-    <h3>Configurar o Google Authenticator para seu usuário:</h3>
-    <p>google-authenticator</p>
-    <br>
-    <h3>Configurar o PAM para usar o Google Authenticator:</h3>
-    <p>echo "auth required pam_google_authenticator.so" | sudo tee -a /etc/pam.d/sshd</p>
-    <br>
-    <h3>Reiniciar o serviço SSHD</h3>
-    <p>sudo systemctl restart sshd</p>
-    <br>
-
-
-
-    <h1>Configuração do Fail2Ban</h1>
-    <p>sudo apt update && sudo apt install fail2ban</p>
-    <p>sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local</p>
-    <p>sudo nano /etc/fail2ban/jail.local</p>
-    <br>
-    <h3>Alterar as linhas:</h3>
-    <p>ignoreip = 192.168.1.0/24</p>
-    <em>
-        <p>bantime = 3600</p>
-        <p>findtime = 600</p>
-        <p>maxretry = 3</p>
-    </em>
-    <br>
-    <p>sudo systemctl restart fail2ban</p>
+    <h4>B. Acessar o Wazuh Dashboard</h4>
+    <ul>
+        <li>URL: <code>https://&lt;IP_DA_SUA_MAQUINA&gt;</code>.</li>
+        <li>Credenciais Iniciais:
+            <ul>
+                <li>Usuário: admin.</li>
+                <li>Senha: admin.</li>
+            </ul>
+        </li>
+    </ul>
 </div>
