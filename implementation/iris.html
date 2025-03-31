@@ -1,0 +1,66 @@
+<style>
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Construir e Executar</h1>
+        <p>Para construir e executar o IRIS, siga estes passos:</p>
+
+        <h3>Clone o repositório iris-web:</h3>
+        <p><code>git clone https://github.com/dfir-iris/iris-web.git</code></p>
+        <p><code>cd iris-web</code></p>
+
+        <h3>Faça checkout da última versão não beta:</h3>
+        <p><code>git checkout v2.3.7</code></p>
+
+        <h3>Copie o arquivo de ambiente:</h3>
+        <p><code>cp .env.model .env</code></p>
+
+        <h3>Aviso</h3>
+        <p>A configuração padrão é adequada apenas para testes. Para configurar o IRIS para produção, consulte a seção de configuração.</p>
+
+        <h3>Construa os containers Docker:</h3>
+        <p><code>docker-compose build</code></p>
+
+        <h3>Inicie o IRIS:</h3>
+        <p><code>docker-compose up</code></p>
+
+        <p>O IRIS agora deve estar disponível na interface do host, porta 443, usando o protocolo HTTPS por padrão. Você pode acessá-lo navegando para <code>https://hostip</code> no seu navegador.</p>
+
+        <p>Por padrão, uma conta de administrador é criada quando o IRIS é iniciado pela primeira vez. A senha é exibida na saída do console. Você pode procurar por <code>WARNING :: post_init :: create_safe_admin :: >>></code> nos logs para encontrar a senha.</p>
+        <p>Executar <code>docker compose logs app | grep 'admin'</code> deve ajudar a encontrá-la.</p>
+
+        <p>Se você quiser definir uma senha de administrador no primeiro início, pode criar e definir a variável de ambiente <code>IRIS_ADM_PASSWORD</code> no arquivo <code>.env</code>. Isso não terá efeito após a conta de administrador ser criada.</p>
+
+        <h3>Nota</h3>
+        <p>O IRIS é dividido em cinco serviços Docker, cada um com um papel diferente:</p>
+        <ul>
+                <li><strong>app - iris_webapp:</strong> O núcleo, incluindo servidor web, gerenciamento de banco de dados, gerenciamento de módulos, etc.</li>
+                <li><strong>db:</strong> Um banco de dados PostgreSQL</li>
+                <li><strong>RabbitMQ:</strong> Um mecanismo RabbitMQ para lidar com filas de tarefas e processamento</li>
+                <li><strong>worker:</strong> Um manipulador de tarefas baseado no RabbitMQ</li>
+                <li><strong>nginx:</strong> Um proxy reverso NGINX</li>
+        </ul>
+
+        <p>Cada serviço pode ser construído independentemente, o que é útil durante o desenvolvimento. Neste QuickStart, todos os serviços são construídos de uma vez.</p>
+</div>
