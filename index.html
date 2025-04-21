@@ -187,7 +187,7 @@
                 </ul>
             </div>
 
-            <div class="note-card2"></div>
+            <div class="note-card2">
                 <h1>Ferramentas de CTI</h1>
                 <ul>
                     <li><a href="https://dev.urlquery.net" target="_blank">URLQuery</a> - Análise de URLs.</li>
@@ -384,43 +384,110 @@
 
         <div class="note-card2">
             <h1>Google Dorks</h1>
-            <ul>
-                <li><strong>Finding exposed directories:</strong> <code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></li>
-                <li><strong>Discovering open webcams:</strong> <code>inurl:"viewerframe?mode=motion"</code></li>
-                <li><strong>Finding email lists:</strong> <code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></li>
-                <li><strong>Uncovering vulnerable web servers:</strong> <code>intitle:"Welcome to Windows 2000 Internet Services"</code></li>
-                <li><strong>Discovering exposed CCTV cameras:</strong> <code>inurl:ViewerFrame?Mode=Motion</code></li>
-                <li><strong>Finding SQL injection vulnerabilities:</strong> <code>inurl:index.php?id=</code></li>
-                <li><strong>Uncovering sensitive information in files:</strong> <code>intitle:"Index of" password.txt</code></li>
-                <li><strong>Discovering login pages:</strong> <code>inurl:admin/login</code></li>
-                <li><strong>Finding exposed databases:</strong> <code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></li>
-                <li><strong>Discovering vulnerable WordPress sites:</strong> <code>inurl:/wp-content/plugins/revslider/</code></li>
-                <li><strong>Finding open FTP servers:</strong> <code>intitle:"index of" inurl:ftp</code></li>
-                <li><strong>Discovering exposed configuration files:</strong> <code>intitle:"index of" config.yml</code></li>
-                <li><strong>Finding open Git repositories:</strong> <code>intitle:index of .git</code></li>
-                <li><strong>Discovering vulnerable Joomla installations:</strong> <code>inurl:/index.php?option=com_joomla</code></li>
-                <li><strong>Finding sensitive files:</strong> <code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></li>
-                <li><strong>Discovering exposed MongoDB instances:</strong> <code>intitle:"mongodb status" intext:"topologyVersion"</code></li>
-                <li><strong>Finding open network devices:</strong> <code>intitle:"open network devices"</code></li>
-                <li><strong>Discovering exposed subdomains:</strong> <code>site:\*.example.com -www</code></li>
-                <li><strong>Finding vulnerable Apache Tomcat installations:</strong> <code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code></li>
-                <li><strong>Discovering exposed GitLab repositories:</strong> <code>intitle:"GitLab"</code></li>
-                <li><strong>Finding exposed server directories:</strong> <code>intitle:"index of" /admin</code></li>
-                <li><strong>Discovering sensitive Google Drive files:</strong> <code>site:drive.google.com confidential</code></li>
-                <li><strong>Finding exposed Jenkins instances:</strong> <code>intitle:"Dashboard [Jenkins]"</code></li>
-                <li><strong>Discovering exposed AWS S3 buckets:</strong> <code>site:s3.amazonaws.com</code></li>
-                <li><strong>Finding vulnerable Magento installations:</strong> <code>inurl:/index.php/admin</code></li>
-                <li><strong>Discovering exposed log files:</strong> <code>intitle:"index of" error.log</code></li>
-                <li><strong>Finding open Elasticsearch instances:</strong> <code>intitle:"Kibana" intext:"Welcome to Elastic"</code></li>
-                <li><strong>Discovering exposed API keys:</strong> <code>filetype:env intext:API_KEY</code></li>
-                <li><strong>Finding exposed phpMyAdmin installations:</strong> <code>inurl:"phpmyadmin/index.php"</code></li>
-                <li><strong>Discovering vulnerable OpenCart installations:</strong> <code>inurl:/admin/config.php</code></li>
-                <li><strong>Finding exposed sensitive documents:</strong> <code>filetype:pdf "Confidential"</code></li>
-                <li><strong>Discovering exposed network devices:</strong> <code>intitle:"Device name" inurl:home.htm</code></li>
-                <li><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong> <code>intitle:"Remote Desktop Web Connection"</code></li>
-                <li><strong>Discovering exposed Firebase databases:</strong> <code>intitle:"Firebase Console - Projects"</code></li>
-                <li><strong>Finding vulnerable Drupal installations:</strong> <code>inurl:"/user/login" "Powered by Drupal"</code></li>
-            </ul>
+            <p><strong>Finding exposed directories:</strong></p>
+            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
+
+            <p><strong>Discovering open webcams:</strong></p>
+            <p><code>inurl:"viewerframe?mode=motion"</code></p>
+
+            <p><strong>Finding email lists:</strong></p>
+            <p><code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></p>
+
+            <p><strong>Uncovering vulnerable web servers:</strong></p>
+            <p><code>intitle:"Welcome to Windows 2000 Internet Services"</code></p>
+
+            <p><strong>Discovering exposed CCTV cameras:</strong></p>
+            <p><code>inurl:ViewerFrame?Mode=Motion</code></p>
+
+            <p><strong>Finding SQL injection vulnerabilities:</strong></p>
+            <p><code>inurl:index.php?id=</code></p>
+
+            <p><strong>Uncovering sensitive information in files:</strong></p>
+            <p><code>intitle:"Index of" password.txt</code></p>
+
+            <p><strong>Discovering login pages:</strong></p>
+            <p><code>inurl:admin/login</code></p>
+
+            <p><strong>Finding exposed databases:</strong></p>
+            <p><code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></p>
+
+            <p><strong>Discovering vulnerable WordPress sites:</strong></p>
+            <p><code>inurl:/wp-content/plugins/revslider/</code></p>
+
+            <p><strong>Finding open FTP servers:</strong></p>
+            <p><code>intitle:"index of" inurl:ftp</code></p>
+
+            <p><strong>Discovering exposed configuration files:</strong></p>
+            <p><code>intitle:"index of" config.yml</code></p>
+
+            <p><strong>Finding open Git repositories:</strong></p>
+            <p><code>intitle:index of .git</code></p>
+
+            <p><strong>Discovering vulnerable Joomla installations:</strong></p>
+            <p><code>inurl:/index.php?option=com_joomla</code></p>
+
+            <p><strong>Finding sensitive files:</strong></p>
+            <p><code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></p>
+
+            <p><strong>Discovering exposed MongoDB instances:</strong></p>
+            <p><code>intitle:"mongodb status" intext:"topologyVersion"</code></p>
+
+            <p><strong>Finding open network devices:</strong></p>
+            <p><code>intitle:"open network devices"</code></p>
+
+            <p><strong>Discovering exposed subdomains:</strong></p>
+            <p><code>site:\*.example.com -www</code></p>
+
+            <p><strong>Finding vulnerable Apache Tomcat installations:</strong></p>
+            <p><code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code></p>
+
+            <p><strong>Discovering exposed GitLab repositories:</strong></p>
+            <p><code>intitle:"GitLab"</code></p>
+
+            <p><strong>Finding exposed server directories:</strong></p>
+            <p><code>intitle:"index of" /admin</code></p>
+
+            <p><strong>Discovering sensitive Google Drive files:</strong></p>
+            <p><code>site:drive.google.com confidential</code></p>
+
+            <p><strong>Finding exposed Jenkins instances:</strong></p>
+            <p><code>intitle:"Dashboard [Jenkins]"</code></p>
+
+            <p><strong>Discovering exposed AWS S3 buckets:</strong></p>
+            <p><code>site:s3.amazonaws.com</code></p>
+
+            <p><strong>Finding vulnerable Magento installations:</strong></p>
+            <p><code>inurl:/index.php/admin</code></p>
+
+            <p><strong>Discovering exposed log files:</strong></p>
+            <p><code>intitle:"index of" error.log</code></p>
+
+            <p><strong>Finding open Elasticsearch instances:</strong></p>
+            <p><code>intitle:"Kibana" intext:"Welcome to Elastic"</code></p>
+
+            <p><strong>Discovering exposed API keys:</strong></p>
+            <p><code>filetype:env intext:API_KEY</code></p>
+
+            <p><strong>Finding exposed phpMyAdmin installations:</strong></p>
+            <p><code>inurl:"phpmyadmin/index.php"</code></p>
+
+            <p><strong>Discovering vulnerable OpenCart installations:</strong></p>
+            <p><code>inurl:/admin/config.php</code></p>
+
+            <p><strong>Finding exposed sensitive documents:</strong></p>
+            <p><code>filetype:pdf "Confidential"</code></p>
+
+            <p><strong>Discovering exposed network devices:</strong></p>
+            <p><code>intitle:"Device name" inurl:home.htm</code></p>
+
+            <p><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong></p>
+            <p><code>intitle:"Remote Desktop Web Connection"</code></p>
+
+            <p><strong>Discovering exposed Firebase databases:</strong></p>
+            <p><code>intitle:"Firebase Console - Projects"</code></p>
+
+            <p><strong>Finding vulnerable Drupal installations:</strong></p>
+            <p><code>inurl:"/user/login" "Powered by Drupal"</code></p>
         </div>
 
 
