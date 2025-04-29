@@ -182,20 +182,16 @@
 
             <div class="note-card2">
                 <h1>Sites Úteis</h1>
-                <ul>
-                   <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a> - Verifica se seus dados foram comprometidos em vazamentos.</li>
-                </ul>
+                <p><strong><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></strong> - Verifica se seus dados foram comprometidos em vazamentos.</p>
             </div>
 
             <div class="note-card2">
                 <h1>Ferramentas de CTI</h1>
-                <ul>
-                    <li><a href="https://dev.urlquery.net" target="_blank">URLQuery</a> - Análise de URLs.</li>
-                    <li><a href="https://urlscan.io" target="_blank">URLScan</a> - Escaneamento de URLs.</li>
-                    <li><a href="https://www.virustotal.com" target="_blank">VirusTotal</a> - Análise de arquivos e URLs.</li>
-                    <li><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a> - Verificação de reputação de URLs.</li>
-                    <li><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a> - Verificação de segurança de sites.</li>
-                </ul>
+                <p><strong><a href="https://dev.urlquery.net" target="_blank">URLQuery</a></strong> - Análise de URLs.</p>
+                <p><strong><a href="https://urlscan.io" target="_blank">URLScan</a></strong> - Escaneamento de URLs.</li>
+                <p><strong><a href="https://www.virustotal.com" target="_blank">VirusTotal</a></strong> - Análise de arquivos e URLs.</p>
+                <p><strong><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a></strong> - Verificação de reputação de URLs.</p>
+                <p><strong><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a></strong> - Verificação de segurança de sites.</p>
             </div>
 
 
@@ -251,28 +247,26 @@
                 <p><strong>"Derrubar" interface de rede - </strong>sudo ip link set eth0 down</p>
                 <p><strong>Renomear interface de rede - </strong>sudo ip link set eth0 name eth1</p>
                 <p><strong>Verificar endereço IP da interface - </strong>ip addr show eth0</p>
-                <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0
-                </p>
+                <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0</p>
                 <p><strong>Remover endereço IP - </strong>sudo ip addr del 192.168.1.100/24 dev eth0</p>
                 <p><strong>Adicionar rota padrão - </strong>sudo ip route add default via 192.168.1.1</p>
                 <p><strong>Verificar tabela de roteamento - </strong>ip route show</p>
                 <p><strong>Testar conectividade (ping) - </strong>ping google.com</p>
-                <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0
-                </p>
+                <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0</p>
                 <p><strong>Verificar status da interface - </strong>ip link show eth0</p>
-                <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w
-                    net.ipv6.conf.eth0.disable_ipv6=1</p>
+                <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1</p>
                 <p><strong>Verificar tráfego de rede - </strong>sudo iftop -i eth0</p>
-                <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" >
-                    /etc/resolv.conf</p>
+                <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf</p>
                 <p><strong>Verificar resolução DNS - </strong>nslookup google.com</p>
                 <p><strong>Verificar velocidade da interface - </strong>ethtool eth0</p>
                 <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
                 <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
                 <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
                 <br>
-                <p><strong>Descoberta de Rede (ARP) - - </strong>sudo netdiscover</p>
-                <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp
+                <p><strong>Descoberta de Rede (ARP) - </strong>sudo netdiscover</p>
+                <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1 && echo "$ip está ativo") & done; wait) 2>/dev/null</p>
+                <p><strong>PortScanner</strong> - (for port in {1..65535}; do (echo > /dev/tcp/<IP_ALVO>/$port) 2>/dev/null && echo "Porta $port aberta" & done; wait) 2>/dev/null</p>
+                <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp</p>
 
 
             </div>
@@ -353,9 +347,9 @@
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Baixar Sites</h1>
-                <p><strong>Com WGET - </strong>wget --mirror --convert-links --adjust-extension
-                    --page-requisites
-                    https://URL</p>
+                <p><strong>Com WGET - </strong>wget --mirror --convert-links --adjust-extension --page-requisites https://URL</p>
+                <p><strong>Com CURL - </strong>curl -O https://URL</p>
+                <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost: IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
             </div>
 
 
