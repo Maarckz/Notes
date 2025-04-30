@@ -1,0 +1,105 @@
+<style>
+    
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Instalação do OpenVas com Assistente</h1>
+
+    <h3>Pré-requisitos</h3>
+    <ul>
+        <li>Sistema Operacional: 64-bit (x86_64/AMD64).</li>
+        <li>Recursos Mínimos:
+            <ul>
+                <li>CPU: 4 núcleos.</li>
+                <li>RAM: 8 GB.</li>
+                <li>Disco: 100 GB (recomendado 20 GB para produção).</li>
+            </ul>
+        </li>
+    </ul>
+
+    <pre>
+    #!/bin/bash
+
+    # https://greenbone.github.io/docs/latest/22.4/container/index.html
+    # https://greenbone.github.io/docs/latest/22.4/container/workflows.html
+
+
+    set -e
+
+    DOWNLOAD_DIR=$HOME/greenbone-community-container
+    RELEASE="22.4"
+
+
+    installed() {
+        # $1 should be the command to look for. If $2 is set, we have arguments
+        local failed=0
+        if [ -z "$2" ]; then
+            if ! [ -x "$(command -v "$1")" ]; then
+                failed=1
+            fi
+        else
+            local ret=0
+            "$@" &> /dev/null || ret=$?
+            if [ "$ret" -ne 0 ]; then
+                failed=1
+            fi
+        fi
+
+        if [ $failed -ne 0 ]; then
+            echo "$* is not available. See https://greenbone.github.io/docs/latest/$RELEASE/container/#prerequisites."
+            exit 1
+        fi
+
+    }
+
+    installed curl
+    installed docker
+    installed docker compose
+
+    mkdir -p "$DOWNLOAD_DIR" && cd "$DOWNLOAD_DIR"
+
+    echo "Downloading docker-compose file..."
+    curl -f -O https://greenbone.github.io/docs/latest/_static/docker-compose.yml
+
+    echo "Pulling Greenbone Community Containers"
+    docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml pull
+    echo
+
+    echo "Starting Greenbone Community Containers"
+    docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml up -d
+    echo
+
+    read -r -s -p "Password for admin user: " password
+    docker compose -f "$DOWNLOAD_DIR"/docker-compose.yml \
+        exec -u gvmd gvmd gvmd --user=admin --new-password="$password"
+
+    echo
+    echo "The feed data will be loaded now. This process may take several minutes up to hours."
+    echo "Before the data is not loaded completely, scans will show insufficient or erroneous results."
+    echo "See https://greenbone.github.io/docs/latest/$RELEASE/container/workflows.html#loading-the-feed-changes for more details."
+    echo
+    echo "Press Enter to open the Greenbone Security Assistant web interface in the web browser."
+    read
+    xdg-open "http://127.0.0.1:9392" 2>/dev/null >/dev/null &
+    </pre>
