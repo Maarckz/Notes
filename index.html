@@ -220,6 +220,18 @@
                 </p>
             </div>
 
+            <div class="note-card2">
+                <h1>Configuração de Teclado</h1>
+                <p><strong>Alterar layout do teclado para US:</strong></p>
+                <p>setxkbmap us</p>
+                <p><strong>Alterar layout do teclado para BR:</strong></p>
+                <p>setxkbmap br</p>
+                <p><strong>Verificar layout atual do teclado:</strong></p>
+                <p>setxkbmap -query</p>
+                <p><strong>Definir layout persistente (adicionar ao arquivo .bashrc):</strong></p>
+                <p>echo "setxkbmap us" >> ~/.bashrc</p>
+            </div>
+
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Python Env 2.7 e 3.x</h1>
@@ -360,6 +372,42 @@
                 <p><code>ffuf -u http://target.com/FUZZ -w wordlist.txt</code></p>
                 <p><strong>Fuzzing subdomínios:</strong></p>
                 <p><code>ffuf -u https://FUZZ.victim.com -w wordlist.txt</code></p>
+            </div>
+
+            <div class="note-card2">
+                <h1>Brute Force</h1>
+                <p><strong>Hydra - Ataque de força bruta em SSH:</strong></p>
+                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt ssh://IP_ALVO</code></p>
+                <p><strong>Hydra - Ataque de força bruta em HTTP:</strong></p>
+                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt IP_ALVO http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"</code></p>
+                <p><strong>Medusa - Ataque de força bruta em FTP:</strong></p>
+                <p><code>medusa -h IP_ALVO -u usuario -P /caminho/para/wordlist.txt -M ftp</code></p>
+                <p><strong>John The Ripper - Força bruta em hashes:</strong></p>
+                <p><code>john --wordlist=/caminho/para/wordlist.txt hash.txt</code></p>
+                <p><strong>Hashcat - Força bruta em hashes:</strong></p>
+                <p><code>hashcat -m 0 -a 0 hash.txt /caminho/para/wordlist.txt</code></p>
+                <p><strong>WFuzz - Força bruta em parâmetros de URL:</strong></p>
+                <p><code>wfuzz -c -z file,/caminho/para/wordlist.txt --hc 404 http://IP_ALVO/FUZZ</code></p>
+                
+            </div>
+
+
+            <div class="note-card2">
+                <h1>Ordenação de Arquivos</h1>
+                <p><strong>Ordenar arquivo em ordem crescente:</strong></p>
+                <p>cat arquivo.txt | sort</p>
+                <p><strong>Ordenar arquivo em ordem decrescente:</strong></p>
+                <p>cat arquivo.txt | sort -r</p>
+                <p><strong>Exibir arquivo em ordem crescente com números:</strong></p>
+                <p>sort -n arquivo.txt</p>
+                <p><strong>Exibir arquivo em ordem decrescente com números:</strong></p>
+                <p>sort -nr arquivo.txt</p>
+                <br>
+                <p><strong>Exibir conteúdo do arquivo:</strong></p>
+                <p>cat arquivo.txt</p>
+                <p><strong>Exibir conteúdo do arquivo em ordem inversa:</strong></p>
+                <p>tac arquivo.txt</p>
+                
             </div>
 
             <div class="note-card2">
@@ -722,12 +770,29 @@
 
         <!-- note 1 -->
         <div class="note-card2">
+            <h1>Comando para Análise de Uso de Disco</h1>
+            <p><strong>Exibir uso de disco por diretório (ordenado):</strong></p>
+            <p><code>sudo du -h --max-depth=1 / | sort -rh</code></p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
             <h1>Geração de Wordlists:</h1>
             <p>cewl -d 2 -m 5 -w passwords.txt http://10.10.145.228 --with-numbers</p>
             <p>cewl -d 0 -m 5 -w usernames.txt http://MACHINE_IP/team.php --lowercase</p>
             <p>crunch 3 3 0123456789ABCDEF -o 3digits.txt</p>
             <p>crunch 3 3 -f /usr/share/crunch/charset.lst mixalpha-numeric-all-space -o 3digits.txt</p>
+            <p>cewl http://192.168.56.3/sec.html -w sec.txt -m 5 -d 8</p>
 
+
+            <div class="note-card2"></div>
+                <h1>Gerar Wordlists com CUPP</h1>
+                <p><strong>Instalar CUPP:</strong></p>
+                <p>sudo apt install cupp</p>
+                <p>cupp -i</p>
+                <p><strong>Combinar wordlists:</strong></p>
+                <p>cupp -w</p>
+            </div>
         </div>
 
 
