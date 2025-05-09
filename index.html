@@ -361,7 +361,8 @@
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Baixar Sites</h1>
-                <p><strong>Com WGET - </strong>wget --mirror --convert-links --adjust-extension --page-requisites https://URL</p>
+                <p><strong>Com WGET (SinglePage) - </strong>wget --mirror --convert-links --adjust-extension --page-requisites https://URL</p>
+                <p><strong>Com WGET (FullPage) - </strong>wget -e robots=off -mpEk --span-hosts --no-parent --domains bootstrapmade.com https://URL</p>
                 <p><strong>Com CURL - </strong>curl -O https://URL</p>
                 <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost: IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
             </div>
