@@ -1,0 +1,55 @@
+<style>
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Instalação do Drupal com Docker</h1>
+
+    <h3>Passo 1: Baixar as Imagens Docker</h3>
+    <pre><code>sudo docker pull mysql
+sudo docker pull drupal
+    </code></pre>
+
+    <h3>Passo 2: Executar os Contêineres</h3>
+    <pre><code>sudo docker run --name drupal -p 8080:80 -d drupal
+sudo docker run --name mysql-drupal -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_DATABASE=drupaldb -e MYSQL_USER=drupaluser -e MYSQL_PASSWORD=drupalpass -p 3306:3306 -d mysql
+    </code></pre>
+
+    <h3>Passo 3: Configurar a Rede Docker</h3>
+    <pre><code>sudo docker network create drupalnet
+sudo docker network connect drupalnet mysql
+sudo docker network connect drupalnet drupal
+    </code></pre>
+
+    <h3>Passo 4: Inspecionar a Rede</h3>
+    <p>Verifique se a rede foi configurada corretamente:</p>
+    <pre><code>sudo docker network inspect drupalnet
+    </code></pre>
+
+    <h3>Passo 5: Verificar Conexão com o Banco de Dados</h3>
+    <pre><code>sudo docker exec -it drupal bash
+apt update && apt install -y default-mysql-client
+mysql -hmysql -udrupaluser -pdrupalpass drupaldb
+    </code></pre>
+    <p>Se conectar ao banco de dados, a configuração está correta.</p>
+</div>
