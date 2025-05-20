@@ -576,102 +576,107 @@
                     https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
             </div>
 
-            <div class="note-card2"></div>
-            <h1>Docker Commands</h1>
-            <h2>📦 Containers</h2>
-            <p><strong>Listar containers em execução:</strong> docker ps</p>
-            <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
-            <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
-            <p><strong>Parar container rodando:</strong> docker stop &lt;container_id/nome&gt;</p>
-            <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
-            <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
-            <p><strong>Remover todos containers parados:</strong> docker container prune</p>
+            <div class="note-card2">
+                <h1>Docker Commands</h1>
+                <h2>📦 Containers</h2>
+                <p><strong>Listar containers em execução:</strong> docker ps</p>
+                <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
+                <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
+                <p><strong>Parar container rodando:</strong> docker stop &lt;container_id/nome&gt;</p>
+                <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
+                <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
+                <p><strong>Remover todos containers parados:</strong> docker container prune</p>
 
-            <h2>📸 Imagens</h2>
-            <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
-            <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
-            <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
-            <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
-            <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
-            <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
+                <h2>📸 Imagens</h2>
+                <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
+                <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
+                <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
+                <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
+                <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
+                <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
 
-            <h2>🌐 Redes</h2>
-            <p><strong>Listar redes:</strong> docker network ls</p>
-            <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
-            <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
-            <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
+                <h2>🌐 Redes</h2>
+                <p><strong>Listar redes:</strong> docker network ls</p>
+                <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
+                <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
+                <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
 
-            <h2>🔧 Extras</h2>
-            <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
-            <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
-                /bin/bash</p>
-            <p><strong>Build de imagem via Dockerfile:</strong> docker build -t &lt;nome_imagem&gt;:&lt;tag&gt; .</p>
-            <p><strong>Parar todos os containers:</strong> docker stop $(docker ps -q)</p>
-            <p><strong>Remover todos os containers:</strong> docker rm $(docker ps -aq)</p>
-            <p><strong>Limpar tudo (containers, imagens, volumes e redes não usadas):</strong> docker system prune -a
-            </p>
-        </div>
-
-
-        <!-- note 1 -->
-        <div class="note-card2">
-            <h1>Estabilizar Conexão</h1>
-            <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
-                    target="_blank">https://www.revshells.com/</a></p>
-        </div>
+                <h2>🔧 Extras</h2>
+                <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
+                <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
+                    /bin/bash</p>
+                <p><strong>Build de imagem via Dockerfile:</strong> docker build -t &lt;nome_imagem&gt;:&lt;tag&gt; .
+                </p>
+                <p><strong>Parar todos os containers:</strong> docker stop $(docker ps -q)</p>
+                <p><strong>Remover todos os containers:</strong> docker rm $(docker ps -aq)</p>
+                <p><strong>Limpar tudo (containers, imagens, volumes e redes não usadas):</strong> docker system prune
+                    -a
+                </p>
+            </div>
 
 
-        <div class="note-card2">
-            <h1>Comandos SED</h1>
-            <p><strong>Substituir primeira ocorrência:</strong></p>
-            <p><code>sed 's/old_word/new_word/' arquivo.txt</code></p>
-            <p>Substitui apenas a primeira ocorrência de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
-            <br>
-            <p><strong>Substituir todas ocorrências (global):</strong></p>
-            <p><code>sed 's/old_word/new_word/g' arquivo.txt</code></p>
-            <p>Substitui todas as ocorrências de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
-            <br>
-            <p><strong>Substituir a n-ésima ocorrência:</strong></p>
-            <p><code>sed 's/old_word/new_word/3' arquivo.txt</code></p>
-            <p>Altera apenas a terceira ocorrência de <code>old_word</code> para <code>new_word</code> em cada linha.</p>
-            <br>
-            <p><strong>Deletar linhas em branco:</strong></p>
-            <p><code>sed '/^$/d' arquivo.txt</code></p>
-            <p>Remove todas as linhas vazias do arquivo.</p>
-            <br>
-            <p><strong>Inserir texto antes da linha correspondente:</strong></p>
-            <p><code>sed '/pattern/i\Texto a inserir' arquivo.txt</code></p>
-            <p>Insere “Texto a inserir” antes de cada linha que contenha <code>pattern</code>.</p>
-            <br>
-            <p><strong>Apender texto após a linha correspondente:</strong></p>
-            <p><code>sed '/pattern/a\Texto a apendar' arquivo.txt</code></p>
-            <p>Apende “Texto a apendar” após cada linha que contenha <code>pattern</code>.</p>
-            <br>
-            <p><strong>Numeração simples de linhas:</strong></p>
-            <p><code>sed = arquivo.txt | sed 'N;s/\n/\t/'</code></p>
-            <p>Numera cada linha, alinhando o número à esquerda com uma tabulação.</p>
-            <br>
-            <p><strong>Mostrar apenas linhas de 5 a 10:</strong></p>
-            <p><code>sed -n '5,10p' arquivo.txt</code></p>
-            <p>Imprime apenas as linhas de 5 a 10 do arquivo.</p>
-            <br>
-            <p><strong>Edição in-place com backup:</strong></p>
-            <p><code>sed -i.bak 's/old/new/g' arquivo.txt</code></p>
-            <p>Substitui globalmente <code>old</code> por <code>new</code> diretamente em <code>arquivo.txt</code>, salvando o original em <code>arquivo.txt.bak</code>.</p>
-            <br>
-            <p><strong>Usar expressões regulares estendidas:</strong></p>
-            <p><code>sed -E 's/[[:space:]]+/ /g' arquivo.txt</code></p>
-            <p>Substitui múltiplos espaços em branco por um único espaço, usando regex estendida.</p>
-        </div>
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Estabilizar Conexão</h1>
+                <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
+                        target="_blank">https://www.revshells.com/</a></p>
+            </div>
 
-        <!-- note 1 -->
-        <div class="note-card2">
-            <h1>Maware</h1>
-            <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
-            <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
-            <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
-                gunkey.py</p>
-        </div>
+
+            <div class="note-card2">
+                <h1>Comandos SED</h1>
+                <p><strong>Substituir primeira ocorrência:</strong></p>
+                <p><code>sed 's/old_word/new_word/' arquivo.txt</code></p>
+                <p>Substitui apenas a primeira ocorrência de <code>old_word</code> por <code>new_word</code> em cada
+                    linha.</p>
+                <br>
+                <p><strong>Substituir todas ocorrências (global):</strong></p>
+                <p><code>sed 's/old_word/new_word/g' arquivo.txt</code></p>
+                <p>Substitui todas as ocorrências de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
+                <br>
+                <p><strong>Substituir a n-ésima ocorrência:</strong></p>
+                <p><code>sed 's/old_word/new_word/3' arquivo.txt</code></p>
+                <p>Altera apenas a terceira ocorrência de <code>old_word</code> para <code>new_word</code> em cada
+                    linha.</p>
+                <br>
+                <p><strong>Deletar linhas em branco:</strong></p>
+                <p><code>sed '/^$/d' arquivo.txt</code></p>
+                <p>Remove todas as linhas vazias do arquivo.</p>
+                <br>
+                <p><strong>Inserir texto antes da linha correspondente:</strong></p>
+                <p><code>sed '/pattern/i\Texto a inserir' arquivo.txt</code></p>
+                <p>Insere “Texto a inserir” antes de cada linha que contenha <code>pattern</code>.</p>
+                <br>
+                <p><strong>Apender texto após a linha correspondente:</strong></p>
+                <p><code>sed '/pattern/a\Texto a apendar' arquivo.txt</code></p>
+                <p>Apende “Texto a apendar” após cada linha que contenha <code>pattern</code>.</p>
+                <br>
+                <p><strong>Numeração simples de linhas:</strong></p>
+                <p><code>sed = arquivo.txt | sed 'N;s/\n/\t/'</code></p>
+                <p>Numera cada linha, alinhando o número à esquerda com uma tabulação.</p>
+                <br>
+                <p><strong>Mostrar apenas linhas de 5 a 10:</strong></p>
+                <p><code>sed -n '5,10p' arquivo.txt</code></p>
+                <p>Imprime apenas as linhas de 5 a 10 do arquivo.</p>
+                <br>
+                <p><strong>Edição in-place com backup:</strong></p>
+                <p><code>sed -i.bak 's/old/new/g' arquivo.txt</code></p>
+                <p>Substitui globalmente <code>old</code> por <code>new</code> diretamente em <code>arquivo.txt</code>,
+                    salvando o original em <code>arquivo.txt.bak</code>.</p>
+                <br>
+                <p><strong>Usar expressões regulares estendidas:</strong></p>
+                <p><code>sed -E 's/[[:space:]]+/ /g' arquivo.txt</code></p>
+                <p>Substitui múltiplos espaços em branco por um único espaço, usando regex estendida.</p>
+            </div>
+
+            <!-- note 1 -->
+            <div class="note-card2">
+                <h1>Maware</h1>
+                <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
+                <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
+                <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
+                    gunkey.py</p>
+            </div>
         </div>
 
         <div class="note-card2">
@@ -1062,4 +1067,3 @@
 </body>
 
 </html>
-                            
