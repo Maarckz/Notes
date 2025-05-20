@@ -578,7 +578,6 @@
 
             <div class="note-card2">
                 <h1>Docker Commands</h1>
-                <h2>📦 Containers</h2>
                 <p><strong>Listar containers em execução:</strong> docker ps</p>
                 <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
                 <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
@@ -586,22 +585,19 @@
                 <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
                 <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
                 <p><strong>Remover todos containers parados:</strong> docker container prune</p>
-
-                <h2>📸 Imagens</h2>
+                <br>
                 <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
                 <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
                 <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
                 <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
                 <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
                 <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
-
-                <h2>🌐 Redes</h2>
+                <br>
                 <p><strong>Listar redes:</strong> docker network ls</p>
                 <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
                 <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
                 <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
-
-                <h2>🔧 Extras</h2>
+                <br>
                 <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
                 <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
                     /bin/bash</p>
