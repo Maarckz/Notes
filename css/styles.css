@@ -420,15 +420,13 @@ button:focus {
 
 @media (max-width: 768px) {
     .container {
-        width: 90%;
-        max-width: 100%;
+        width: auto;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        width: 95%;
-        max-width: 100%;
+        width: auto;
     }
 }
 
