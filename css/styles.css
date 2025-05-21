@@ -433,27 +433,6 @@ button:focus {
 
 
 
-@media (max-width: 768px) {
-    .note-card3 {
-        width: calc(90% - 1rem);
-    }
-    /* Adjust modal height */
-    .modal {
-    height: 80vh; /* Adjust this value as needed */
-    overflow-y: auto;
-}
-}
-
-@media (max-width: 480px) {
-    .note-card3 {
-        width: 100%;
-    }
-    /* Adjust modal height */
-    .modal {
-    height: 80vh; /* Adjust this value as needed */
-    overflow-y: auto;
-}
-}
 
 
 @media (max-width: 768px) {
