@@ -408,7 +408,7 @@ button:focus {
 
 @media (max-width: 768px) {
     .container {
-        width: 110%;
+        width: 130%;
         max-width: 1200px;
 
     }
@@ -416,7 +416,9 @@ button:focus {
 
 @media (max-width: 480px) {
     .container {
-        width: 110%;
+        width: 130%;
+        max-width: 1200px;
+
     }
 }
 
