@@ -409,6 +409,11 @@ button:focus {
 }
 }
 
+@media (max-width: 768px) {
+    .note-card2 {
+    width: 100%;
+    }
+}
 
 
 
