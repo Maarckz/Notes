@@ -414,9 +414,11 @@ button:focus {
     width: auto;
     }
     .note-card2 p {
-        font-size: 10px;
+        font-size: 12px;
         word-wrap: break-word;
-
+    }
+    .note-card2 strong {
+        font-size: 12px;
     }
 }
 
