@@ -23,7 +23,7 @@ button {
 
 button:hover {
     background-color: #d6d6d6;
-    
+
 }
 
 button:focus {
@@ -208,8 +208,8 @@ button:focus {
 
 
 
-  /* Estilo para a lista de notas (note-list3) */
-  .note-list3 {
+/* Estilo para a lista de notas (note-list3) */
+.note-list3 {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -387,43 +387,53 @@ button:focus {
         background-color: #555;
     }
 }
+
 @media (max-width: 768px) {
     .note-card {
         width: calc(90% - 1rem);
     }
+
     /* Adjust modal height */
     .modal {
-    height: 80vh; /* Adjust this value as needed */
-    overflow-y: auto;
-}
+        height: 80vh;
+        /* Adjust this value as needed */
+        overflow-y: auto;
+    }
 }
 
 @media (max-width: 480px) {
     .note-card {
         width: 100%;
     }
+
     /* Adjust modal height */
     .modal {
-    height: 80vh; /* Adjust this value as needed */
-    overflow-y: auto;
-}
+        height: 80vh;
+        /* Adjust this value as needed */
+        overflow-y: auto;
+    }
+
+    .container {
+        width: calc(100% - 10px);
+        max-width: 100%;
+        padding: 5px;
+    }
 }
 
 @media (max-width: 768px) {
     .note-card2 {
-    width: auto;
+        width: auto;
     }
+
     .note-card2 p {
         font-size: 12px;
         word-wrap: break-word;
     }
+
     .note-card2 strong {
         font-size: 12px;
     }
-}
 
-
-@media (max-width: 768px) {
     .container {
         width: calc(100% - 10px);
         max-width: 100%;
@@ -431,13 +441,7 @@ button:focus {
     }
 }
 
-@media (max-width: 480px) {
-    .container {
-        width: calc(100% - 10px);
-        max-width: 100%;
-        padding: 5px;
-    }
-}
+
 
 
 
