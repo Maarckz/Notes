@@ -23,33 +23,96 @@
 </style>
 
 <div class="hardening-modal">
-    <h1>Instalação do Drupal com Docker</h1>
+    <h1>Instalação do Drupal com Docker Compose</h1>
 
-    <h3>Passo 1: Baixar as Imagens Docker</h3>
-    <pre><code>sudo docker pull mysql
-sudo docker pull drupal
+    <h3>📁 Passo 1: Preparar o Ambiente</h3>
+    <p>Criar um diretório para o projeto:</p>
+    <pre><code>mkdir drupal-postgres && cd drupal-postgres
+    </code></pre>
+    <p>Criar o arquivo <code>docker-compose.yml</code>:</p>
+    <pre><code>touch docker-compose.yml
     </code></pre>
 
-    <h3>Passo 2: Executar os Contêineres</h3>
-    <pre><code>sudo docker run --name drupal -p 8080:80 -d drupal
-sudo docker run --name mysql-drupal -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_DATABASE=drupaldb -e MYSQL_USER=drupaluser -e MYSQL_PASSWORD=drupalpass -p 3306:3306 -d mysql
+    <h3>📝 Passo 2: Definir o docker-compose.yml</h3>
+    <p>Abra o arquivo <code>docker-compose.yml</code> em seu editor de texto favorito e adicione o seguinte conteúdo:</p>
+    <pre><code>version: '3.8'
+
+services:
+  drupal:
+    image: drupal:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-sites:/var/www/html/sites
+      - drupal-themes:/var/www/html/themes
+    depends_on:
+      - postgres
+    networks:
+      - drupalnet
+
+  postgres:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: drupaldb
+      POSTGRES_USER: drupaluser
+      POSTGRES_PASSWORD: drupalpass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - drupalnet
+
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
+  pgdata:
+
+networks:
+  drupalnet:
+    </code></pre>
+    <p><strong>Explicação:</strong></p>
+    <ul>
+        <li><strong>Serviço drupal:</strong> Utiliza a imagem oficial do Drupal e expõe a porta 8080 do host para a porta 80 do contêiner. Os volumes garantem a persistência dos dados e facilitam o desenvolvimento.</li>
+        <li><strong>Serviço postgres:</strong> Utiliza a imagem oficial do PostgreSQL 14. As variáveis de ambiente configuram o banco de dados, usuário e senha. O volume <code>pgdata</code> garante a persistência dos dados do banco.</li>
+        <li><strong>Rede drupalnet:</strong> Cria uma rede personalizada para que os contêineres possam se comunicar entre si.</li>
+    </ul>
+
+    <h3>🚀 Passo 3: Iniciar os Contêineres</h3>
+    <p>No diretório onde está localizado o arquivo <code>docker-compose.yml</code>, execute:</p>
+    <pre><code>docker-compose up -d
+    </code></pre>
+    <p>Este comando irá:</p>
+    <ul>
+        <li>Baixar as imagens necessárias (caso ainda não estejam em cache).</li>
+        <li>Criar e iniciar os contêineres definidos.</li>
+        <li>Configurar a rede personalizada <code>drupalnet</code>.</li>
+    </ul>
+
+    <h3>🌐 Passo 4: Acessar o Drupal</h3>
+    <p>Após os contêineres estarem em execução:</p>
+    <ul>
+        <li>Abra o navegador e acesse <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</li>
+        <li>Siga as instruções de instalação do Drupal.</li>
+        <li>Na etapa de configuração do banco de dados, selecione PostgreSQL e utilize as seguintes informações:</li>
+    </ul>
+    <pre><code>Nome do banco de dados: drupaldb
+Nome de usuário: drupaluser
+Senha: drupalpass
+Host do banco de dados: postgres
     </code></pre>
 
-    <h3>Passo 3: Configurar a Rede Docker</h3>
-    <pre><code>sudo docker network create drupalnet
-sudo docker network connect drupalnet mysql
-sudo docker network connect drupalnet drupal
+    <h3>🛠️ Passo 5: Gerenciar os Contêineres</h3>
+    <p>Parar os contêineres:</p>
+    <pre><code>docker-compose down
     </code></pre>
-
-    <h3>Passo 4: Inspecionar a Rede</h3>
-    <p>Verifique se a rede foi configurada corretamente:</p>
-    <pre><code>sudo docker network inspect drupalnet
+    <p>Verificar os logs:</p>
+    <pre><code>docker-compose logs -f
     </code></pre>
-
-    <h3>Passo 5: Verificar Conexão com o Banco de Dados</h3>
-    <pre><code>sudo docker exec -it drupal bash
-apt update && apt install -y default-mysql-client
-mysql -hmysql -udrupaluser -pdrupalpass drupaldb
+    <p>Acessar o terminal do contêiner Drupal:</p>
+    <pre><code>docker-compose exec drupal bash
     </code></pre>
-    <p>Se conectar ao banco de dados, a configuração está correta.</p>
+</div>
 </div>
