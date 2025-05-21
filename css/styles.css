@@ -188,8 +188,11 @@ button:focus {
 }
 
 .note-list2 {
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .note-card2 p:first-of-type {
@@ -407,10 +410,33 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+    .note-card2 {
+        width: calc(90% - 1rem);
+    }
+    /* Adjust modal height */
+    .modal {
+    height: 80vh; /* Adjust this value as needed */
+    overflow-y: auto;
+}
+}
+
+@media (max-width: 480px) {
+    .note-card2 {
+        width: 100%;
+    }
+    /* Adjust modal height */
+    .modal {
+    height: 80vh; /* Adjust this value as needed */
+    overflow-y: auto;
+}
+
+
+}
+
+@media (max-width: 768px) {
     .container {
         width: 90%;
         max-width: 100%;
-        margin: 0 auto;
     }
 }
 
@@ -418,7 +444,6 @@ button:focus {
     .container {
         width: 95%;
         max-width: 100%;
-        margin: 0 auto;
     }
 }
 
