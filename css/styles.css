@@ -408,17 +408,17 @@ button:focus {
 
 @media (max-width: 768px) {
     .container {
-        width: 130%;
-        max-width: 1200px;
-
+        width: 90%;
+        max-width: 100%;
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        width: 130%;
-        max-width: 1200px;
-
+        width: 95%;
+        max-width: 100%;
+        margin: 0 auto;
     }
 }
 
