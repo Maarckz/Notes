@@ -814,6 +814,17 @@
             <br>
             <p><strong>Verifique se o espaço foi expandido:</strong></p>
             <p>df -h</p>
+         
+        </div>
+
+        <div class="note-card2">
+            <h1>Expandir LVM com Comandos Resumidos</h1>
+            <p><strong>Expandir Logical Volume:</strong></p>
+            <p><code>sudo lvextend -l +100%FREE /dev/mapper/ubuntu--vg-ubuntu--lv</code></p>
+            <p><strong>Redimensionar Sistema de Arquivos:</strong></p>
+            <p><code>sudo resize2fs /dev/mapper/ubuntu--vg-ubuntu--lv</code></p>
+            <p><strong>Verificar Espaço Disponível:</strong></p>
+            <p><code>df -h /</code></p>
         </div>
 
         <!-- note 1 -->
