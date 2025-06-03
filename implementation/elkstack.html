@@ -1,0 +1,145 @@
+<style>
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Instalação do ELK Stack</h1>   
+    
+
+    <pre>
+    #!/bin/bash
+
+    # Verificar se é root
+    if [ "$(id -u)" -ne 0 ]; then
+        echo "Este script deve ser executado como root!"
+        exit 1
+    fi
+
+    # Atualizar sistema
+    echo -e "\n[1] Atualizando sistema..."
+    apt update && apt upgrade -y
+
+    # Instalar Java
+    echo -e "\n[2] Instalando OpenJDK 17..."
+    apt install openjdk-17-jdk -y
+    java -version
+
+    # Adicionar repositório Elastic
+    echo -e "\n[3] Configurando repositório Elastic..."
+    wget https://artifacts.elastic.co/GPG-KEY-elasticsearch -O /etc/apt/keyrings/GPG-KEY-elasticsearch.key
+    echo "deb [signed-by=/etc/apt/keyrings/GPG-KEY-elasticsearch.key] https://artifacts.elastic.co/packages/8.x/apt stable main" | tee /etc/apt/sources.list.d/elastic-8.x.list
+    apt update
+
+    # Instalar Elasticsearch
+    echo -e "\n[4] Instalando Elasticsearch..."
+    apt install elasticsearch -y
+
+    # Configurar Elasticsearch
+    echo -e "\n[5] Configurando Elasticsearch..."
+    ES_CONFIG="/etc/elasticsearch/elasticsearch.yml"
+    sed -i 's/#cluster.name: .*/cluster.name: sample-cluster/' $ES_CONFIG
+    sed -i 's/#node.name: .*/node.name: elasticsearch-node/' $ES_CONFIG
+    sed -i 's/#network.host: .*/network.host: 0.0.0.0/' $ES_CONFIG
+    sed -i 's/#xpack.security.enabled: .*/xpack.security.enabled: false/' $ES_CONFIG
+
+    # Iniciar Elasticsearch
+    echo -e "\n[6] Iniciando serviços Elasticsearch..."
+    systemctl daemon-reload
+    systemctl enable elasticsearch
+    systemctl restart elasticsearch
+
+    # Verificar Elasticsearch
+    echo -e "\nVerificando operação do Elasticsearch..."
+    sleep 10
+    curl -X GET "localhost:9200"
+
+    # Instalar Kibana
+    echo -e "\n[7] Instalando Kibana..."
+    apt install kibana -y
+
+    # Configurar Kibana
+    echo -e "\n[8] Configurando Kibana..."
+    KIBANA_CONFIG="/etc/kibana/kibana.yml"
+    sed -i 's/#server.port: .*/server.port: 5601/' $KIBANA_CONFIG
+    sed -i 's/#server.host: .*/server.host: "0.0.0.0"/' $KIBANA_CONFIG
+    sed -i 's/#elasticsearch.hosts: .*/elasticsearch.hosts: ["http:\/\/localhost:9200"]/' $KIBANA_CONFIG
+
+    # Iniciar Kibana
+    systemctl enable kibana
+    systemctl restart kibana
+
+    # Instalar Logstash
+    echo -e "\n[9] Instalando Logstash..."
+    apt install logstash -y
+
+    # Configurar Logstash
+    echo -e "\n[10] Configurando pipelines Logstash..."
+    LOGSTASH_CONF_DIR="/etc/logstash/conf.d"
+
+    # Configurar input
+    cat << EOF > $LOGSTASH_CONF_DIR/02-beats-input.conf
+    input {
+      beats {
+        port => 5044
+      }
+    }
+    EOF
+
+    # Configurar output
+    cat << EOF > $LOGSTASH_CONF_DIR/30-elasticsearch-output.conf
+    output {
+      if [@metadata][pipeline] {
+        elasticsearch {
+          hosts => ["localhost:9200"]
+          manage_template => false
+          index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+          pipeline => "%{[@metadata][pipeline]}"
+        }
+      } else {
+        elasticsearch {
+          hosts => ["localhost:9200"]
+          manage_template => false
+          index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+        }
+      }
+    }
+    EOF
+
+    # Validar configuração e iniciar
+    echo -e "\n[11] Validando configuração do Logstash..."
+    sudo -u logstash /usr/share/logstash/bin/logstash --path.settings /etc/logstash -t
+
+    echo -e "\n[12] Iniciando serviços Logstash..."
+    systemctl enable logstash
+    systemctl restart logstash
+
+    # Resumo
+    echo -e "\n\n\033[1;32mINSTALAÇÃO COMPLETADA!\033[0m"
+    echo -e "\n\033[1;33mEndereços de acesso:\033[0m"
+    echo "Elasticsearch: http://$(hostname -I | awk '{print $1}'):9200"
+    echo "Kibana:        http://$(hostname -I | awk '{print $1}'):5601"
+    echo -e "\n\033[1;33mStatus dos serviços:\033[0m"
+    systemctl status elasticsearch kibana logstash --no-pager
+    </pre>
+
+</div>
