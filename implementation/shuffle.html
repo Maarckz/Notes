@@ -24,94 +24,142 @@
 
 <div class="hardening-modal">
     <h1>Instalação do Shuffle</h1>
+    <div>
+      <h3>Passos para instalação:</h3>
+      <p>1. Clone o repositório:</p>
+      <pre><code>git clone https://github.com/Shuffle/Shuffle
+    cd Shuffle</code></pre>
+      <p>2. Crie a pasta <code>shuffle-database</code> e altere as permissões:</p>
+      <pre><code>mkdir shuffle-database
+    sudo chown -R 1000:1000 shuffle-database
+    # Se você receber um erro ao usar "chown", adicione o usuário primeiro com "sudo useradd opensearch"</code></pre>
+      <p>3. Resolva o problema de porta usada:</p>
+      <p>Edite o arquivo <code>shuffle/docker-compose.yml</code>:</p>
+      <pre><code>nano shuffle/docker-compose.yml</code></pre>
+      <p>Substitua o conteúdo do arquivo com:</p>
+      <pre><code>version: '3.9'
 
+    services:
+      frontend:
+      image: ghcr.io/shuffle/shuffle-frontend:latest
+      container_name: shuffle-frontend
+      hostname: shuffle-frontend
+      ports:
+        - "${FRONTEND_PORT}:80"
+        - "${FRONTEND_PORT_HTTPS}:443"
+      networks:
+        - shuffle
+      environment:
+        - BACKEND_HOSTNAME=${BACKEND_HOSTNAME}
+      restart: unless-stopped
+      depends_on:
+        - backend
+
+      backend:
+      image: ghcr.io/shuffle/shuffle-backend:latest
+      container_name: shuffle-backend
+      hostname: ${BACKEND_HOSTNAME}
+      ports:
+        - "${BACKEND_PORT}:5001"
+      networks:
+        - shuffle
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - "${SHUFFLE_APP_HOTLOAD_LOCATION}:/shuffle-apps:z"
+        - "${SHUFFLE_FILE_LOCATION}:/shuffle-files:z"
+      env_file: .env
+      environment:
+        - SHUFFLE_APP_HOTLOAD_FOLDER=/shuffle-apps
+        - SHUFFLE_FILE_LOCATION=/shuffle-files
+      restart: unless-stopped
+
+      orborus:
+      image: ghcr.io/shuffle/shuffle-orborus:latest
+      container_name: shuffle-orborus
+      hostname: shuffle-orborus
+      networks:
+        - shuffle
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      env_file: .env
+      environment:
+        - RUNNING_MODE=docker
+        - SHUFFLE_SKIP_SWARM=true
+        - SHUFFLE_SKIP_PIPELINES=true
+        - SHUFFLE_APP_SDK_TIMEOUT=300
+        - SHUFFLE_ORBORUS_EXECUTION_CONCURRENCY=7
+        - ENVIRONMENT_NAME=Shuffle
+        - ORG_ID=Shuffle
+        - BASE_URL=http://shuffle-backend:5001
+        - DOCKER_API_VERSION=1.40
+        - SHUFFLE_STATS_DISABLED=true
+        - SHUFFLE_LOGS_DISABLED=true
+        - HTTP_PROXY=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTPS_PROXY}
+        - SHUFFLE_PASS_WORKER_PROXY=${SHUFFLE_PASS_WORKER_PROXY}
+        - SHUFFLE_PASS_APP_PROXY=${SHUFFLE_PASS_APP_PROXY}
+      restart: unless-stopped
+      security_opt:
+        - seccomp:unconfined
+      depends_on:
+        - backend
+
+      opensearch:
+      image: opensearchproject/opensearch:2.19.1
+      container_name: shuffle-opensearch
+      hostname: shuffle-opensearch
+      ports:
+        - "9100:9200"
+      networks:
+        - shuffle
+      ulimits:
+        memlock:
+        soft: -1
+        hard: -1
+        nofile:
+        soft: 65536
+        hard: 65536
+      volumes:
+        - shuffle-database:/usr/share/opensearch/data:z
+      environment:
+        - OPENSEARCH_JAVA_OPTS=-Xms2048m -Xmx2048m
+        - bootstrap.memory_lock=true
+        - DISABLE_PERFORMANCE_ANALYZER_AGENT_CLI=true
+        - cluster.initial_master_nodes=shuffle-opensearch
+        - cluster.routing.allocation.disk.threshold_enabled=false
+        - cluster.name=shuffle-cluster
+        - node.name=shuffle-opensearch
+        - node.store.allow_mmap=false
+        - discovery.seed_hosts=shuffle-opensearch
+        - OPENSEARCH_INITIAL_ADMIN_PASSWORD=${SHUFFLE_OPENSEARCH_PASSWORD}
+      restart: unless-stopped
+
+      worker:
+      image: ghcr.io/shuffle/shuffle-worker:latest
+      container_name: shuffle-workers
+      hostname: shuffle-workers
+      networks:
+        - shuffle
+      env_file: .env
+      environment:
+        - BASE_URL=http://shuffle-backend:5001
+        - HTTP_PROXY=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTPS_PROXY}
+      restart: unless-stopped
+      depends_on:
+        - backend
+
+    volumes:
+      shuffle-database:
+      driver: local
+      driver_opts:
+        type: none
+        device: "${DB_LOCATION}"
+        o: bind
+
+    networks:
+      shuffle:
+      driver: bridge</code></pre>
+    </div>
 </div>
 
-
-
-git clone https://github.com/Shuffle/Shuffle
-cd Shuffle
-
-Create folder name shuffle-database and change permission
-
-mkdir shuffle-database
-sudo chown -R 1000:1000 shuffle-database
-# If you get an error using “ chown ”, add the user first with “ sudo useradd opensearch ”
-
-Then we are going to face used port problem if we run it because we have Wazuh running on port 80, so we need to change the port
-
-nano shuffle/docker-compose.yml
-
-version: '3'
-services:
-frontend:
-image: ghcr.io/shuffle/shuffle-frontend:latest
-container_name: shuffle-frontend
-hostname: shuffle-frontend
-ports:
-  - "${FRONTEND_PORT}:80"
-  - "${FRONTEND_PORT_HTTPS}:443"
-networks:
-  - shuffle
-environment:
-  - BACKEND_HOSTNAME=${BACKEND_HOSTNAME}
-restart: unless-stopped
-depends_on:
-  - backend
-backend:
-image: ghcr.io/shuffle/shuffle-backend:latest
-container_name: shuffle-backend
-hostname: ${BACKEND_HOSTNAME}
-# Here for debugging:
-ports:
-  - "${BACKEND_PORT}:5001"
-networks:
-  - shuffle
-volumes:
-  - /var/run/docker.sock:/var/run/docker.sock
-  - ${SHUFFLE_APP_HOTLOAD_LOCATION}:/shuffle-apps     
-  - ${SHUFFLE_FILE_LOCATION}:/shuffle-files
-  #- ${SHUFFLE_OPENSEARCH_CERTIFICATE_FILE}:/shuffle-files/es_certificate
-env_file: .env
-environment:
-  - SHUFFLE_APP_HOTLOAD_FOLDER=/shuffle-apps
-  - SHUFFLE_FILE_LOCATION=/shuffle-files
-restart: unless-stopped
-depends_on:
-  - opensearch
-opensearch:
-image: opensearchproject/opensearch:2.5.0
-hostname: shuffle-opensearch
-container_name: shuffle-opensearch
-environment:
-  - bootstrap.memory_lock=true
-  - "OPENSEARCH_JAVA_OPTS=-Xms4096m -Xmx4096m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
-  - cluster.routing.allocation.disk.threshold_enabled=false
-  - cluster.name=shuffle-cluster
-  - node.name=shuffle-opensearch
-  - discovery.seed_hosts=shuffle-opensearch
-  - cluster.initial_master_nodes=shuffle-opensearch
-ulimits:
-  memlock:
-    soft: -1
-    hard: -1
-  nofile:
-    soft: 65536 # maximum number of open files for the OpenSearch user, set to at least 65536 on modern systems
-    hard: 65536
-volumes:
-  - ${DB_LOCATION}:/usr/share/opensearch/data:rw
-networks:
-  - shuffle
-restart: unless-stopped
-networks:
-shuffle:
-driver: bridge
-
-Run the docker compose in background
-
-docker-compose up -d
-
-Go browser and tape https:ip_address:port
-login Shuffle
-
-Username=admin & Password=admin

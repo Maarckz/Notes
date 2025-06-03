@@ -1,0 +1,133 @@
+<style>
+    .hardening-modal p,
+    .hardening-modal h1,
+    .hardening-modal h3 {
+        margin: 0;
+    }
+
+    .hardening-modal h1 {
+        font-size: 24px;
+        color: #da7f09;
+        text-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    .hardening-modal h3 {
+        font-size: 18px;
+        color: #e7e7e7;
+    }
+
+    .hardening-modal p {
+        font-size: 14px;
+        color: #e7e7e7;
+    }
+</style>
+
+<div class="hardening-modal">
+    <h1>Proxy Reverso SOC - Nginx</h1>
+    <h3>Configuração do Proxy Reverso</h3>
+    <p>Para configurar o proxy reverso com Nginx, siga os passos abaixo:</p>
+    <ul>
+        <li>Instale o Nginx e o OpenSSL:</li>
+        <pre><code>sudo apt install nginx openssl</code></pre>
+        <li>Crie o diretório para os certificados SSL:</li>
+        <pre><code>sudo mkdir -p /etc/nginx/ssl/soc.local</code></pre>
+        <li>Gere os certificados SSL:</li>
+        <pre><code>
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+-keyout /etc/nginx/ssl/soc.local/soc.local.key \
+-out /etc/nginx/ssl/soc.local/soc.local.crt \
+-subj "/C=BR/ST=Estado/L=Cidade/O=Empresa/CN=*.soc.local"
+        </code></pre>
+        <li>Edite os arquivos de configuração do Nginx:</li>
+        <ul>
+            <li><strong>redirect</strong>:</li>
+            <pre><code>
+server {
+    listen 80 default_server;
+    server_name _;
+    return 301 https://$host$request_uri;
+}
+            </code></pre>
+            <li><strong>iris.local</strong>:</li>
+            <pre><code>
+server {
+    listen 80;
+    server_name iris.local;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name iris.local;
+
+    ssl_certificate /etc/nginx/ssl/soc.local/soc.local.crt;
+    ssl_certificate_key /etc/nginx/ssl/soc.local/soc.local.key;
+
+    location / {
+        proxy_pass https://192.168.56.201:4443/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+            </code></pre>
+            <li><strong>wazuh.local</strong>:</li>
+            <pre><code>
+server {
+    listen 80;
+    server_name wazuh.local;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name wazuh.local;
+
+    ssl_certificate /etc/nginx/ssl/soc.local/soc.local.crt;
+    ssl_certificate_key /etc/nginx/ssl/soc.local/soc.local.key;
+
+    location / {
+        proxy_pass https://192.168.56.201:441/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+            </code></pre>
+            <li><strong>shuffle.local</strong>:</li>
+            <pre><code>
+server {
+    listen 80;
+    server_name shuffle.local;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name shuffle.local;
+
+    ssl_certificate /etc/nginx/ssl/soc.local/soc.local.crt;
+    ssl_certificate_key /etc/nginx/ssl/soc.local/soc.local.key;
+
+    location / {
+        proxy_pass https://192.168.56.201:3443/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+            </code></pre>
+        </ul>
+        <li>Ative os arquivos de configuração:</li>
+        <pre><code>
+sudo ln -s /etc/nginx/sites-available/wazuh.local /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/iris.local /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/shuffle.local /etc/nginx/sites-enabled/
+        </code></pre>
+        <li>Teste a configuração e reinicie o Nginx:</li>
+        <pre><code>
+sudo nginx -t
+sudo systemctl reload nginx
+        </code></pre>
+    </ul>
+</div>
