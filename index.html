@@ -89,7 +89,7 @@
     <section id="notes" class="container">
         <h2>Implementações</h2>
         <br>
-        
+
         <div class="note-list" id="notes-title">
             <!-- note 1 -->
             <div class="note-card">
@@ -102,7 +102,7 @@
                 <h3>Shuffle</h3>
                 <button onclick="showModalIncluse('shuffle')">Ver Detalhes</button>
             </div>
-            
+
             <!-- note 1 -->
             <div class="note-card">
                 <h3>ProxyRev</h3>
@@ -191,7 +191,9 @@
                     target="_blank">https://www.darkreading.com/threat-intelligence</a></p>
             <p><strong>InfoSec Magazine - </strong><a href="https://www.infosecurity-magazine.com/threat-intelligence/"
                     target="_blank">https://www.infosecurity-magazine.com/threat-intelligence/</a></p>
-
+                    
+https://apt.etda.or.th/cgi-bin/aptgroups.cgi
+https://malpedia.caad.fkie.fraunhofer.de/
         </div>
 
 
@@ -200,9 +202,9 @@
             <h1>Comandos Úteis</h1>
             <p><strong>Consultar comandos - </strong><a href="https://explainshell.com/"
                     target="_blank">https://explainshell.com/</a></p>
-            <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a
-                /etc/inputrc
-            </p>
+            <p><strong>Remover KeySensitive - </strong>echo set completion-ignore-case on | sudo tee -a /etc/inputrc</p>
+            <p><strong>Habilitar autocompletar comandos (bash-completion) - </strong>sudo apt install bash-completion</p>
+            sudo hostnamectl set-hostname [novo-hostname]
             <p><strong>Uso de disco - </strong>df -h</p>
             <p><strong>Uso de memória - </strong>free -m</p>
             <p><strong>Uso de CPU - </strong>top</p>
@@ -322,6 +324,7 @@
             <p><strong>Configurar MTU da interface - </strong>sudo ip link set eth0 mtu 1500</p>
             <p><strong>Monitorar tráfego de rede em tempo real - </strong>sudo tcpdump -i eth0</p>
             <p><strong>Observar conexões ativas - </strong>ss -tulnp</p>
+            <p><strong>Verificar conexões de rede (Origem e Destino) - </strong>netstat -nputw</p>
             <br>
             <p><strong>Descoberta de Rede (ARP) - </strong>sudo netdiscover</p>
             <p><strong>PingSweep</strong> - (for ip in 192.168.1.{1..254}; do (ping -c 1 -W 1 $ip > /dev/null 2>&1

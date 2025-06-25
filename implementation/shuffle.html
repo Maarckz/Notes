@@ -160,6 +160,21 @@
     networks:
       shuffle:
       driver: bridge</code></pre>
+      
+      <p>Se for integrar no Wazuh faça o seguinte</p>
+<code><pre>1. Modifique o script shuffle.py para ignorar SSL
+
+No script Python, adicione verify=False na requisição POST para desabilitar a verificação SSL (equivalente ao -k do curl).
+
+Localize a função send_msg e altere a linha:
+python
+
+res = requests.post(url, data=msg, headers=headers, timeout=10)
+
+Para:
+python
+
+res = requests.post(url, data=msg, headers=headers, timeout=10, verify=False)</code></pre>
     </div>
 </div>
 

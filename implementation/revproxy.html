@@ -38,7 +38,7 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 -out /etc/nginx/ssl/soc.local/soc.local.crt \
 -subj "/C=BR/ST=Estado/L=Cidade/O=Empresa/CN=*.soc.local"
         </code></pre>
-        <li>Edite os arquivos de configuração do Nginx:</li>
+        <li>Crie os arquivos de configuração do Nginx em /etc/nginx/sites-available:</li>
         <ul>
             <li><strong>redirect</strong>:</li>
             <pre><code>
