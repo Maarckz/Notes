@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 5. Busca Inteligente ---
     let searchIndex = [];
-    fetch('/assets/js/search-index.json')
+    fetch('Notes/assets/js/search-index.json')
         .then(res => res.json())
         .then(data => searchIndex = data);
 
