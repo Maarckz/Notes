@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="https://maarckz.github.io/static/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} | NOTES Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="{base_path}/assets/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-layer-group"></i> NOTES Base</h1>
+                <button class="search-trigger" id="search-trigger">
+                    <i class="fas fa-search"></i>
+                    <span>Buscar...</span>
+                    <span class="search-shortcut"><kbd>Ctrl</kbd> <kbd>K</kbd></span>
+                </button>
+            </div>
+            <div class="nav-tree-container">
+                <nav>{navigation}</nav>
+            </div>
+            <div class="sidebar-resizer" id="sidebar-resizer"></div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="content-header">
+                <div class="breadcrumbs">
+                    <a href="{base_path}/index.html"><i class="fas fa-home"></i> Home</a>
+                    {breadcrumbs}
+                </div>
+            </header>
+            
+            <article class="content-body">
+                <div class="markdown-content">{content}</div>
+            </article>
+        </main>
+    </div>
+    
+    <div id="search-modal-overlay" class="search-modal-overlay">
+        <div class="search-modal">
+            <div class="search-modal-header">
+                <i class="fas fa-search"></i>
+                <input type="text" id="modal-search-input" placeholder="O que você procura?" autocomplete="off" spellcheck="false">
+                <button id="close-search" class="close-search-btn"><kbd>ESC</kbd></button>
+            </div>
+            <div class="search-modal-results" id="search-modal-results">
+                </div>
+        </div>
+    </div>
+
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <img class="lightbox-img" src="" alt="Imagem Ampliada">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', () => document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el)));</script>
+    <script src="{base_path}/assets/js/main.js"></script>
+</body>
+</html>
